@@ -1,0 +1,13 @@
+first time 
+
+file/path -> cmd -> composer update
+file/path -> cmd -> php artisan key:generate
+
+if not
+
+proceed to 
+
+create empty homequartdb database on phpmyadmin
+
+file/path -> cmd -> php artisan migrate - if ilisan na ang credentials kay mag ing.ani pero for now katong naka migrate na pwede ra di pa mag apply ani, same pa credentials as of now
+
