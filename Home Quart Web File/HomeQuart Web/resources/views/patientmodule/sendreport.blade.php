@@ -26,7 +26,6 @@
                 </div>
             </div>
             <br><br><br><br><br><br><hr>
-            {{-- char lang --}}
             <h1>Send Report</h1>
             <section class="row">
                 <div class="col-12">
