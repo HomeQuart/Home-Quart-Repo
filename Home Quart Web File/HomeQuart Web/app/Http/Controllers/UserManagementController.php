@@ -20,6 +20,7 @@ class UserManagementController extends Controller
     {
 
         //Comment france
+        //Comment Frank
         if (Auth::user()->role_name=='Admin')
         {
             $data = DB::table('users')->get();
