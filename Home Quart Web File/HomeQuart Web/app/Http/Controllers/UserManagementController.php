@@ -18,6 +18,8 @@ class UserManagementController extends Controller
 {
     public function index()
     {
+
+        //Comment
         if (Auth::user()->role_name=='Admin')
         {
             $data = DB::table('users')->get();
