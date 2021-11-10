@@ -75,6 +75,8 @@ Route::post('profile_user/store', [App\Http\Controllers\UserManagementController
 // ----------------------------- user userManagement -----------------------//
 Route::get('userManagement', [App\Http\Controllers\UserManagementController::class, 'index'])->middleware('auth')->name('userManagement');
 Route::get('sendReport', [App\Http\Controllers\UserManagementController::class, 'sendReport'])->middleware('auth')->name('sendReport');
+Route::get('contactHotlines', [App\Http\Controllers\UserManagementController::class, 'contactHotlines'])->middleware('auth')->name('contactHotlines');
+Route::get('temperatureProgress', [App\Http\Controllers\UserManagementController::class, 'temperatureProgress'])->middleware('auth')->name('temperatureProgress');
 Route::get('userManagement2', [App\Http\Controllers\UserManagementController::class, 'index2'])->middleware('auth')->name('userManagement2');
 Route::get('user/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewUser'])->middleware('auth')->name('user/add/new');
 Route::post('user/add/save', [App\Http\Controllers\UserManagementController::class, 'addNewUserSave'])->name('user/add/save');

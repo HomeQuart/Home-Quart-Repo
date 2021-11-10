@@ -58,6 +58,19 @@ class UserManagementController extends Controller
         return view('patientmodule.sendreport');
     }
 
+    public function contactHotlines()
+    {
+
+        return view('patientmodule.contacthotline');
+    }
+
+    public function temperatureProgress()
+    {
+
+        return view('patientmodule.temperatureProgress');
+    }
+
+
 
     // view detail 
     public function viewDetail($id)

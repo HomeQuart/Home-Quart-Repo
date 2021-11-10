@@ -775,6 +775,7 @@
         </footer>
     </div>
 @endif
+
 @if (Auth::user()->role_name=='Admin')
     <div id="main">
         <header class="mb-3">
@@ -1161,6 +1162,7 @@
         </footer>
     </div>
 @endif
+
 @if (Auth::user()->role_name=='Patient')
     <div id="main">
         <header class="mb-3">
@@ -1183,82 +1185,54 @@
                 </div>
             </div>
         </div>
-        <br><br><br><br><br><br><hr>
+        <br><br><br><br><br><br>
         <h1>Quarantine Patient Dashboard</h1>
+        <hr>
+        
         {{-- message --}}
         {!! Toastr::message() !!}
         <div class="page-content">
             <section class="row">
                 <div class="col-12 ">
                     <div class="row">
-                        <div class="col-6 col-lg-3 col-md-6">
+                        <div class="col-6 col-lg-2 col-md-6">
+                        </div>
+                        <div class="col-6 col-lg-8 col-md-6">
                             <div class="card">
                                 <div class="card-body px-3 py-4-5">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="stats-icon purple">
-                                                <i class="iconly-boldShow"></i>
+                                        <center> <h5>Quarantine Period</h5></center><hr>
+                                        {{-- insert the countdown timer here --}}
+                                        <center>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <h1>12 </h1> 
+                                                    <div class="row-md-4">
+                                                        <h6>DAYS</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h1>06</h1>
+                                                    <div class="row-md-4">
+                                                        <h6>HOURS</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h1>32</h1>
+                                                    <div class="row-md-4">
+                                                        <h6>MINUTES</h6>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold">Total Patients</h6>
-                                            <h6 class="font-extrabold mb-0">{{ $activity_logs }}</h6>
-                                        </div>
+                                        </center>
+                                       
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="stats-icon blue">
-                                                <i class="iconly-boldProfile"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold">Under Quarantine</h6>
-                                            <h6 class="font-extrabold mb-0">{{ $user_activity_logs }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-6 col-lg-2 col-md-6">
                         </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="stats-icon green">
-                                                <i class="iconly-boldAdd-User"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold">Done Quarantine</h6>
-                                            <h6 class="font-extrabold mb-0">{{ $users }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="stats-icon red">
-                                                <i class="iconly-boldBookmark"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold">Pending Accounts</h6>
-                                            <h6 class="font-extrabold mb-0">{{ $staff }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                     {{-- <div class="row">
                         <div class="col-12">
