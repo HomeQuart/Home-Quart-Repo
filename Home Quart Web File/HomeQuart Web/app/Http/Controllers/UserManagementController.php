@@ -39,6 +39,7 @@ class UserManagementController extends Controller
         
     }
 
+    //patient information
     public function index2()
     {
         if(Auth::user()->role_name=='BHW')
@@ -52,31 +53,62 @@ class UserManagementController extends Controller
         }
     }
 
+    //patient sends report
     public function sendReport()
     {
 
         return view('patientmodule.sendreport');
     }
 
+    //patient see contact hotlines
     public function contactHotlines()
     {
 
         return view('patientmodule.contacthotline');
     }
 
+    //patient see temperature progress
     public function temperatureProgress()
     {
 
         return view('patientmodule.temperatureProgress');
     }
 
+    //patient see consultations
     public function consultations()
     {
 
         return view('patientmodule.consultations');
     }
 
+    //bhw pending accounts
+    public function pendingaccounts(){
+         if (Auth::user()->role_name=='BHW')
+        {
+            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Disable')->get();
+            return view('bhwmodule.pending_user_control',compact('data'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }
 
+    //bhw view details of pending accoutn
+    public function viewPendingDetail($id)
+    {  
+        if (Auth::user()->role_name=='BHW')
+        {
+            $data = DB::table('users')->where('id',$id)->get();
+            $roleName = DB::table('role_type_users')->get();
+            $userStatus = DB::table('user_types')->get();
+            return view('bhwmodule.pending_view_detail',compact('data','roleName','userStatus'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }
 
     // view detail 
     public function viewDetail($id)

@@ -133,7 +133,7 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item">
-                                <a href="{{ route('userManagement') }}">Pending Accounts</a>
+                                <a href="{{ route('pendingaccounts') }}">Pending Accounts</a>
                             </li>
                         </ul>
                     </li>

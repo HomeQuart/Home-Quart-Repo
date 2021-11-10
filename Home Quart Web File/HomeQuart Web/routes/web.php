@@ -78,6 +78,12 @@ Route::get('sendReport', [App\Http\Controllers\UserManagementController::class, 
 Route::get('contactHotlines', [App\Http\Controllers\UserManagementController::class, 'contactHotlines'])->middleware('auth')->name('contactHotlines');
 Route::get('temperatureProgress', [App\Http\Controllers\UserManagementController::class, 'temperatureProgress'])->middleware('auth')->name('temperatureProgress');
 Route::get('consultations', [App\Http\Controllers\UserManagementController::class, 'consultations'])->middleware('auth')->name('consultations');
+
+
+//-----------------------------brgy healthworker-------------------------------//
+Route::get('pendingaccounts', [App\Http\Controllers\UserManagementController::class, 'pendingaccounts'])->middleware('auth')->name('pendingaccounts');
+Route::get('pending/view/detail/{id}', [App\Http\Controllers\UserManagementController::class, 'viewPendingDetail'])->middleware('auth');
+
 Route::get('userManagement2', [App\Http\Controllers\UserManagementController::class, 'index2'])->middleware('auth')->name('userManagement2');
 Route::get('user/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewUser'])->middleware('auth')->name('user/add/new');
 Route::post('user/add/save', [App\Http\Controllers\UserManagementController::class, 'addNewUserSave'])->name('user/add/save');
