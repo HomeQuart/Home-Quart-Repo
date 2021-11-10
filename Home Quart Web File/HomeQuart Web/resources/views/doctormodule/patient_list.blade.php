@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('menu')
-@extends('sidebar.usermanagement')
+@extends('sidebar.dashboard')
 @endsection
 @section('content')
 <div id="main">
@@ -13,14 +13,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Patient Done Quarantine</h3>
-        a          <p class="text-subtitle text-muted">List of done quarantine patients</p>
+                    <h3>Patient Lists</h3>
+                <p class="text-subtitle text-muted">List of quarantine patients</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Done Quarantine</li>
+                            <li class="breadcrumb-item active" aria-current="page">Patient Lists</li>
                         </ol>
                     </nav>
                 </div>
@@ -31,7 +31,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    Patient Done Quarantine Datatable
+                    Patient Quarantine Lists Datatable
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
@@ -64,8 +64,8 @@
                                     <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
                                     @endif
                                     <td>
-                                        <a href="#">
-                                            <span class="badge bg-success"><i class="bi bi-send-plus"></i>SEND CERTIFICATE</span>
+                                        <a href="{{ url('quarantineInformation/'.$item->id) }}">
+                                            <span class="badge bg-primary">VIEW QUARANTINE INFORMATION</span>
                                         </a>  
                                      </td>
                                 </tr>

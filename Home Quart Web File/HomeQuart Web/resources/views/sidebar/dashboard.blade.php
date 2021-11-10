@@ -102,10 +102,10 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item">
-                                <a href="#">Patient List</a>
+                                <a href="{{ route('patientList') }}">Patient List</a>
                             </li>
                             <li class="submenu-item">
-                                <a href="#">Report Summary</a>
+                                <a href="{{ route('reportList') }}">Report Summary</a>
                             </li>
                         </ul>
                     </li>
@@ -116,7 +116,7 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item active">
-                                <a href="{{ route('form/staff/new') }}">Add Medicine</a>
+                                <a href="{{ route('addMedicine') }}">Add Medicine</a>
                             </li>
                             <li class="submenu-item">
                                 <a href="{{ route('form/view/detail') }}">Display Medicines</a>

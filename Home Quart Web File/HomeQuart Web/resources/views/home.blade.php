@@ -397,8 +397,10 @@
                 </div>
             </div>
         </div>
-        <br><br><br><br><br><br><hr>
+        <br><br><br><br><br><br>
         <h1>Doctor Dashboard</h1>
+        <hr>
+        
         {{-- message --}}
         {!! Toastr::message() !!}
         <div class="page-content">

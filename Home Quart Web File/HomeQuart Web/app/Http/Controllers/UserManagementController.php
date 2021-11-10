@@ -165,6 +165,63 @@ class UserManagementController extends Controller
        }
    }
 
+
+   //doctor see patient list
+   public function patientList()
+   {
+       if(Auth::user()->role_name=='Doctor')
+       {
+           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
+           return view('doctormodule.patient_list',compact('data'));
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
+
+   //doctor add medicine
+   public function addMedicine()
+   {
+       if(Auth::user()->role_name=='Doctor')
+       {
+           return view('doctormodule.add_medicine');
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
+
+   //doctor view report list
+   public function reportList()
+   {
+       if(Auth::user()->role_name=='Doctor')
+       {
+           return view('doctormodule.report_list');
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
+
+   //doctor view patient quarantine information
+   public function quarantineInformation($id)
+    {  
+        if(Auth::user()->role_name=='Doctor')
+        {
+            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
+            return view('doctormodule.quarantine_information',compact('data'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }
+
+
+
     // view detail 
     public function viewDetail($id)
     {  
