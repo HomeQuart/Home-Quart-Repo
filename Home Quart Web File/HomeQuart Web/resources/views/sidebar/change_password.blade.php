@@ -165,7 +165,7 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item">
-                                <a href="#">Send Report</a>
+                                <a href="{{ route('sendReport') }}">Send Report</a>
                             </li>
                         </ul>
                     </li>
@@ -176,13 +176,13 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item active">
-                                <a href="#">Consultations</a>
+                                <a href="{{ route('consultations') }}">Consultations</a>
                             </li>
                             <li class="submenu-item">
-                                <a href="#">Temperature Progress</a>
+                                <a href="{{ route('temperatureProgress') }}">Temperature Progress</a>
                             </li>
                             <li class="submenu-item">
-                                <a href="#">Contact Hotlines</a>
+                                <a href="{{ route('contactHotlines') }}">Contact Hotlines</a>
                             </li>
                         </ul>
                     </li>

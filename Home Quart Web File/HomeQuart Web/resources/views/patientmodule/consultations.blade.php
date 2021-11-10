@@ -25,9 +25,9 @@
                     </div>
                 </div>
             </div>
-            <br><br><br><br><br><br><h1>Send Report</h1><hr>
-            {{-- mo comment si she frank bubu --}}
-            
+            <br><br><br><br><br><br><h1>Consultations</h1><hr>
+
+            {{-- insert here the consultations made by the doctor --}}
             <section class="row">
                 <div class="col-12">
                     <div class="row">
@@ -37,31 +37,15 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <table>
-                                                <h4>Input Image</h4>
-                                                <tr>
-                                                    <input type="file" name="photoProof" id="photoProof">
-                                                </tr>
-                                            </table>
-                                            <table>
-                                                <th>Specify Symptoms</th>
+                                                <th>Medicines</th>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" name="headache" id="headache"> Headache
+                                                        <h6>Paracetamol 2x  (day and night)</h6>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" name="fever" id="fever"> Fever
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox" name="cough" id="cough"> Cough
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox" name="shortness" id="shortness"> Shortness of breath
+                                                        <h6>Biogesic 3x  a day before eating</h6>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -76,15 +60,11 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <table >
-                                                <th>Enter Temperature</th>
+                                                <th>Reports needed per day</th>
                                                 <tr style="text-align: left">
-                                                    <td>Morning: <input type="text" name="morning" id="morning"></td>
-                                                </tr>
-                                                <tr style="text-align: left">
-                                                    <td>Afternoon: <input type="text" name="afternoon" id="afternoon"></td>
-                                                </tr>
-                                                <tr style="text-align: left">
-                                                    <td>Evening: <input type="text" name="evening" id="evening"></td>
+                                                    <td>
+                                                        <h6>3x per day (Morning, Afternoon, Evening)</h6>
+                                                    </td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -98,15 +78,11 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <table style="text-align: left">
-                                                <th>Medicine Intaked</th>
+                                                <th>Doctor's Remarks:</th>
                                                 <tr>
-                                                    <td><input type="radio" name="paracetamol" id="paracetamol"> Paracetamol</td>
-                                                </tr>
-                                                <tr>    
-                                                    <td><input type="radio" name="ibuprofen" id="ibuprofen"> Ibuproffen</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="radio" name="salbotamol" id="salbotamol"> Salbotamol</td>
+                                                    <td>
+                                                        <h6>Stay in the isolation place until the end of your Quarantine Period.</h6>
+                                                    </td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -115,9 +91,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <button type="button" class="btn btn-primary btn-lg">SUBMIT</button>
                 </div>
             </section>
                 
@@ -130,10 +103,6 @@
                     <div class="float-start">
                         <p>2021 &copy; Home Quart</p>
                     </div>
-                    {{-- <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                        href="http://soengsouy.com">Soeng Souy</a></p>
-                    </div> --}}
                 </div>
             </footer>
         </div>

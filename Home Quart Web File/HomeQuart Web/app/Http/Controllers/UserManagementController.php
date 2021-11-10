@@ -70,6 +70,12 @@ class UserManagementController extends Controller
         return view('patientmodule.temperatureProgress');
     }
 
+    public function consultations()
+    {
+
+        return view('patientmodule.consultations');
+    }
+
 
 
     // view detail 
