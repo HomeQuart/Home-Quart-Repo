@@ -2,9 +2,9 @@
     <div class="sidebar-wrapper active" style="background-color:#b2d3ec">
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
-                <div class="logo">
+                {{-- <div class="logo">
                     <a href="{{ route('home') }}"><img src="{{ URL::to('assets/images/logo/logo.png') }}" alt="Logo" srcset=""></a>
-                </div>
+                </div> --}}
                 <div class="toggler">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                 </div>

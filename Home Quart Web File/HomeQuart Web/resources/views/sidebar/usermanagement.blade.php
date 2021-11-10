@@ -2,9 +2,9 @@
     <div class="sidebar-wrapper active" style="background-color:#b2d3ec">
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
-                <div class="logo">
+                {{-- <div class="logo">
                     <a href="{{ route('home') }}"><img src="{{ URL::to('assets/images/logo/logo.png') }}" alt="Logo" srcset=""></a>
-                </div>
+                </div> --}}
                 <div class="toggler">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                 </div>
@@ -110,13 +110,13 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item">
-                                <a href="{{ route('userManagement2') }}">Patient Information</a>
+                                <a href="{{ route('activeaccounts') }}">Patient Information</a>
                             </li>
                             <li class="submenu-item">
-                                <a href="#">Patient Under Quarantine</a>
+                                <a href="{{ route('underQuarantine') }}">Patient Under Quarantine</a>
                             </li>
                             <li class="submenu-item">
-                                <a href="#">Patient Done Quarantine</a>
+                                <a href="{{ route('doneQuarantine') }}">Patient Done Quarantine</a>
                             </li>
                         </ul>
                     </li>

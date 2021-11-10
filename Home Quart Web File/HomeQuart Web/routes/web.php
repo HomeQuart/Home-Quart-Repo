@@ -83,6 +83,11 @@ Route::get('consultations', [App\Http\Controllers\UserManagementController::clas
 //-----------------------------brgy healthworker-------------------------------//
 Route::get('pendingaccounts', [App\Http\Controllers\UserManagementController::class, 'pendingaccounts'])->middleware('auth')->name('pendingaccounts');
 Route::get('pending/view/detail/{id}', [App\Http\Controllers\UserManagementController::class, 'viewPendingDetail'])->middleware('auth');
+Route::get('activeaccounts', [App\Http\Controllers\UserManagementController::class, 'activeaccounts'])->middleware('auth')->name('activeaccounts');
+Route::get('sendReport/Account/{id}', [App\Http\Controllers\UserManagementController::class, 'sendReportAccount'])->middleware('auth');
+Route::get('underQuarantine', [App\Http\Controllers\UserManagementController::class, 'underQuarantine'])->middleware('auth')->name('underQuarantine');
+Route::get('doneQuarantine', [App\Http\Controllers\UserManagementController::class, 'doneQuarantine'])->middleware('auth')->name('doneQuarantine');
+
 
 Route::get('userManagement2', [App\Http\Controllers\UserManagementController::class, 'index2'])->middleware('auth')->name('userManagement2');
 Route::get('user/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewUser'])->middleware('auth')->name('user/add/new');

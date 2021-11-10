@@ -97,18 +97,73 @@ class UserManagementController extends Controller
     //bhw view details of pending accoutn
     public function viewPendingDetail($id)
     {  
-        if (Auth::user()->role_name=='BHW')
+        if(Auth::user()->role_name=='BHW')
         {
-            $data = DB::table('users')->where('id',$id)->get();
-            $roleName = DB::table('role_type_users')->get();
-            $userStatus = DB::table('user_types')->get();
-            return view('bhwmodule.pending_view_detail',compact('data','roleName','userStatus'));
+            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
+            return view('bhwmodule.active_accounts',compact('data'));
         }
         else
         {
             return redirect()->route('home');
         }
     }
+
+    //bhw view list of active accounts
+    public function activeaccounts()
+    {
+        if(Auth::user()->role_name=='BHW')
+        {
+            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
+            return view('bhwmodule.active_accounts',compact('data'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }
+
+
+    //bhw can send report as a patient
+    public function sendReportAccount()
+    {
+        if (Auth::user()->role_name=='BHW')
+       {
+           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Disable')->get();
+           return view('bhwmodule.sendReport',compact('data'));
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
+
+   //bhw view list of patient under quarantine
+   public function underQuarantine()
+   {
+       if(Auth::user()->role_name=='BHW')
+       {
+           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
+           return view('bhwmodule.under_quarantine',compact('data'));
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
+
+   //bhw view list of patient done quarantine
+   public function doneQuarantine()
+   {
+       if(Auth::user()->role_name=='BHW')
+       {
+           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Done')->get();
+           return view('bhwmodule.done_quarantine',compact('data'));
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
 
     // view detail 
     public function viewDetail($id)

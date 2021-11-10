@@ -145,13 +145,13 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item">
-                                <a href="{{ route('userManagement2') }}">Patient Information</a>
+                                <a href="{{ route('activeaccounts') }}">Patient Information</a>
                             </li>
                             <li class="submenu-item">
-                                <a href="#">Patient Under Quarantine</a>
+                                <a href="{{ route('underQuarantine') }}">Patient Under Quarantine</a>
                             </li>
                             <li class="submenu-item">
-                                <a href="#">Patient Done Quarantine</a>
+                                <a href="{{ route('doneQuarantine') }}">Patient Done Quarantine</a>
                             </li>
                         </ul>
                     </li>
