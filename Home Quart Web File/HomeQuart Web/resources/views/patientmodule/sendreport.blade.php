@@ -26,7 +26,7 @@
                 </div>
             </div>
             <br><br><br><br><br><br><hr>
-            {{-- mo comment kog balik --}}
+            {{-- mo comment si she frank bubu --}}
             <h1>Send Report</h1>
             <section class="row">
                 <div class="col-12">
