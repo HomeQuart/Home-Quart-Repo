@@ -90,6 +90,7 @@ Route::get('activeaccounts', [App\Http\Controllers\UserManagementController::cla
 Route::get('sendReport/Account/{id}', [App\Http\Controllers\UserManagementController::class, 'sendReportAccount'])->middleware('auth');
 Route::get('underQuarantine', [App\Http\Controllers\UserManagementController::class, 'underQuarantine'])->middleware('auth')->name('underQuarantine');
 Route::get('doneQuarantine', [App\Http\Controllers\UserManagementController::class, 'doneQuarantine'])->middleware('auth')->name('doneQuarantine');
+Route::post('activate', [App\Http\Controllers\UserManagementController::class, 'activate'])->name('activate');
 
 
 //------------------------------doctor -------------------------------------//

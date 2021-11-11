@@ -99,14 +99,82 @@ class UserManagementController extends Controller
     {  
         if(Auth::user()->role_name=='BHW')
         {
-            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
-            return view('bhwmodule.active_accounts',compact('data'));
+            $data = DB::table('users')->where('id',$id)->get();
+            $roleName = DB::table('role_type_users')->get();
+            $userStatus = DB::table('user_types')->get();
+            return view('bhwmodule.pending_view_detail',compact('data','roleName','userStatus'));
         }
         else
         {
             return redirect()->route('home');
         }
     }
+
+    // bhw activate accounts
+    public function activate(Request $request)
+    {
+        $id           = $request->id;
+        $fullName     = $request->fullName;
+        $email        = $request->email;
+        $phone_number = $request->phone_number;
+        $status       = $request->status;
+        $role_name    = $request->role_name;
+
+        $dt       = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+        
+        $old_image = User::find($id);
+
+        $image_name = $request->hidden_image;
+        $image = $request->file('image');
+
+        if($old_image->avatar=='photo_defaults.jpg')
+        {
+            if($image != '')
+            {
+                $image_name = rand() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'), $image_name);
+            }
+        }
+        else{
+            
+            if($image != '')
+            {
+                $image_name = rand() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'), $image_name);
+                unlink('images/'.$old_image->avatar);
+            }
+        }
+        
+        
+        $update = [
+
+            'id'           => $id,
+            'name'         => $fullName,
+            'avatar'       => $image_name,
+            'email'        => $email,
+            'phone_number' => $phone_number,
+            'status'       => $status,
+            'role_name'    => $role_name,
+        ];
+
+        $activityLog = [
+
+            'user_name'    => $fullName,
+            'email'        => $email,
+            'phone_number' => $phone_number,
+            'status'       => $status,
+            'role_name'    => $role_name,
+            'modify_user'  => 'Update',
+            'date_time'    => $todayDate,
+        ];
+
+        DB::table('user_activity_logs')->insert($activityLog);
+        User::where('id',$request->id)->update($update);
+        Toastr::success('Patient updated successfully :)','Success');
+        return redirect()->route('userManagement');
+    }
+
 
     //bhw view list of active accounts
     public function activeaccounts()
@@ -128,7 +196,7 @@ class UserManagementController extends Controller
     {
         if (Auth::user()->role_name=='BHW')
        {
-           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Disable')->get();
+           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
            return view('bhwmodule.sendReport',compact('data'));
        }
        else
@@ -136,6 +204,7 @@ class UserManagementController extends Controller
            return redirect()->route('home');
        }
    }
+
 
    //bhw view list of patient under quarantine
    public function underQuarantine()

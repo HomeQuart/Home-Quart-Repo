@@ -127,11 +127,11 @@
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-hexagon-fill"></i>
-                            <span>Patient Accounts Management</span>
+                            <span>Patient Pending Accounts </span>
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item">
-                                <a href="{{ route('pendingaccounts') }}">Pending Accounts</a>
+                                <a href="{{ route('pendingaccounts') }}">Manage Pending Accounts</a>
                             </li>
                         </ul>
                     </li>
