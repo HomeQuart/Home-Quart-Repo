@@ -19,9 +19,10 @@ class UserManagementController extends Controller
     public function index()
     {
 
-        //Comment france
+        //Comment ko balik
         //Comment Frank
         //Comment sa pinakagwapa 
+
         if (Auth::user()->role_name=='Admin')
         {
             $data = DB::table('users')->get();
