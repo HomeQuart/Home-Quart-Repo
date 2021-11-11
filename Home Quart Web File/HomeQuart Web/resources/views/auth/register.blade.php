@@ -6,12 +6,11 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div>
-                        <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" width="100%"></a>
                     </div>
                     <br><br>
                     <center>
-                    <h3>Sign Up</h3>
-                    <p>Register your credentials.</p>
+                    <h1>Sign Up</h1>
+                    <h4>Register your credentials.</h4>
                     </center>
                     <br>
                     
@@ -187,8 +186,8 @@
             </div>
             <div class="col-lg-7 d-none d-lg-block">
                 <div id="auth-right">
-                    <div class="col-md-5"><br><br><br><br><br><br><br><br><br><br><br><br>
-                        <img src="assets/images/bg2.png" width="230%">
+                    <div class="col-md-5">
+                        <img src="assets/images/signup_background.png" width="240%">
                     </div>
                 </div>
             </div>
