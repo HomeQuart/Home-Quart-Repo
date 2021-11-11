@@ -72,7 +72,7 @@
                         </div>
                         <div class="col-12 d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
-                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Cannel</button>
+                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Cancel</button>
                         </div>
                     </form>
                 </div>

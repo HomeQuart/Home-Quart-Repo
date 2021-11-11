@@ -303,10 +303,10 @@
                             <div class="modal-body">
                                 <div class="form-body">
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <label>Name:</label>
                                         </div>
-                                        <div class="col-md-9">
+                                        <div class="col-md-10">
                                             <div class="form-group has-icon-left">
                                                 <div class="position-relative">
                                                     <input type="text" class="form-control" name="fullName" value="{{ $data[0]->name }}" readonly>
@@ -319,20 +319,23 @@
                                         <br>
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <label>Quarantine Period:</label>
+                                                <label>Quarantine Period for the Patient:</label>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-6">
                                             </div>
-                                            <div class="col-md-9">
+                                            <div class="col-md-6">
                                                 <table>
                                                     <tr>
                                                         <td>From:
-                                                            <input type="date" name="start" id="start">
+                                                            <input type="date" name="start" id="start" class="form-control">
                                                         </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
                                                         <td>To:
-                                                            <input type="date" name="end" id="end">
+                                                            <input type="date" name="end" id="end" class="form-control">
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -341,58 +344,71 @@
                                         <br>
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <label>Reports Needed Per Day:</label>
+                                                <label>Reports Needed Per Day for the Patient:</label>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-3"></div>
-                                            <div class="col-md-9">
+                                            <div class="col-md-6"></div>
+                                            <div class="col-md-6">
                                                 <table>
-                                                    <td>
-                                                        <input type="checkbox" name="morning" id="morning"> Morning 
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox" name="afternoon" id="afternoon"> Afternoon
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox" name="evening" id="evening"> Evening
-                                                    </td>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" name="morning" id="morning" > Morning 
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" name="afternoon" id="afternoon"> Afternoon
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" name="evening" id="evening"> Evening
+                                                        </td>
+                                                        
+                                                    </tr>
                                                 </table>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <label>Medicine to be take:</label>
+                                                <label>Medicine needed to be intake:</label>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-3"></div>
-                                            <div class="col-md-9">
+                                            <div class="col-md-6"></div>
+                                            <div class="col-md-6">
                                                 <table>
-                                                    <td>
-                                                        <select name="medicine" id="medicine">
-                                                            <option value="paracetamol">Paracetamol</option>
-                                                            <option value="biogesic">Biogesic</option>
-                                                            <option value="flanax">Flanax</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="dosage" id="dosage" placeholder="dosage">
-                                                    </td>
+                                                    <tr>
+                                                        <td>
+                                                            <select name="medicine" id="medicine" class="form-control">
+                                                                <option value="paracetamol" >Flanax</option>
+                                                                <option value="biogesic">Biogesic</option>
+                                                                <option value="flanax">Paracetamol</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" name="dosage" id="dosage" placeholder="dosage" class="form-control">
+                                                        </td>
+                                                    </tr>
+                                                    
                                                 </table>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <label>Important Remarks:</label>
+                                                <label>Important Remarks for the Patient:</label>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-6">
                                             </div>
-                                            <div class="col-md-9">
+                                            <div class="col-md-6">
                                                 <table>
                                                     <tr>
                                                         <td>
