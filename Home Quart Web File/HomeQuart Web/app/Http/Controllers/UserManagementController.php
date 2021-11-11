@@ -19,7 +19,7 @@ class UserManagementController extends Controller
     public function index()
     {
 
-        //Comment ni Pranssss
+        //Comment ko balik
         //Comment Frank
         //Comment sa pinakagwapa 
 
