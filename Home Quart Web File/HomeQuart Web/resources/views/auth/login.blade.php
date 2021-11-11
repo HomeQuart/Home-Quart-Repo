@@ -5,7 +5,7 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div>
-                        <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" width="100%"  ></a>
+                    <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" width="100%" heigh="50%"></a>
                     </div>
                     {{-- message --}}
                     {!! Toastr::message() !!}
@@ -60,8 +60,8 @@
             </div>
             <div class="col-lg-7 d-none d-lg-block">
                 <div id="auth-right">
-                <div class="col-md-5"><br><br><br><br><br><br><br><br><br><br><br><br>
-                        <img src="assets/images/bg2.png" width="230%">
+                <div class="col-md-5">
+                        <img src="assets/images/login_background.png" width="240%">
                     </div>
                 </div>
             </div>
