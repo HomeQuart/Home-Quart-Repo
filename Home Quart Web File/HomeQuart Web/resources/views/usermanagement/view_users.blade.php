@@ -47,11 +47,30 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-horizontal" action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
+                    <form class="form form-horizontal" action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id" value="{{ $data[0]->id }}">
                             <div class="form-body">
                                 <div class="row">
+
+                                <div class="col-md-4">
+                                        <label>Role Name</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group position-relative has-icon-left mb-4">
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="role_name" id="role_name">
+                                                    <option value="{{ $data[0]->role_name }}" {{ ( $data[0]->role_name == $data[0]->role_name) ? 'selected' : ''}}> 
+                                                        {{ $data[0]->role_name }}
+                                                    </option>
+                                                </select>
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-bag-check"></i>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-4">
                                         <label>Full Name</label>
                                     </div>
@@ -59,7 +78,7 @@
                                         <div class="form-group has-icon-left">
                                             <div class="position-relative">
                                                 <input type="text" class="form-control"
-                                                    placeholder="Name" id="first-name-icon" name="fullName" value="{{ $data[0]->name }}">
+                                                    placeholder="Full Name" id="first-name-icon" name="full_name" value="{{ $data[0]->full_name }}">
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-person"></i>
                                                 </div>
@@ -68,18 +87,126 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <label>Photo</label>
+                                        <label>Age</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="number" class="form-control"
+                                                    placeholder="Age" name="age" value="{{ $data[0]->age }}">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-phone"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Gender</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Gender" id="first-name-icon" name="gender" value="{{ $data[0]->gender }}">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-person"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Contact Number</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="number" class="form-control"
+                                                    placeholder="Contact Number" name="contactno" value="{{ $data[0]->contactno }}">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-phone"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Profile Picture</label>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-group has-icon-lefts">
                                             <div class="position-relative">
-                                                <input type="file" class="form-control"
-                                                placeholder="Name" id="first-name-icon" name="image"/>
+                                                <input type="hidden" class="form-control"
+                                                placeholder="Profile Picture" id="first-name-icon" name="p_picture"/>
                                                 <div class="form-control-icon avatar avatar.avatar-im">
-                                                    <img src="{{ URL::to('/images/'. $data[0]->avatar) }}">
+                                                    <img src="{{ URL::to('/images/'. $data[0]->p_picture) }}">
                                                 </div>
-                                                <input type="hidden" name="hidden_image" value="{{ $data[0]->avatar }}">
+                                                <input type="hidden" name="hidden_image" value="{{ $data[0]->p_picture }}">
                                             </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Address</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Address" id="first-name-icon" name="address" value="{{ $data[0]->address }}">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-person"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Contact Person</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="number" class="form-control"
+                                                    placeholder="Contact Person" name="contact_per" value="{{ $data[0]->contact_per }}">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-phone"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Place of Isolation</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Place of Isolation" id="first-name-icon" name="place_isolation" value="{{ $data[0]->place_isolation }}">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-person"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Status</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group position-relative has-icon-left mb-4">
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="status" id="status">  
+                                                    @foreach ($userStatus as $key => $value)
+                                                    <option value="{{ $value->type_name }}"> {{ $value->type_name }}</option>
+                                                    @endforeach  
+                                                </select>
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-bag-check"></i>
+                                                </div>
+                                            </fieldset>
                                         </div>
                                     </div>
 
@@ -95,63 +222,6 @@
                                                     <i class="bi bi-envelope"></i>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label>Mobile Number</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group has-icon-left">
-                                            <div class="position-relative">
-                                                <input type="number" class="form-control"
-                                                    placeholder="Mobile" name="phone_number" value="{{ $data[0]->phone_number }}">
-                                                <div class="form-control-icon">
-                                                    <i class="bi bi-phone"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="col-md-4">
-                                        <label>Status</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group position-relative has-icon-left mb-4">
-                                            <fieldset class="form-group">
-                                                <select class="form-select" name="status" id="status">
-                                                    <option value="{{ $data[0]->status }}" {{ ( $data[0]->status == $data[0]->status) ? 'selected' : ''}}> 
-                                                        {{ $data[0]->status }}
-                                                    </option>
-                                                    @foreach ($userStatus as $key => $value)
-                                                    <option value="{{ $value->type_name }}"> {{ $value->type_name }}</option>
-                                                    @endforeach  
-                                                </select>
-                                                <div class="form-control-icon">
-                                                    <i class="bi bi-bag-check"></i>
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-4">
-                                        <label>Role Name</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group position-relative has-icon-left mb-4">
-                                            <fieldset class="form-group">
-                                                <select class="form-select" name="role_name" id="role_name">
-                                                    <option value="{{ $data[0]->role_name }}" {{ ( $data[0]->role_name == $data[0]->role_name) ? 'selected' : ''}}> 
-                                                        {{ $data[0]->role_name }}
-                                                    </option>
-                                                    @foreach ($roleName as $key => $value)
-                                                    <option value="{{ $value->role_type }}"> {{ $value->role_type }}</option>
-                                                    @endforeach  
-                                                </select>
-                                                <div class="form-control-icon">
-                                                    <i class="bi bi-bag-check"></i>
-                                                </div>
-                                            </fieldset>
                                         </div>
                                     </div>
 
@@ -180,11 +250,30 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-horizontal" action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
+                    <form class="form form-horizontal" action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id" value="{{ $data[0]->id }}">
                             <div class="form-body">
                                 <div class="row">
+
+                                <div class="col-md-4">
+                                        <label>Role Name</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group position-relative has-icon-left mb-4">
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="role_name" id="role_name">
+                                                    <option value="{{ $data[0]->role_name }}" {{ ( $data[0]->role_name == $data[0]->role_name) ? 'selected' : ''}}> 
+                                                        {{ $data[0]->role_name }}
+                                                    </option>
+                                                </select>
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-bag-check"></i>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-4">
                                         <label>Full Name</label>
                                     </div>
@@ -192,7 +281,7 @@
                                         <div class="form-group has-icon-left">
                                             <div class="position-relative">
                                                 <input type="text" class="form-control"
-                                                    placeholder="Name" id="first-name-icon" name="fullName" value="{{ $data[0]->name }}"readonly>
+                                                    placeholder="Full Name" id="first-name-icon" name="full_name" value="{{ $data[0]->full_name }}"readonly>
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-person"></i>
                                                 </div>
@@ -201,50 +290,111 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <label>Photo</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group has-icon-lefts">
-                                            <div class="position-relative">
-                                                <input type="hidden" class="form-control"
-                                                placeholder="Name" id="first-name-icon" name="image"/>
-                                                <div class="form-control-icon avatar avatar.avatar-im">
-                                                    <img src="{{ URL::to('/images/'. $data[0]->avatar) }}">
-                                                </div>
-                                                <input type="hidden" name="hidden_image" value="{{ $data[0]->avatar }}">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label>Email Address</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group has-icon-left">
-                                            <div class="position-relative">
-                                                <input type="email" class="form-control"
-                                                    placeholder="Email" id="first-name-icon" name="email" value="{{ $data[0]->email }}" readonly>
-                                                <div class="form-control-icon">
-                                                    <i class="bi bi-envelope"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label>Mobile Number</label>
+                                        <label>Age</label>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-group has-icon-left">
                                             <div class="position-relative">
                                                 <input type="number" class="form-control"
-                                                    placeholder="Mobile" name="phone_number" value="{{ $data[0]->phone_number }}" readonly>
+                                                    placeholder="Age" name="age" value="{{ $data[0]->age }}" readonly>
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-phone"></i>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-    
+
+                                    <div class="col-md-4">
+                                        <label>Gender</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Gender" id="first-name-icon" name="gender" value="{{ $data[0]->gender }}"readonly>
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-person"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Contact Number</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="number" class="form-control"
+                                                    placeholder="Contact Number" name="contactno" value="{{ $data[0]->contactno }}" readonly>
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-phone"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Profile Picture</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-lefts">
+                                            <div class="position-relative">
+                                                <input type="hidden" class="form-control"
+                                                placeholder="Profile Picture" id="first-name-icon" name="p_picture"/>
+                                                <div class="form-control-icon avatar avatar.avatar-im">
+                                                    <img src="{{ URL::to('/images/'. $data[0]->p_picture) }}">
+                                                </div>
+                                                <input type="hidden" name="hidden_image" value="{{ $data[0]->p_picture }}">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Address</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Address" id="first-name-icon" name="address" value="{{ $data[0]->address }}"readonly>
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-person"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Contact Person</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="number" class="form-control"
+                                                    placeholder="Contact Person" name="contact_per" value="{{ $data[0]->contact_per }}" readonly>
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-phone"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Place of Isolation</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Place of Isolation" id="first-name-icon" name="place_isolation" value="{{ $data[0]->place_isolation }}"readonly>
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-person"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-4">
                                         <label>Status</label>
                                     </div>
@@ -263,22 +413,18 @@
                                         </div>
                                     </div>
 
-
                                     <div class="col-md-4">
-                                        <label>Role Name</label>
+                                        <label>Email Address</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="form-group position-relative has-icon-left mb-4">
-                                            <fieldset class="form-group">
-                                                <select class="form-select" name="role_name" id="role_name">
-                                                    <option value="{{ $data[0]->role_name }}" {{ ( $data[0]->role_name == $data[0]->role_name) ? 'selected' : ''}}> 
-                                                        {{ $data[0]->role_name }}
-                                                    </option>
-                                                </select>
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="email" class="form-control"
+                                                    placeholder="Email" id="first-name-icon" name="email" value="{{ $data[0]->email }}" readonly>
                                                 <div class="form-control-icon">
-                                                    <i class="bi bi-bag-check"></i>
+                                                    <i class="bi bi-envelope"></i>
                                                 </div>
-                                            </fieldset>
+                                            </div>
                                         </div>
                                     </div>
 

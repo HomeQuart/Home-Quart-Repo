@@ -46,8 +46,8 @@
                                             <label>Medicine Name:</label>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control @error('fullName') is-invalid @enderror" value="{{ old('fullName') }}"
-                                                placeholder="Enter medicine name" id="first-name-icon" name="fullName">
+                                            <input type="text" class="form-control @error('full_name') is-invalid @enderror" value="{{ old('full_name') }}"
+                                                placeholder="Enter medicine name" id="first-name-icon" name="full_name">
                                             
                                         </td>
                                     </tr>

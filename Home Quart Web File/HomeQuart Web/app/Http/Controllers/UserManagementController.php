@@ -114,56 +114,66 @@ class UserManagementController extends Controller
     // bhw activate accounts
     public function activate(Request $request)
     {
-        $id           = $request->id;
-        $fullName     = $request->fullName;
-        $email        = $request->email;
-        $phone_number = $request->phone_number;
-        $status       = $request->status;
-        $role_name    = $request->role_name;
+        $id                 = $request->id;
+        $role_name          = $request->role_name;
+        $full_name          = $request->full_name;
+        $age                = $request->age;
+        $gender             = $request->gender;
+        $contactno          = $request->contactno;
+        $address            = $request->address;
+        $contact_per        = $request->contact_per;
+        $place_isolation    = $request->place_isolation;
+        $status             = $request->status;
+        $email              = $request->email;
 
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
         
         $old_image = User::find($id);
 
-        $image_name = $request->hidden_image;
+        $p_picture = $request->hidden_image;
         $image = $request->file('image');
 
         if($old_image->avatar=='photo_defaults.jpg')
         {
             if($image != '')
             {
-                $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images'), $image_name);
+                $p_picture = rand() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'), $p_picture);
             }
         }
         else{
             
             if($image != '')
             {
-                $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images'), $image_name);
-                unlink('images/'.$old_image->avatar);
+                $p_picture = rand() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'), $p_picture);
+                unlink('images/'.$old_image->p_picture);
             }
         }
         
         
         $update = [
 
-            'id'           => $id,
-            'name'         => $fullName,
-            'avatar'       => $image_name,
-            'email'        => $email,
-            'phone_number' => $phone_number,
-            'status'       => $status,
-            'role_name'    => $role_name,
+            'id'                => $id,
+            'role_name'         => $role_name,
+            'full_name'         => $full_name,
+            'age'               => $age,
+            'gender'            => $gender,
+            'contactno'         => $contactno,
+            'p_picture'         => $p_picture,
+            'address'           => $address,
+            'contact_per'       => $contact_per,
+            'place_isolation'   => $place_isolation,
+            'status'            => $status,
+            'email'             => $email,
         ];
 
         $activityLog = [
 
-            'user_name'    => $fullName,
+            'user_name'    => $full_name,
             'email'        => $email,
-            'phone_number' => $phone_number,
+            'phone_number' => $contactno,
             'status'       => $status,
             'role_name'    => $role_name,
             'modify_user'  => 'Update',
@@ -344,24 +354,36 @@ class UserManagementController extends Controller
      {
 
         $request->validate([
-            'name'      => 'required|string|max:255',
-            'image'     => 'required|image',
-            'email'     => 'required|string|email|max:255|unique:users',
-            'phone'     => 'required|min:11|numeric',
             'role_name' => 'required|string|max:255',
+            'full_name'      => 'required|string|max:255',
+            'age'     => 'required|min:2|numeric',
+            'gender'      => 'required|string|max:255',
+            'contactno'     => 'required|min:11|numeric',
+            'p_picture'     => 'required|image',
+            'address'      => 'required|string|max:255',
+            'contact_per'     => 'min:2|numeric',
+            'place_isolation' => 'string|max:255',
+            'status'    => 'required|string|max:255',
+            'email'     => 'required|string|email|max:255|unique:users',
             'password'  => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
         ]);
 
-        $image = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('images'), $image);
+        $p_picture = time().'.'.$request->p_picture->extension();  
+        $request->p_picture->move(public_path('images'), $p_picture);
 
         $user = new User;
-        $user->name         = $request->name;
-        $user->avatar       = $image;
-        $user->email        = $request->email;
-        $user->phone_number = $request->phone;
         $user->role_name    = $request->role_name;
+        $user->full_name    = $request->full_name;
+        $user->age          = $request->age;
+        $user->gender       = $request->gender;
+        $user->contactno    = $request->contactno;
+        $user->p_picture    = $p_picture;
+        $user->address      = $request->address;
+        $user->contact_per  = $request->contact_per;
+        $user->place_isolation  = $request->place_isolation;
+        $user->status       = $request->status;
+        $user->email        = $request->email;
         $user->password     = Hash::make($request->password);
  
         $user->save();
@@ -373,56 +395,66 @@ class UserManagementController extends Controller
     // update
     public function update(Request $request)
     {
-        $id           = $request->id;
-        $fullName     = $request->fullName;
-        $email        = $request->email;
-        $phone_number = $request->phone_number;
-        $status       = $request->status;
-        $role_name    = $request->role_name;
+        $id                 = $request->id;
+        $role_name          = $request->role_name;
+        $full_name          = $request->full_name;
+        $age                = $request->age;
+        $gender             = $request->gender;
+        $contactno          = $request->contactno;
+        $address            = $request->address;
+        $contact_per        = $request->contact_per;
+        $place_isolation    = $request->place_isolation;
+        $status             = $request->status;
+        $email              = $request->email;
 
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
         
         $old_image = User::find($id);
 
-        $image_name = $request->hidden_image;
+        $p_picture = $request->hidden_image;
         $image = $request->file('image');
 
         if($old_image->avatar=='photo_defaults.jpg')
         {
             if($image != '')
             {
-                $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images'), $image_name);
+                $p_picture = rand() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'), $p_picture);
             }
         }
         else{
             
             if($image != '')
             {
-                $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images'), $image_name);
-                unlink('images/'.$old_image->avatar);
+                $p_picture = rand() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'), $p_picture);
+                unlink('images/'.$old_image->p_picture);
             }
         }
         
         
         $update = [
 
-            'id'           => $id,
-            'name'         => $fullName,
-            'avatar'       => $image_name,
-            'email'        => $email,
-            'phone_number' => $phone_number,
-            'status'       => $status,
-            'role_name'    => $role_name,
+            'id'                => $id,
+            'role_name'         => $role_name,
+            'full_name'         => $full_name,
+            'age'               => $age,
+            'gender'            => $gender,
+            'contactno'         => $contactno,
+            'p_picture'         => $p_picture,
+            'address'           => $address,
+            'contact_per'       => $contact_per,
+            'place_isolation'   => $place_isolation,
+            'status'            => $status,
+            'email'             => $email,
         ];
 
         $activityLog = [
 
-            'user_name'    => $fullName,
+            'user_name'    => $full_name,
             'email'        => $email,
-            'phone_number' => $phone_number,
+            'phone_number' => $contactno,
             'status'       => $status,
             'role_name'    => $role_name,
             'modify_user'  => 'Update',
@@ -441,20 +473,25 @@ class UserManagementController extends Controller
         Session::put('user', $user);
         $user=Session::get('user');
 
-        $fullName     = $user->name;
-        $email        = $user->email;
-        $phone_number = $user->phone_number;
-        $status       = $user->status;
         $role_name    = $user->role_name;
+        $full_name     = $user->full_name;
+        $age          = $user->age;
+        $gender       = $user->gender;
+        $contactno    = $user->contactno;
+        $address      = $user->address;
+        $contact_per  = $user->contact_per;
+        $place_isolation    =$user->place_isolation;
+        $status       = $user->status;
+        $email        = $user->email;
 
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
 
         $activityLog = [
 
-            'user_name'    => $fullName,
+            'user_name'    => $full_name,
             'email'        => $email,
-            'phone_number' => $phone_number,
+            'phone_number' => $contactno,
             'status'       => $status,
             'role_name'    => $role_name,
             'modify_user'  => 'Delete',
@@ -464,7 +501,7 @@ class UserManagementController extends Controller
         DB::table('user_activity_logs')->insert($activityLog);
 
         $delete = User::find($id);
-        unlink('images/'.$delete->avatar);
+        unlink('images/'.$delete->p_picture);
         $delete->delete();
         Toastr::success('User deleted successfully :)','Success');
         return redirect()->route('userManagement');

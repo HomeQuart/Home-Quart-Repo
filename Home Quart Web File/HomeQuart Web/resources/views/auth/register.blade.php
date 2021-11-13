@@ -14,40 +14,13 @@
                     </center>
                     <br>
                     
-
-                    <!-- <form method="POST" action="{{ route('register') }}" class="md-float-material">
+                    <form method="POST" action="{{ route('register') }}" class="md-float-material" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-lg @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Enter Your Name">
-                            <div class="form-control-icon">
-                                <i class="bi bi-person"></i>
-                            </div>
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        {{-- insert defaults --}}
-                        <input type="hidden" class="image" name="image" value="photo_defaults.jpg">
-
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Your Email">
-                            <div class="form-control-icon">
-                                <i class="bi bi-envelope"></i>
-                            </div>
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                 <select class="form-select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
-                                    <option selected disabled>Select Role Name</option>
-                                    <option value="Patient">Quarantine Patient</option>
+                                    <option selected value="Patient">Patient</option>
                                 </select>
                                 <div class="form-control-icon">
                                     <i class="bi bi-exclude"></i>
@@ -61,34 +34,11 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="Choose Password">
-                            <div class="form-control-icon">
-                                <i class="bi bi-shield-lock"></i>
-                            </div>
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-lg" name="password_confirmation" placeholder="Choose Confirm Password">
-                            <div class="form-control-icon">
-                                <i class="bi bi-shield-check"></i>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Sign Up</button>
-                    </form> -->
-
-                    <form method="POST" action="{{ route('register') }}" class="md-float-material" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-lg @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Enter Your Name">
+                            <input type="text" class="form-control form-control-lg @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}" placeholder="Enter Your Full Name">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
-                            @error('name')
+                            @error('full_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -96,18 +46,60 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input class="form-control @error('image') is-invalid @enderror" name="image" type="file" id="image" multiple="">
+                            <input type="tel" class="form-control form-control-lg @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" placeholder="Enter Your Age">
+                            <div class="form-control-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                            @error('age')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <fieldset class="form-group">
+                                <select class="form-select @error('gender') is-invalid @enderror" name="gender" id="gender">
+                                    <option selected>Choose a Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                <div class="form-control-icon">
+                                    <i class="bi bi-exclude"></i>
+                                </div>
+                            </fieldset>
+                            @error('gender')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="tel" class="form-control form-control-lg @error('contactno') is-invalid @enderror" name="contactno" value="{{ old('contactno') }}" placeholder="Enter Your Contact Number">
+                            <div class="form-control-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                            @error('contactno')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input class="form-control @error('p_picture') is-invalid @enderror" name="p_picture" type="file" id="p_picture" multiple="">
                             <div class="form-control-icon">
                                 <i class="bi bi-person-square"></i>
                             </div>
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Your Email">
+                            <input type="text" class="form-control form-control-lg @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder="Enter Your Complete Address">
                             <div class="form-control-icon">
-                                <i class="bi bi-envelope"></i>
+                                <i class="bi bi-person"></i>
                             </div>
-                            @error('email')
+                            @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -115,11 +107,11 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="tel" class="form-control form-control-lg @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Enter Your Phone Number">
+                            <input type="tel" class="form-control form-control-lg @error('contact_per') is-invalid @enderror" name="contact_per" value="{{ old('contact_per') }}" placeholder="Enter Your Contact Person incase of Emergency">
                             <div class="form-control-icon">
                                 <i class="bi bi-phone"></i>
                             </div>
-                            @error('phone')
+                            @error('contact_per')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -128,30 +120,44 @@
 
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
-                                <select class="form-select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
-                                    <option selected value="Patient">Quarantine Patient</option>
+                                <select class="form-select @error('place_isolation') is-invalid @enderror" name="place_isolation" id="place_isolation">
+                                    <option selected >Place of Isolation</option>
+                                    <option value='Home Quarantine'>Home Quarantine</option>
+                                    <option value='Isolation Facility'> Isolation Facility</option>
                                 </select>
                                 <div class="form-control-icon">
                                     <i class="bi bi-exclude"></i>
                                 </div>
                             </fieldset>
-                            @error('role_name')
+                            @error('place_isolation')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
+                        </div>  
 
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                 <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
-                                    <option selected value="Disable">Need Validation to a Barangay Health Worker</option>
+                                    <option selected value="Disable">Waiting for the Barangay Health Worker Approval</option>
                                 </select>
                                 <div class="form-control-icon">
                                     <i class="bi bi-exclude"></i>
                                 </div>
                             </fieldset>
                             @error('status')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Your Email">
+                            <div class="form-control-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

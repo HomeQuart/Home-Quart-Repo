@@ -15,10 +15,10 @@
                     <div class="card-body py-4 px-5">
                         <div class="d-flex align-items-center">
                             <div class="avatar avatar-xl">
-                                <img src="{{ URL::to('/images/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->avatar }}">
+                                <img src="{{ URL::to('/images/'. Auth::user()->p_picture) }}" alt="{{ Auth::user()->p_picture }}">
                             </div>
                             <div class="ms-3 name">
-                                <h5 class="font-bold">{{ Auth::user()->name }}</h5>
+                                <h5 class="font-bold">{{ Auth::user()->full_name }}</h5>
                                 <h6 class="text-muted mb-0">{{ Auth::user()->email }}</h6>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
             </div>
             <br><br><br><br><br><br>
             <div class="row-col-md-12">
-                    <input type="text" class="form-control" placeholder="Name" id="first-name-icon" name="fullName" value="{{ $data[0]->name }}"readonly> <br>
+                    <input type="text" class="form-control" placeholder="Full Name" id="first-name-icon" name="full_name" value="{{ $data[0]->full_name }}"readonly> <br>
                     <div class="card" data-bs-toggle="modal" data-bs-target="#consult">
                         <button type="button" class="btn btn-primary btn-lg">CONSULT</button>
                     </div>
@@ -127,7 +127,7 @@
                                                         Name:
                                                     </td>
                                                     <td>
-                                                        <input type="text"  id="first-name-icon" name="fullName" value="{{ $data[0]->name }}"readonly> <br>
+                                                        <input type="text"  id="first-name-icon" name="full_name" value="{{ $data[0]->full_name }}"readonly> <br>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -143,7 +143,7 @@
                                                         Contact:
                                                     </td>
                                                     <td>
-                                                        <input type="text"  name="phone" value="{{ $data[0]->phone_number }}"readonly> <br>
+                                                        <input type="text"  name="phone" value="{{ $data[0]->contactno }}"readonly> <br>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -213,7 +213,7 @@
                                         <div class="col-md-8">
                                             <div class="form-group has-icon-left">
                                                 <div class="position-relative">
-                                                    <input type="text" class="form-control" name="fullName" value="{{ Auth::user()->name }}" readonly>
+                                                    <input type="text" class="form-control" name="full_name" value="{{ Auth::user()->full_name }}" readonly>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-person"></i>
                                                     </div>
@@ -239,7 +239,7 @@
                                         <div class="col-md-8">
                                             <div class="form-group has-icon-left">
                                                 <div class="position-relative">
-                                                    <input type="number" class="form-control" value="{{ Auth::user()->phone_number }}" readonly>
+                                                    <input type="number" class="form-control" value="{{ Auth::user()->contactno }}" readonly>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-phone"></i>
                                                     </div>
@@ -309,7 +309,7 @@
                                         <div class="col-md-10">
                                             <div class="form-group has-icon-left">
                                                 <div class="position-relative">
-                                                    <input type="text" class="form-control" name="fullName" value="{{ $data[0]->name }}" readonly>
+                                                    <input type="text" class="form-control" name="full_name" value="{{ $data[0]->full_name }}" readonly>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-person"></i>
                                                     </div>

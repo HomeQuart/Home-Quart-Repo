@@ -72,7 +72,7 @@ class LoginController extends Controller
 
             'name'        => $email,
             'email'       => $email,
-            'description' => 'has log in',
+            'description' => 'log in',
             'date_time'   => $todayDate,
         ];
         if (Auth::attempt(['email'=>$email,'password'=>$password,'status'=>'Active'])) {
@@ -85,7 +85,7 @@ class LoginController extends Controller
             return redirect()->intended('home');
         }
         else{
-            Toastr::error('fail, WRONG USERNAME OR PASSWORD :)','Error');
+            Toastr::error('You did not sign in correctly or waiting for approval to the brg health worker','Error');
             return redirect('login');
         }
 
@@ -97,16 +97,16 @@ class LoginController extends Controller
         Session::put('user', $user);
         $user=Session::get('user');
 
-        $name       = $user->name;
+        $full_name       = $user->full_name;
         $email      = $user->email;
         $dt         = Carbon::now();
         $todayDate  = $dt->toDayDateTimeString();
 
         $activityLog = [
 
-            'name'        => $name,
+            'name'        => $full_name,
             'email'       => $email,
-            'description' => 'has logged out',
+            'description' => 'logged out',
             'date_time'   => $todayDate,
         ];
         DB::table('activity_logs')->insert($activityLog);

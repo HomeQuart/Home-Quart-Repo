@@ -23,25 +23,25 @@
                     <div class="card-body">
                         <div class="badges">
                             @if (Auth::user()->role_name=='Admin')
-                            <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
+                            <span>Name: <span class="fw-bolder">{{ Auth::user()->full_name }}</span></span>
                             <hr>
                             <span>Role Name:</span>
                             <span class="badge bg-success">Admin</span>
                             @endif
                             @if (Auth::user()->role_name=='Doctor')
-                                <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
+                                <span>Name: <span class="fw-bolder">{{ Auth::user()->full_name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
                                 <span class="badge bg-info">Doctor</span>
                             @endif
                             @if (Auth::user()->role_name=='BHW')
-                                <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
+                                <span>Name: <span class="fw-bolder">{{ Auth::user()->full_name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
                                 <span class="badge bg-info">Barangay Health Worker</span>
                             @endif
                             @if (Auth::user()->role_name=='Patient')
-                                <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
+                                <span>Name: <span class="fw-bolder">{{ Auth::user()->full_name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
                                 <span class="badge bg-warning">Quarantine Patient</span>

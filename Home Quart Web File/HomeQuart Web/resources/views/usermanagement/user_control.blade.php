@@ -41,12 +41,17 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Full Name</th>
-                                <th>Profile</th>
-                                <th>Email Address</th>
-                                <th>Phone Number</th>
-                                <th>Status</th>
                                 <th>Role Name</th>
+                                <th>Full Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Phone Number</th>
+                                <th>Profile</th>
+                                <th>Address</th>
+                                <th>Contact Person</th>
+                                <th>Place of Isolation</th>
+                                <th>Status</th>
+                                <th>Email Address</th>
                                 <th class="text-center">Modify</th>
                             </tr>    
                         </thead>
@@ -54,26 +59,6 @@
                             @foreach ($data as $key => $item)
                                 <tr>
                                     <td class="id">{{ ++$key }}</td>
-                                    <td class="name">{{ $item->name }}</td>
-                                    <td class="name">
-                                        <div class="avatar avatar-xl">
-                                            <img src="{{ URL::to('/images/'. $item->avatar) }}" alt="{{ $item->avatar }}">
-                                        </div>
-                                    </td>
-                                    <td class="email">{{ $item->email }}</td>
-                                    <td class="phone_number">{{ $item->phone_number }}</td>
-                                    @if($item->status =='Active')
-                                    <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>
-                                    @endif
-                                    @if($item->status =='Disable')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
-                                    @endif
-                                    @if($item->status =='Done')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
-                                    @endif
-                                    @if($item->status ==null)
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
-                                    @endif
                                     @if($item->role_name =='Admin')
                                     <td class="role_name"><span  class="badge bg-success">{{ $item->role_name }}</span></td>
                                     @endif
@@ -86,6 +71,31 @@
                                     @if($item->role_name =='Patient')
                                     <td class="role_name"><span  class=" badge bg-warning">{{ $item->role_name }}</span></td>
                                     @endif
+                                    <td class="full_name">{{ $item->full_name }}</td>
+                                    <td class="age">{{ $item->age }}</td>
+                                    <td class="gender">{{ $item->gender }}</td>
+                                    <td class="contactno">{{ $item->contactno }}</td>
+                                    <td class="full_name">
+                                        <div class="avatar avatar-xl">
+                                            <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
+                                        </div>
+                                    </td>
+                                    <td class="address">{{ $item->address }}</td>
+                                    <td class="contact_per">{{ $item->contact_per }}</td>
+                                    <td class="place_isolation">{{ $item->place_isolation }}</td>
+                                    @if($item->status =='Active')
+                                    <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>
+                                    @endif
+                                    @if($item->status =='Disable')
+                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
+                                    @endif
+                                    @if($item->status =='Done')
+                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
+                                    @endif
+                                    @if($item->status ==null)
+                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
+                                    @endif
+                                    <td class="email">{{ $item->email }}</td>
                                     <td class="text-center">
                                         <!-- <a href="{{ route('user/add/new') }}">
                                             <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>

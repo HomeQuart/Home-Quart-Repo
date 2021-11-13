@@ -18,7 +18,7 @@
                                 <img src="{{ URL::to('/images/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->avatar }}">
                             </div>
                             <div class="ms-3 name">
-                                <h5 class="font-bold">{{ Auth::user()->name }}</h5>
+                                <h5 class="font-bold">{{ Auth::user()->full_name }}</h5>
                                 <h6 class="text-muted mb-0">{{ Auth::user()->email }}</h6>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
             <br><br><br><br><br><br>
             
             <h1>Send Report for Patient:
-                <input type="text" class="form-control" placeholder="Name" id="first-name-icon" name="fullName" value="{{ $data[0]->name }}"readonly>
+                <input type="text" class="form-control" placeholder="Name" id="first-name-icon" name="full_name" value="{{ $data[0]->full_name }}"readonly>
             </h1><hr>
             
             <section class="row">
@@ -145,7 +145,7 @@
                                         <div class="col-md-8">
                                             <div class="form-group has-icon-left">
                                                 <div class="position-relative">
-                                                    <input type="text" class="form-control" name="fullName" value="{{ Auth::user()->name }}" readonly>
+                                                    <input type="text" class="form-control" name="full_name" value="{{ Auth::user()->full_name }}" readonly>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-person"></i>
                                                     </div>
@@ -171,7 +171,7 @@
                                         <div class="col-md-8">
                                             <div class="form-group has-icon-left">
                                                 <div class="position-relative">
-                                                    <input type="number" class="form-control" value="{{ Auth::user()->phone_number }}" readonly>
+                                                    <input type="number" class="form-control" value="{{ Auth::user()->contactno }}" readonly>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-phone"></i>
                                                     </div>
@@ -231,7 +231,7 @@
                     </div>
                     {{-- <div class="float-end">
                         <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                        href="http://soengsouy.com">Soeng Souy</a></p>
+                        href="http://Fix-It.com">Team Fix-It</a></p>
                     </div> --}}
                 </div>
             </footer>

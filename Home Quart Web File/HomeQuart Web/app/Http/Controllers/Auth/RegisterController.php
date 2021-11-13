@@ -53,26 +53,36 @@ class RegisterController extends Controller
         //     'password'  => Hash::make($request->password),
         // ]);
         $request->validate([
-            'name'      => 'required|string|max:255',
-            'image'     => 'required|image',
-            'email'     => 'required|string|email|max:255|unique:users',
-            'phone'     => 'required|min:11|numeric',
-            'status'    => 'required|string|max:255',
             'role_name' => 'required|string|max:255',
+            'full_name'      => 'required|string|max:255',
+            'age'     => 'required|min:2|numeric',
+            'gender'      => 'required|string|max:255',
+            'contactno'     => 'required|min:11|numeric',
+            'p_picture'     => 'required|image',
+            'address'      => 'required|string|max:255',
+            'contact_per'     => 'min:2|numeric',
+            'place_isolation' => 'string|max:255',
+            'status'    => 'required|string|max:255',
+            'email'     => 'required|string|email|max:255|unique:users',
             'password'  => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
         ]);
 
-        $image = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('images'), $image);
+        $p_picture = time().'.'.$request->p_picture->extension();  
+        $request->p_picture->move(public_path('images'), $p_picture);
 
         $user = new User;
-        $user->name         = $request->name;
-        $user->avatar       = $image;
-        $user->email        = $request->email;
-        $user->phone_number = $request->phone;
-        $user->status       = $request->status;
         $user->role_name    = $request->role_name;
+        $user->full_name    = $request->full_name;
+        $user->age          = $request->age;
+        $user->gender       = $request->gender;
+        $user->contactno    = $request->contactno;
+        $user->p_picture    = $p_picture;
+        $user->address      = $request->address;
+        $user->contact_per  = $request->contact_per;
+        $user->place_isolation  = $request->place_isolation;
+        $user->status       = $request->status;
+        $user->email        = $request->email;
         $user->password     = Hash::make($request->password);
  
         $user->save();
