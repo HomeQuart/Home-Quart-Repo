@@ -119,6 +119,9 @@
             </div>
             <div class="col-lg-7 d-none d-lg-block">
                 <div id="auth-right">
+                    <div class="col-md-5">
+                        <img src="assets/images/signup_background.png" width="240%">
+                    </div>
                 </div>
             </div>
         </div>
