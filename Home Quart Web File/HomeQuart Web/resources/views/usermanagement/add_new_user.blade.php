@@ -98,7 +98,7 @@
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class='text-gray-600'>Go <a href="{{ route('userManagement') }}"
-                        class="font-bold">Back?</a>.</p>
+                        class="font-bold">Back?</a></p>
                     </div>
                 </div>
             </div>

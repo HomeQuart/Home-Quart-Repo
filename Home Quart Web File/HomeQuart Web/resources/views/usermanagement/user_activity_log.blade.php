@@ -71,7 +71,7 @@
             </div>
             <div class="float-end">
                 <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                href="http://soengsouy.com">Team Fix-it</a></p>
+                >Team Fix-it</a></p>
             </div>
         </div>
     </footer>
