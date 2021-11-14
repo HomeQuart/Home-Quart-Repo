@@ -75,6 +75,8 @@ Route::post('profile_user/store', [App\Http\Controllers\UserManagementController
 // ----------------------------- user userManagement -----------------------//
 Route::get('userManagement', [App\Http\Controllers\UserManagementController::class, 'index'])->middleware('auth')->name('userManagement');
 
+// ----------------------------- Purok userManagement -----------------------//
+Route::get('purokManagement', [App\Http\Controllers\UserManagementController::class, 'purokindex'])->middleware('auth')->name('purokManagement');
 
 //--------------------------------quarantine patient--------------------------//
 Route::get('sendReport', [App\Http\Controllers\UserManagementController::class, 'sendReport'])->middleware('auth')->name('sendReport');
@@ -101,10 +103,15 @@ Route::get('quarantineInformation/{id}', [App\Http\Controllers\UserManagementCon
 
 Route::get('userManagement2', [App\Http\Controllers\UserManagementController::class, 'index2'])->middleware('auth')->name('userManagement2');
 Route::get('user/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewUser'])->middleware('auth')->name('user/add/new');
+Route::get('purok/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewPurok'])->middleware('auth')->name('purok/add/new');
 Route::post('user/add/save', [App\Http\Controllers\UserManagementController::class, 'addNewUserSave'])->name('user/add/save');
+Route::post('purok/add/save', [App\Http\Controllers\UserManagementController::class, 'addNewPurokSave'])->name('purok/add/save');
 Route::get('view/detail/{id}', [App\Http\Controllers\UserManagementController::class, 'viewDetail'])->middleware('auth');
+Route::get('purok/view/detail/{id}', [App\Http\Controllers\UserManagementController::class, 'purokviewDetail'])->middleware('auth');
 Route::post('update', [App\Http\Controllers\UserManagementController::class, 'update'])->name('update');
+Route::post('purokupdate', [App\Http\Controllers\UserManagementController::class, 'purokupdate'])->name('purokupdate');
 Route::get('delete_user/{id}', [App\Http\Controllers\UserManagementController::class, 'delete'])->middleware('auth');
+Route::get('delete_purok/{id}', [App\Http\Controllers\UserManagementController::class, 'purokdelete'])->middleware('auth');
 Route::get('activity/log', [App\Http\Controllers\UserManagementController::class, 'activityLog'])->middleware('auth')->name('activity/log');
 Route::get('activity/login/logout', [App\Http\Controllers\UserManagementController::class, 'activityLogInLogOut'])->middleware('auth')->name('activity/login/logout');
 

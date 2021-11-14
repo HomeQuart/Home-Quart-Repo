@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use DB;
 use App\Models\User;
+use App\Models\purok;
 use App\Models\Form;
 use App\Rules\MatchOldPassword;
 use Carbon\Carbon;
@@ -38,6 +39,19 @@ class UserManagementController extends Controller
             return redirect()->route('home');
         }
         
+    }
+
+    public function purokindex()
+    {
+        if(Auth::user()->role_name=='Admin')
+        {
+            $data = DB::table('purok')->get();
+            return view('usermanagement.purok_control',compact('data'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
     }
 
     //patient information
@@ -326,6 +340,20 @@ class UserManagementController extends Controller
             return redirect()->route('home');
         }
     }
+
+    // Purok view detail 
+    public function purokviewDetail($id)
+    {  
+        if (Auth::user()->role_name=='Admin')
+        {
+            $data = DB::table('purok')->where('id',$id)->get();
+            return view('usermanagement.view_purok',compact('data'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }
     // use activity log
     public function activityLog()
     {
@@ -350,6 +378,12 @@ class UserManagementController extends Controller
     {
         return view('usermanagement.add_new_user');
     }
+
+     // add new purok
+     public function addNewPurok()
+     {
+         return view('usermanagement.add_new_purok');
+     }
 
      // save new user
      public function addNewUserSave(Request $request)
@@ -392,6 +426,24 @@ class UserManagementController extends Controller
 
         Toastr::success('Create new account successfully :)','Success');
         return redirect()->route('userManagement');
+    }
+
+    public function addNewPurokSave(Request $request)
+     {
+
+        $request->validate([
+            'purok_name'        => 'required|string|max:255',
+            'comp_address'      => 'required|string|max:255',
+        ]);
+
+        $puroks = new purok;
+        $puroks->purok_name    = $request->purok_name ;
+        $puroks->comp_address  = $request->comp_address;
+ 
+        $puroks->save();
+
+        Toastr::success('Create new Purok successfully :)','Success');
+        return redirect()->route('purokManagement');
     }
     
     // update
@@ -468,6 +520,48 @@ class UserManagementController extends Controller
         Toastr::success('User updated successfully :)','Success');
         return redirect()->route('userManagement');
     }
+
+    // update
+    public function purokupdate(Request $request)
+    {
+        $id                 = $request->id;
+        $role_name          = $request->role_name;
+        $purok_name          = $request->purok_name;
+        $comp_address          = $request->comp_address;
+        $full_name           = $request->full_name;
+        $email              = $request->email;
+        $contactno          = $request->contactno;
+        $status             = $request->status;
+        
+
+
+        $dt       = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+        
+        
+        $update = [
+
+            'id'                => $id,
+            'purok_name'         => $purok_name,
+            'comp_address'         => $comp_address,
+        ];
+
+        $activityLog = [
+
+            'user_name'    => $full_name,
+            'email'        => $email,
+            'phone_number' => $contactno,
+            'status'       => $status,
+            'role_name'    => $role_name,
+            'modify_user'  => 'Purok Update',
+            'date_time'    => $todayDate,
+        ];
+
+        DB::table('user_activity_logs')->insert($activityLog);
+        purok::where('id',$request->id)->update($update);
+        Toastr::success('Purok updated successfully :)','Success');
+        return redirect()->route('purokManagement');
+    }
     // delete
     public function delete($id)
     {
@@ -507,6 +601,46 @@ class UserManagementController extends Controller
         $delete->delete();
         Toastr::success('User deleted successfully :)','Success');
         return redirect()->route('userManagement');
+    }
+
+    // delete
+    public function purokdelete($id)
+    {
+        $user = Auth::User();
+        Session::put('user', $user);
+        $user=Session::get('user');
+
+        $role_name    = $user->role_name;
+        $full_name     = $user->full_name;
+        $age          = $user->age;
+        $gender       = $user->gender;
+        $contactno    = $user->contactno;
+        $address      = $user->address;
+        $contact_per  = $user->contact_per;
+        $place_isolation    =$user->place_isolation;
+        $status       = $user->status;
+        $email        = $user->email;
+
+        $dt       = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+
+        $activityLog = [
+
+            'user_name'    => $full_name,
+            'email'        => $email,
+            'phone_number' => $contactno,
+            'status'       => $status,
+            'role_name'    => $role_name,
+            'modify_user'  => 'Purok Delete',
+            'date_time'    => $todayDate,
+        ];
+
+        DB::table('user_activity_logs')->insert($activityLog);
+
+        $delete = purok::find($id);
+        $delete->delete();
+        Toastr::success('Purok deleted successfully :)','Success');
+        return redirect()->route('purokManagement');
     }
 
     // view change password

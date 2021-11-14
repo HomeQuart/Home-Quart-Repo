@@ -83,7 +83,7 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item active">
-                                <a href="{{ route('form/staff/new') }}">Add Purok Residences</a>
+                                <a href="{{ route('purokManagement') }}">Add Purok Residences</a>
                             </li>
                             <li class="submenu-item">
                                 <a href="{{ route('form/view/detail') }}">Display Purok Residences</a>
