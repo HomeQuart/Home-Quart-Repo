@@ -20,7 +20,7 @@
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                 <select class="form-select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
-                                    <option selected value="Patient">Patient</option>
+                                    <option hidden selected value="Patient">Patient</option>
                                 </select>
                                 <div class="form-control-icon">
                                     <i class="bi bi-exclude"></i>
@@ -60,7 +60,7 @@
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                 <select class="form-select @error('gender') is-invalid @enderror" name="gender" id="gender">
-                                    <option selected>Choose a Gender</option>
+                                    <option hidden selected>Choose a Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
@@ -118,10 +118,25 @@
                             @enderror
                         </div>
 
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <fieldset class="form-group">
+                                    <select class="form-select" name="assign_purok" id="assign_purok">  
+                                            <option hidden selected >Purok</option>
+                                            @foreach ($assignP as $key => $value)
+                                                <option value="{{ $value->purok_name }}"> {{ $value->purok_name }}</option>
+                                            @endforeach  
+                                    </select>
+                                <div class="form-control-icon">
+                                    <i class="bi bi-bag-check"></i>
+                                </div>
+                            </fieldset>
+                        </div>
+
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                 <select class="form-select @error('place_isolation') is-invalid @enderror" name="place_isolation" id="place_isolation">
-                                    <option selected >Place of Isolation</option>
+                                    <option hidden selected >Place of Isolation</option>
                                     <option value='Home Quarantine'>Home Quarantine</option>
                                     <option value='Isolation Facility'> Isolation Facility</option>
                                 </select>
@@ -139,7 +154,7 @@
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                 <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
-                                    <option selected value="Disable">Waiting for the Barangay Health Worker Approval</option>
+                                    <option hidden selected value="Disable">Waiting for the Barangay Health Worker Approval</option>
                                 </select>
                                 <div class="form-control-icon">
                                     <i class="bi bi-exclude"></i>

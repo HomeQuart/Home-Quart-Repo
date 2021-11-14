@@ -74,19 +74,11 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
+                    <li class="sidebar-item">
+                        <a href="{{ route('purokManagement') }}" class='sidebar-link'>
+                            <i class="bi bi-shield-lock"></i>
                             <span>Purok Management</span>
                         </a>
-                        <ul class="submenu">
-                            <li class="submenu-item active">
-                                <a href="{{ route('purokManagement') }}">Add Purok Residences</a>
-                            </li>
-                            <li class="submenu-item">
-                                <a href="{{ route('form/view/detail') }}">Display Purok Residences</a>
-                            </li>
-                        </ul>
                     </li>
                 @endif
                
@@ -103,6 +95,17 @@
                             </li>
                             <li class="submenu-item">
                                 <a href="{{ route('reportList') }}">Report Summary</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-hexagon-fill"></i>
+                            <span>Brgy Health Worker Management</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="{{ route('bhwList') }}">Health Worker List</a>
                             </li>
                         </ul>
                     </li>

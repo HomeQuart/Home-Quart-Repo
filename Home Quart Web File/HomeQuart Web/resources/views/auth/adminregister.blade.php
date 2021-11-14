@@ -20,7 +20,7 @@
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                 <select class="form-select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
-                                    <option selected value="Admin">Admin</option>
+                                    <option hidden selected value="Admin">Admin</option>
                                 </select>
                                 <div class="form-control-icon">
                                     <i class="bi bi-exclude"></i>
@@ -60,7 +60,7 @@
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                 <select class="form-select @error('gender') is-invalid @enderror" name="gender" id="gender">
-                                    <option selected>Choose a Gender</option>
+                                    <option hidden selected>Choose a Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
@@ -109,7 +109,7 @@
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                 <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
-                                    <option selected value="Active">Active</option>
+                                    <option hidden selected value="Active">Active</option>
                                 </select>
                                 <div class="form-control-icon">
                                     <i class="bi bi-exclude"></i>

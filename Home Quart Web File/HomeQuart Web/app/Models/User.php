@@ -27,6 +27,7 @@ class User extends Authenticatable
         'p_picture',
         'address',
         'contact_per',
+        'assign_purok',
         'place_isolation',
         'status',
         'email',

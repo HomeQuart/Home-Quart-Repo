@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 use App\Models\User;
+use App\Models\purok;
 use Brian2694\Toastr\Facades\Toastr;
 use Hash;
 use Illuminate\Support\Facades\Validator;
@@ -14,7 +16,8 @@ class RegisterController extends Controller
 {
     public function register()
     {
-        return view('auth.register');
+        $assignP = DB::table('purok')->get();
+        return view('auth.register',compact('assignP'));
     }
 
     public function adminregister()
@@ -61,6 +64,7 @@ class RegisterController extends Controller
             'p_picture'     => 'required|image',
             'address'      => 'required|string|max:255',
             'contact_per'     => 'min:2|numeric',
+            'assign_purok'    => 'string|max:255',
             'place_isolation' => 'string|max:255',
             'status'    => 'required|string|max:255',
             'email'     => 'required|string|email|max:255|unique:users',
@@ -80,6 +84,7 @@ class RegisterController extends Controller
         $user->p_picture    = $p_picture;
         $user->address      = $request->address;
         $user->contact_per  = $request->contact_per;
+        $user->assign_purok = $request->assign_purok;
         $user->place_isolation  = $request->place_isolation;
         $user->status       = $request->status;
         $user->email        = $request->email;

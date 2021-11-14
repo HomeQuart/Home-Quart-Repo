@@ -136,6 +136,7 @@ class UserManagementController extends Controller
         $contactno          = $request->contactno;
         $address            = $request->address;
         $contact_per        = $request->contact_per;
+        $assign_purok       = $request->assign_purok;
         $place_isolation    = $request->place_isolation;
         $status             = $request->status;
         $email              = $request->email;
@@ -178,6 +179,7 @@ class UserManagementController extends Controller
             'p_picture'         => $p_picture,
             'address'           => $address,
             'contact_per'       => $contact_per,
+            'assign_purok'      => $assign_purok,
             'place_isolation'   => $place_isolation,
             'status'            => $status,
             'email'             => $email,
@@ -314,6 +316,34 @@ class UserManagementController extends Controller
         }
     }
 
+    //doctor assign purok
+   public function assignPurok($id)
+   {  
+       if(Auth::user()->role_name=='Doctor')
+       {
+           $data = DB::table('users')->where('role_name', '=', 'BHW')->where('status','=','Active')->get();
+           return view('doctormodule.assign_purok',compact('data'));
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
+
+   //doctor view bhw health workers
+   public function bhwList()
+   {  
+    if(Auth::user()->role_name=='Doctor')
+    {
+        $data = DB::table('users')->where('role_name', '=', 'BHW')->where('status','=','Active')->get();
+        return view('doctormodule.bhw_list',compact('data'));
+    }
+    else
+    {
+        return redirect()->route('home');
+    }
+   }
+
 
 
     // view detail 
@@ -326,7 +356,8 @@ class UserManagementController extends Controller
             $userStatus = DB::table('user_types')->get();
             $placeisolation = DB::table('placeofisolation')->get();
             $gendertype = DB::table('gender_type')->get();
-            return view('usermanagement.view_users',compact('data','roleName','userStatus','placeisolation','gendertype'));
+            $assignP = DB::table('purok')->get();
+            return view('usermanagement.view_users',compact('data','roleName','userStatus','placeisolation','gendertype','assignP'));
         }
         else if (Auth::user()->role_name=='BHW')
         {
@@ -457,6 +488,7 @@ class UserManagementController extends Controller
         $contactno          = $request->contactno;
         $address            = $request->address;
         $contact_per        = $request->contact_per;
+        $assign_purok       = $request->assign_purok;
         $place_isolation    = $request->place_isolation;
         $status             = $request->status;
         $email              = $request->email;
@@ -499,6 +531,7 @@ class UserManagementController extends Controller
             'p_picture'         => $p_picture,
             'address'           => $address,
             'contact_per'       => $contact_per,
+            'assign_purok'      => $assign_purok,
             'place_isolation'   => $place_isolation,
             'status'            => $status,
             'email'             => $email,
@@ -576,6 +609,7 @@ class UserManagementController extends Controller
         $contactno    = $user->contactno;
         $address      = $user->address;
         $contact_per  = $user->contact_per;
+        $assign_purok = $user->assign_purok;
         $place_isolation    =$user->place_isolation;
         $status       = $user->status;
         $email        = $user->email;

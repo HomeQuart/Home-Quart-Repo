@@ -100,6 +100,8 @@ Route::get('patientList', [App\Http\Controllers\UserManagementController::class,
 Route::get('addMedicine', [App\Http\Controllers\UserManagementController::class, 'addMedicine'])->middleware('auth')->name('addMedicine');
 Route::get('reportList', [App\Http\Controllers\UserManagementController::class, 'reportList'])->middleware('auth')->name('reportList');
 Route::get('quarantineInformation/{id}', [App\Http\Controllers\UserManagementController::class, 'quarantineInformation'])->middleware('auth');
+Route::get('bhwList', [App\Http\Controllers\UserManagementController::class, 'bhwList'])->middleware('auth')->name('bhwList');
+Route::get('assignPurok/{id}', [App\Http\Controllers\UserManagementController::class, 'assignPurok'])->middleware('auth');
 
 Route::get('userManagement2', [App\Http\Controllers\UserManagementController::class, 'index2'])->middleware('auth')->name('userManagement2');
 Route::get('user/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewUser'])->middleware('auth')->name('user/add/new');

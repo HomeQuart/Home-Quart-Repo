@@ -49,6 +49,7 @@
                                 <th>Profile</th>
                                 <th>Address</th>
                                 <th>Contact Person</th>
+                                <th>Assign Purok</th>
                                 <th>Place of Isolation</th>
                                 <th>Status</th>
                                 <th>Email Address</th>
@@ -82,6 +83,7 @@
                                     </td>
                                     <td class="address">{{ $item->address }}</td>
                                     <td class="contact_per">{{ $item->contact_per }}</td>
+                                    <td class="assign_purok">{{ $item->assign_purok }}</td>
                                     <td class="place_isolation">{{ $item->place_isolation }}</td>
                                     @if($item->status =='Active')
                                     <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>

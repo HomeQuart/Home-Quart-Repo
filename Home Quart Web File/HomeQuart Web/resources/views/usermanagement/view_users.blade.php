@@ -181,6 +181,24 @@
                                     </div>
 
                                     <div class="col-md-4">
+                                        <label>Purok</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group position-relative has-icon-left mb-4">
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="assign_purok" id="assign_purok">  
+                                                    @foreach ($assignP as $key => $value)
+                                                    <option value="{{ $value->purok_name }}"> {{ $value->purok_name }}</option>
+                                                    @endforeach  
+                                                </select>
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-bag-check"></i>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
                                         <label>Place of Isolation</label>
                                     </div>
                                     <div class="col-md-8">

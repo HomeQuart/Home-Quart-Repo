@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('p_picture')->nullable();
             $table->string('address')->nullable();
             $table->string('contact_per')->nullable();
+            $table->string('assign_purok')->nullable();
             $table->string('place_isolation')->nullable();
             $table->string('status')->nullable();
             $table->string('email')->unique();
