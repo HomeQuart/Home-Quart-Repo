@@ -184,8 +184,7 @@
             <div class="col-lg-6 d-none d-lg-block">
                 <div id="auth-right">
                 <div class="col-md-5">
-                        <img src="
-                        assets/images/login_background.png" width="240%">
+                        <img src="assets/images/login_background.png" width="240%">
                     </div>
                 </div>
             </div>
