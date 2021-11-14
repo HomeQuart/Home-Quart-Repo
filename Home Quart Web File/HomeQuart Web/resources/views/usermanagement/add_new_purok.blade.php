@@ -42,7 +42,7 @@
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Create</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
-                        <p class='text-gray-600'>Go <a href="{{ route('userManagement') }}"
+                        <p class='text-gray-600'>Go <a href="{{ route('purokManagement') }}"
                         class="font-bold">Back?</a></p>
                     </div>
                 </div>
