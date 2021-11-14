@@ -57,17 +57,14 @@
                                         <label>Role Name</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="form-group position-relative has-icon-left mb-4">
-                                            <fieldset class="form-group">
-                                                <select class="form-select" name="role_name" id="role_name">
-                                                    <option value="{{ $data[0]->role_name }}" {{ ( $data[0]->role_name == $data[0]->role_name) ? 'selected' : ''}}> 
-                                                        {{ $data[0]->role_name }}
-                                                    </option>
-                                                </select>
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Role Name" id="first-name-icon" name="role_name" value="{{ $data[0]->role_name }}"readonly>
                                                 <div class="form-control-icon">
-                                                    <i class="bi bi-bag-check"></i>
+                                                    <i class="bi bi-person"></i>
                                                 </div>
-                                            </fieldset>
+                                            </div>
                                         </div>
                                     </div>
 

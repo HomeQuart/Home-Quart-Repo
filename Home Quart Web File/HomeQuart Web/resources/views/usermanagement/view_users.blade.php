@@ -105,14 +105,17 @@
                                         <label>Gender</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="form-group has-icon-left">
-                                            <div class="position-relative">
-                                                <input type="text" class="form-control"
-                                                    placeholder="Gender" id="first-name-icon" name="gender" value="{{ $data[0]->gender }}">
+                                        <div class="form-group position-relative has-icon-left mb-4">
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="gender" id="gender">  
+                                                    @foreach ($gendertype as $key => $value)
+                                                    <option value="{{ $value->type_of_genders }}"> {{ $value->type_of_genders }}</option>
+                                                    @endforeach  
+                                                </select>
                                                 <div class="form-control-icon">
-                                                    <i class="bi bi-person"></i>
+                                                    <i class="bi bi-bag-check"></i>
                                                 </div>
-                                            </div>
+                                            </fieldset>
                                         </div>
                                     </div>
 
@@ -181,14 +184,17 @@
                                         <label>Place of Isolation</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="form-group has-icon-left">
-                                            <div class="position-relative">
-                                                <input type="text" class="form-control"
-                                                    placeholder="Place of Isolation" id="first-name-icon" name="place_isolation" value="{{ $data[0]->place_isolation }}">
+                                        <div class="form-group position-relative has-icon-left mb-4">
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="place_isolation" id="place_isolation">  
+                                                    @foreach ($placeisolation as $key => $value)
+                                                    <option value="{{ $value->place_of_isolation }}"> {{ $value->place_of_isolation }}</option>
+                                                    @endforeach  
+                                                </select>
                                                 <div class="form-control-icon">
-                                                    <i class="bi bi-person"></i>
+                                                    <i class="bi bi-bag-check"></i>
                                                 </div>
-                                            </div>
+                                            </fieldset>
                                         </div>
                                     </div>
 
@@ -260,17 +266,14 @@
                                         <label>Role Name</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="form-group position-relative has-icon-left mb-4">
-                                            <fieldset class="form-group">
-                                                <select class="form-select" name="role_name" id="role_name">
-                                                    <option value="{{ $data[0]->role_name }}" {{ ( $data[0]->role_name == $data[0]->role_name) ? 'selected' : ''}}> 
-                                                        {{ $data[0]->role_name }}
-                                                    </option>
-                                                </select>
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Role Name" id="first-name-icon" name="role_name" value="{{ $data[0]->role_name }}"readonly>
                                                 <div class="form-control-icon">
-                                                    <i class="bi bi-bag-check"></i>
+                                                    <i class="bi bi-person"></i>
                                                 </div>
-                                            </fieldset>
+                                            </div>
                                         </div>
                                     </div>
 

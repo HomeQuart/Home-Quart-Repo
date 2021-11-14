@@ -310,7 +310,9 @@ class UserManagementController extends Controller
             $data = DB::table('users')->where('id',$id)->get();
             $roleName = DB::table('role_type_users')->get();
             $userStatus = DB::table('user_types')->get();
-            return view('usermanagement.view_users',compact('data','roleName','userStatus'));
+            $placeisolation = DB::table('placeofisolation')->get();
+            $gendertype = DB::table('gender_type')->get();
+            return view('usermanagement.view_users',compact('data','roleName','userStatus','placeisolation','gendertype'));
         }
         else if (Auth::user()->role_name=='BHW')
         {
