@@ -3,14 +3,14 @@
 @section('content')
     <div id="auth">
         <div class="row h-100">
-            <div class="col-lg-7 col-12">
+            <div class="col-lg-6 col-12">
                 <div id="auth-left">
                     <div>
                     </div>
                     <br><br>
                     <center>
                     <h1>Sign Up</h1>
-                    <h4>Register your credentials.</h4>
+                    <h4>Register your credentials</h4>
                     </center>
                     <br>
                     
@@ -107,7 +107,7 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="tel" class="form-control form-control-lg @error('contact_per') is-invalid @enderror" name="contact_per" value="{{ old('contact_per') }}" placeholder="Enter Your Contact Person incase of Emergency">
+                            <input type="tel" class="form-control form-control-lg @error('contact_per') is-invalid @enderror" name="contact_per" value="{{ old('contact_per') }}" placeholder="Enter Your Contact Person's Number">
                             <div class="form-control-icon">
                                 <i class="bi bi-phone"></i>
                             </div>
@@ -186,14 +186,14 @@
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class='text-gray-600'>Already have an account? <a href="{{ route('login') }}"
-                        class="font-bold">Login</a>.</p>
+                        class="font-bold">Login</a></p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 d-none d-lg-block">
+            <div class="col-lg-6 d-none d-lg-block">
                 <div id="auth-right">
-                    <div class="col-md-5">
-                        <img src="assets/images/signup_background.png" width="240%">
+                    <div class="col-md-8">
+                        <img src="assets/images/signup_background.png" width="180%">
                     </div>
                 </div>
             </div>

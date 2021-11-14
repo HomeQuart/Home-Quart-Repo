@@ -8,7 +8,9 @@
                     </div>
                     {{-- message --}}
                     {!! Toastr::message() !!}
-                    <br><br>
+                    <br>
+                    <center><h5>A Web Application that Monitors Home Quarantined Patient</h5></center>
+                    <br>
                     <center><h1>LOG IN</h1></center>
                     <br>
                     @if(session()->has('error'))
@@ -52,8 +54,8 @@
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class="text-gray-600">Don't have an account? <a href="{{route('register')}}"
                                 class="font-bold">Sign
-                                up</a>.</p>
-                        <p><a class="font-bold" href="{{ route('forget-password') }}">Forgot password?</a>.</p>
+                                up</a></p>
+                        <p><a class="font-bold" href="{{ route('forget-password') }}">Forgot password?</a></p>
                     </div>
                 </div>
             </div>

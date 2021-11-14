@@ -3,13 +3,13 @@
 @section('content')
     <div id="auth">
         <div class="row h-100">
-            <div class="col-lg-5 col-12">
+            <div class="col-lg-6 col-12">
                 <div id="auth-left">
                     <div class="auth-logo">
                         <a href="index.html"><img src="{{ URL::to('assets/images/logo/logo.png') }}" alt="Logo"></a>
                     </div>
                     <h1 class="auth-title">New Account</h1>
-                    <p class="auth-subtitle mb-5">Input your imformation.</p>
+                    <p class="auth-subtitle mb-5">Input your imformation</p>
 
                     <form method="POST" action="{{ route('user/add/save') }}" class="md-float-material" enctype="multipart/form-data">
                         @csrf
@@ -181,10 +181,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-7 d-none d-lg-block">
+            <div class="col-lg-6 d-none d-lg-block">
                 <div id="auth-right">
-                    <div class="col-md-5">
-                        <img src="assets/images/signup_background.png" width="240%">
+                <div class="col-md-5">
+                        <img src="public/assets/images/login_background.png" width="240%">
                     </div>
                 </div>
             </div>
