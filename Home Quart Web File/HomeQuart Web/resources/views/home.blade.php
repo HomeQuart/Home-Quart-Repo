@@ -1191,26 +1191,29 @@
                                         <center> <h5>Quarantine Period</h5></center><hr>
                                         {{-- insert the countdown timer here --}}
                                         <center>
+                                        <div id="getting-started"></div>
+                                        <div class="container">
                                             <div class="row">
-                                                <div class="col-md-4">
-                                                    <h1>12 </h1> 
-                                                    <div class="row-md-4">
-                                                        <h6>DAYS</h6>
+                                                    <div class="card ">
+                                                      
+                                                        <table class="table table-striped">
+                                                            <tr>
+                                                                <td class ="text-center">Days</td>
+                                                                <td class ="text-center">Hours</td>
+                                                                <td class ="text-center">Minutes</td>
+                                                                <td class ="text-center">Seconds</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td id = "day" class= "display-4 bg-dark text-white text-center"></td>
+                                                                <td id = "hour" class= "display-4 bg-dark text-white text-center"></td>
+                                                                <td id = "minutes" class= "display-4 bg-dark text-white text-center"></td>
+                                                                <td id = "seconds" class= "display-4 bg-dark text-white text-center"></td>
+                                                            </tr>
+                                                        </table>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <h1>06</h1>
-                                                    <div class="row-md-4">
-                                                        <h6>HOURS</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <h1>32</h1>
-                                                    <div class="row-md-4">
-                                                        <h6>MINUTES</h6>
-                                                    </div>
-                                                </div>
+
                                             </div>
+                                        </div>
                                         </center>
                                        
                                     </div>

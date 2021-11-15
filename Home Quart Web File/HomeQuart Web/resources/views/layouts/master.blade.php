@@ -20,6 +20,7 @@
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <style>
     .form-group[class*=has-icon-].has-icon-left .form-select {
@@ -40,7 +41,8 @@
     <script src="{{ URL::to('assets/vendors/apexcharts/apexcharts.js') }}"></script>
     <script src="{{ URL::to('assets/js/pages/dashboard.js') }}"></script>
     <script src="{{ URL::to('assets/js/main.js') }}"></script>
-
+    <script src="{{ URL::to('assets/js/jquery.countdown.js') }}"></script>
+        
     <script src="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/bootstrap.bundle.min.js') }}"></script>
 
@@ -54,7 +56,15 @@
     <script src="{{ URL::to('assets/js/main.js') }}"></script>
 
     
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        $('#getting-started').countdown('2021/11/22', function(event) {
+            $('#day').html(event.strftime('%D'));
+            $('#hour').html(event.strftime('%H'));
+            $('#minutes').html(event.strftime('%M'));
+            $('#seconds').html(event.strftime('%S'));
+        });
+    </script>
 </body>
 
 </html>
