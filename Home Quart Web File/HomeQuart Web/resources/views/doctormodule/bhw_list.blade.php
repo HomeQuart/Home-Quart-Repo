@@ -40,6 +40,7 @@
                                 <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Profile</th>
+                                <th>Assign Purok</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>    
@@ -54,6 +55,7 @@
                                             <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
                                         </div>
                                     </td>
+                                    <td class="assign_purok">{{ $item->assign_purok }}</td> 
                                     @if($item->status =='Active')
                                     <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>
                                     @endif
