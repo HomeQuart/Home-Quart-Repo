@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('menu')
-@extends('sidebar.usermanagement')
+@extends('sidebar.dashboard')
 @endsection
 @section('content')
 <div id="main">
@@ -14,13 +14,13 @@
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>User Management Control</h3>
-                    <p class="text-subtitle text-muted">For user to check they list</p>
+                    <p class="text-subtitle text-muted">List of User Accounts</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">User Mangement</li>
+                            <li class="breadcrumb-item active" aria-current="page">User Account Management</li>
                         </ol>
                     </nav>
                 </div>
@@ -31,10 +31,10 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    User Datatable
+                    User Accounts Datatable
                 </div>
                 <a href="{{ route('user/add/new') }}">
-                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Add a User</button>
+                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Add New User</button>
                 </a>
                 <div class="card-body">
                     <table class="table table-striped" id="table1">

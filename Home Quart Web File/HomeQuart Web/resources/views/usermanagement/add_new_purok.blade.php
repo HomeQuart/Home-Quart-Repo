@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('menu')
-@extends('sidebar.activity_log')
+@extends('sidebar.dashboard')
 @endsection
 @section('content')
     <div id="auth">
@@ -32,7 +32,8 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
-                            <h1>ADD NEW PUROK</h1> <br>
+                            <center><h1>ADD NEW PUROK</h1> </center>
+                            <br>
                         <form method="POST" action="{{ route('purok/add/save') }}" class="md-float-material" enctype="multipart/form-data">
                                 @csrf
 
@@ -40,7 +41,7 @@
                                 <div class="form-group position-relative has-icon-left mb-4">
                                     <input type="text" class="form-control form-control-lg @error('purok_name') is-invalid @enderror" name="purok_name" value="{{ old('purok_name') }}" placeholder="Enter Purok Name">
                                     <div class="form-control-icon">
-                                        <i class="bi bi-person"></i>
+                                        <i class="bi bi-house-door"></i>
                                     </div>
                                     @error('purok_name')
                                         <span class="invalid-feedback" role="alert">
@@ -53,7 +54,7 @@
                                 <div class="form-group position-relative has-icon-left mb-4">
                                     <input type="text" class="form-control form-control-lg @error('comp_address') is-invalid @enderror" name="comp_address" value="{{ old('comp_address') }}" placeholder="Enter Complete Address">
                                     <div class="form-control-icon">
-                                        <i class="bi bi-person"></i>
+                                        <i class="bi bi-shop"></i>
                                     </div>
                                     @error('comp_address')
                                         <span class="invalid-feedback" role="alert">

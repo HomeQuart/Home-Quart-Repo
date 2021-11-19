@@ -785,8 +785,9 @@
                 </div>
             </div>
         </div>
-        <br><br><br><br><br><br><hr>
-        <h1>Admin Dashboard</h1>
+        <br><br><br><br><br><br>
+        <h1>Admin Dashboard</h1><hr>
+        
         {{-- message --}}
         {!! Toastr::message() !!}
         <div class="page-content">

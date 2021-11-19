@@ -52,7 +52,7 @@
 
                 <li class="sidebar-item">
                     <a href="{{ route('change/password') }}" class='sidebar-link'>
-                        <i class="bi bi-shield-lock"></i>
+                        <i class="bi bi-shield-lock-fill"></i>
                         <span>Change Password</span>
                     </a>
                 </li>
@@ -61,7 +61,7 @@
                 @if (Auth::user()->role_name=='Admin')
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-hexagon-fill"></i>
+                            <i class="bi bi-people-fill"></i>
                             <span>User Management</span>
                         </a>
                         <ul class="submenu">
@@ -78,7 +78,7 @@
                     </li>
                     <li class="sidebar-item">
                         <a href="{{ route('purokManagement') }}" class='sidebar-link'>
-                            <i class="bi bi-shield-lock"></i>
+                            <i class="bi bi-house-fill"></i>
                             <span>Purok Management</span>
                         </a>
                     </li>

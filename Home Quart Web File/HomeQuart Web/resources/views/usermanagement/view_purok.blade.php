@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('menu')
-@extends('sidebar.usermanagement')
+@extends('sidebar.dashboard')
 @endsection
 @section('content')
 <div id="main">
@@ -25,14 +25,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>User Management View</h3>
-                    <p class="text-subtitle text-muted">For user to check they list</p>
+                    <h3>Purok Management View</h3>
+                    <p class="text-subtitle text-muted">Edit data of purok</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">User Mangement View</li>
+                            <li class="breadcrumb-item active" aria-current="page">Purok Mangement View</li>
                         </ol>
                     </nav>
                 </div>
@@ -43,7 +43,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">User View Detail</h4>
+                    <h4 class="card-title">Purok Details</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
@@ -62,7 +62,7 @@
                                                 <input type="text" class="form-control"
                                                     placeholder="Purok Name" id="first-name-icon" name="purok_name" value="{{ $data[0]->purok_name }}">
                                                 <div class="form-control-icon">
-                                                    <i class="bi bi-person"></i>
+                                                    <i class="bi bi-house"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -77,7 +77,7 @@
                                                 <input type="text" class="form-control"
                                                     placeholder="Complete Address" name="comp_address" value="{{ $data[0]->comp_address }}">
                                                 <div class="form-control-icon">
-                                                    <i class="bi bi-phone"></i>
+                                                    <i class="bi bi-shop"></i>
                                                 </div>
                                             </div>
                                         </div>

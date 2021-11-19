@@ -14,14 +14,13 @@
     <link rel="stylesheet" href="{{ URL::to('assets/css/app.css') }}">
     <link rel="shortcut icon" href="{{ URL::to('assets/images/favicon.svg') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ URL::to('assets/vendors/simple-datatables/style.css') }}">
-
+    
     {{-- message toastr --}}
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
+    </head>
 <style>
     .form-group[class*=has-icon-].has-icon-left .form-select {
     padding-left: 2.5rem;
@@ -30,10 +29,10 @@
 
 <body>
     <div id="app">
+        {{-- sidebar here --}}
         @yield('menu')
         {{-- content main page --}}
         @yield('content')
-       
     </div>
 
     <script src="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
