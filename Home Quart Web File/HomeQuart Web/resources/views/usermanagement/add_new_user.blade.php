@@ -9,7 +9,7 @@
                         <a href="index.html"><img src="{{ URL::to('assets/images/logo/logo.png') }}" alt="Logo"></a>
                     </div>
                     <h1 class="auth-title">New Account</h1>
-                    <p class="auth-subtitle mb-5">Input your imformation</p>
+                    <p class="auth-subtitle mb-5">Input your information</p>
 
                     <form method="POST" action="{{ route('user/add/save') }}" class="md-float-material" enctype="multipart/form-data">
                         @csrf
@@ -184,7 +184,7 @@
             <div class="col-lg-6 d-none d-lg-block">
                 <div id="auth-right">
                 <div class="col-md-5">
-                        <img src="assets/images/login_background.png" width="240%">
+                <img src="{{ URL::to('assets/images/login_background.png') }}" width="240%">
                     </div>
                 </div>
             </div>

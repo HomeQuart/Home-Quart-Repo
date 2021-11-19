@@ -26,6 +26,7 @@
                 </div>
             </div>
             <br><br><br><br><br><br>
+            <form class="form form-horizontal" action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
             <div class="row-col-md-12">
                     <input type="text" class="form-control" placeholder="Full Name" id="first-name-icon" name="full_name" value="{{ $data[0]->full_name }}"readonly> <br>
                     <div class="card" data-bs-toggle="modal" data-bs-target="#consult">
@@ -439,7 +440,7 @@
                 
             {{-- message --}}
             {!! Toastr::message() !!}
-        
+            </form>
             <br><br><br><br><br><br><br><br><br><br><br><br><hr>
             <footer>
             <div class="footer clearfix mb-0 text-muted">
