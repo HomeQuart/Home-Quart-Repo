@@ -382,20 +382,17 @@
                                             <div class="col-md-6"></div>
                                             <div class="col-md-6">
                                                 <table>
-                                                    <tr>
-                                                        <td>
-                                                            <select name="medicine" id="medicine" class="form-control">
-                                                                <option value="paracetamol" >Flanax</option>
-                                                                <option value="biogesic">Biogesic</option>
-                                                                <option value="flanax">Paracetamol</option>
+                                                <div class="form-group position-relative has-icon-left mb-4">
+                                                    <fieldset class="form-group">
+                                                            <select class="form-select" name=" " id=" ">  
+                                                                    <option hidden selected ><--Select Medicine--></option>
+                                                                    @foreach ($assignM as $key => $value)
+                                                                        <option value="{{ $value->medicine_name }}"> {{ $value->medicine_name }}</option>
+                                                                    @endforeach  
                                                             </select>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="text" name="dosage" id="dosage" placeholder="dosage" class="form-control">
-                                                        </td>
-                                                    </tr>
+                
+                                                    </fieldset>
+                                                </div>
                                                     
                                                 </table>
                                             </div>
