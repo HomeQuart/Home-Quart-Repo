@@ -112,19 +112,11 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
+                    <li class="sidebar-item">
+                        <a href="{{ route('medicineManagement') }}" class='sidebar-link'>
+                            <i class="bi bi-shield-lock"></i>
                             <span>Medicine Management</span>
                         </a>
-                        <ul class="submenu">
-                            <li class="submenu-item active">
-                                <a href="{{ route('addMedicine') }}">Add Medicine</a>
-                            </li>
-                            <li class="submenu-item">
-                                <a href="{{ route('form/view/detail') }}">Display Medicines</a>
-                            </li>
-                        </ul>
                     </li>
                 @endif
 

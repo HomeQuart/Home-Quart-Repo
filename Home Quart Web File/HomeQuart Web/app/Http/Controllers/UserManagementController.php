@@ -7,6 +7,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use DB;
 use App\Models\User;
 use App\Models\purok;
+use App\Models\Medicine;
 use App\Models\Form;
 use App\Rules\MatchOldPassword;
 use Carbon\Carbon;
@@ -322,7 +323,8 @@ class UserManagementController extends Controller
        if(Auth::user()->role_name=='Doctor')
        {
            $data = DB::table('users')->where('role_name', '=', 'BHW')->where('status','=','Active')->get();
-           return view('doctormodule.assign_purok',compact('data'));
+           $assignP = DB::table('purok')->get();
+           return view('doctormodule.assign_purok',compact('data','assignP'));
        }
        else
        {
@@ -344,7 +346,47 @@ class UserManagementController extends Controller
     }
    }
 
+   //doctor goes to medicine management
+   public function medicineindex()
+    {
+        if(Auth::user()->role_name=='Doctor')
+        {
+            $data = DB::table('medicine')->get();
+            return view('doctormodule.medicine_control',compact('data'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }
 
+    // doctor see medicine detail
+    public function medicineviewDetail($id)
+    {  
+        if (Auth::user()->role_name=='Doctor')
+        {
+            $data = DB::table('medicine')->where('id',$id)->get();
+            return view('doctormodule.view_medicine',compact('data'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }
+
+    //doctor consult a patient
+   public function consultPatient($id)
+   {  
+       if(Auth::user()->role_name=='Doctor')
+       {
+           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
+           return view('doctormodule.consult',compact('data'));
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
 
     // view detail 
     public function viewDetail($id)
@@ -476,6 +518,25 @@ class UserManagementController extends Controller
         Toastr::success('Create new Purok successfully :)','Success');
         return redirect()->route('purokManagement');
     }
+
+    //Add new medicine save
+    public function addNewMedicineSave(Request $request)
+     {
+        //just change this to another code of saving the medicine
+        $request->validate([
+            'medicine_name'        => 'required|string|max:255',
+            'symptoms_type'      => 'required|string|max:255',
+        ]);
+
+        $medicines = new Medicine;
+        $medicines->medicine_name    = $request->medicine_name ;
+        $medicines->symptoms_type  = $request->symptoms_type;
+ 
+        $medicines->save();
+
+        Toastr::success('Create new Medicine successfully :)','Success');
+        return redirect()->route('medicineManagement');
+    }
     
     // update
     public function update(Request $request)
@@ -554,7 +615,7 @@ class UserManagementController extends Controller
         return redirect()->route('userManagement');
     }
 
-    // update
+    // update address
     public function purokupdate(Request $request)
     {
         $id                 = $request->id;
@@ -594,6 +655,47 @@ class UserManagementController extends Controller
         purok::where('id',$request->id)->update($update);
         Toastr::success('Purok updated successfully :)','Success');
         return redirect()->route('purokManagement');
+    }
+    // update medicine
+    public function medicineupdate(Request $request)
+    {
+        $id                 = $request->id;
+        $role_name          = $request->role_name;
+        $medicine_name          = $request->medicine_name;
+        $symptoms_type          = $request->symptoms_type;
+        $full_name           = $request->full_name;
+        $email              = $request->email;
+        $contactno          = $request->contactno;
+        $status             = $request->status;
+        
+
+
+        $dt       = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+        
+        
+        $update = [
+
+            'id'                => $id,
+            'medicine_name'         => $medicine_name,
+            'symptoms_type'         => $symptoms_type,
+        ];
+
+        $activityLog = [
+
+            'user_name'    => $full_name,
+            'email'        => $email,
+            'phone_number' => $contactno,
+            'status'       => $status,
+            'role_name'    => $role_name,
+            'modify_user'  => 'Medicine Update',
+            'date_time'    => $todayDate,
+        ];
+
+        DB::table('user_activity_logs')->insert($activityLog);
+        medicine::where('id',$request->id)->update($update);
+        Toastr::success('Medicine updated successfully :)','Success');
+        return redirect()->route('medicineManagement');
     }
     // delete
     public function delete($id)
@@ -637,7 +739,7 @@ class UserManagementController extends Controller
         return redirect()->route('userManagement');
     }
 
-    // delete
+    // delete purok
     public function purokdelete($id)
     {
         $user = Auth::User();
@@ -677,6 +779,45 @@ class UserManagementController extends Controller
         return redirect()->route('purokManagement');
     }
 
+    // delete medicine
+    public function medicinedelete($id)
+    {
+        $user = Auth::User();
+        Session::put('user', $user);
+        $user=Session::get('user');
+
+        $role_name    = $user->role_name;
+        $full_name     = $user->full_name;
+        $age          = $user->age;
+        $gender       = $user->gender;
+        $contactno    = $user->contactno;
+        $address      = $user->address;
+        $contact_per  = $user->contact_per;
+        $place_isolation    =$user->place_isolation;
+        $status       = $user->status;
+        $email        = $user->email;
+
+        $dt       = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+
+        $activityLog = [
+
+            'user_name'    => $full_name,
+            'email'        => $email,
+            'phone_number' => $contactno,
+            'status'       => $status,
+            'role_name'    => $role_name,
+            'modify_user'  => 'Medicine Delete',
+            'date_time'    => $todayDate,
+        ];
+
+        DB::table('user_activity_logs')->insert($activityLog);
+
+        $delete = Medicine::find($id);
+        $delete->delete();
+        Toastr::success('Mecicine deleted successfully :)','Success');
+        return redirect()->route('medicineManagement');
+    }
     // view change password
     public function changePasswordView()
     {

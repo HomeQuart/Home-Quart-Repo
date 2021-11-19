@@ -97,11 +97,17 @@ Route::post('activate', [App\Http\Controllers\UserManagementController::class, '
 
 //------------------------------doctor -------------------------------------//
 Route::get('patientList', [App\Http\Controllers\UserManagementController::class, 'patientList'])->middleware('auth')->name('patientList');
-Route::get('addMedicine', [App\Http\Controllers\UserManagementController::class, 'addMedicine'])->middleware('auth')->name('addMedicine');
 Route::get('reportList', [App\Http\Controllers\UserManagementController::class, 'reportList'])->middleware('auth')->name('reportList');
 Route::get('quarantineInformation/{id}', [App\Http\Controllers\UserManagementController::class, 'quarantineInformation'])->middleware('auth');
 Route::get('bhwList', [App\Http\Controllers\UserManagementController::class, 'bhwList'])->middleware('auth')->name('bhwList');
 Route::get('assignPurok/{id}', [App\Http\Controllers\UserManagementController::class, 'assignPurok'])->middleware('auth');
+Route::get('medicine/add/new', [App\Http\Controllers\UserManagementController::class, 'addMedicine'])->middleware('auth')->name('medicine/add/new');
+Route::post('medicine/add/save', [App\Http\Controllers\UserManagementController::class, 'addNewMedicineSave'])->name('medicine/add/save');
+Route::get('medicineManagement', [App\Http\Controllers\UserManagementController::class, 'medicineindex'])->middleware('auth')->name('medicineManagement');
+Route::get('consultPatient/{id}', [App\Http\Controllers\UserManagementController::class, 'consultPatient'])->middleware('auth');
+Route::get('medicine/view/detail/{id}', [App\Http\Controllers\UserManagementController::class, 'medicineviewDetail'])->middleware('auth');
+Route::post('medicineupdate', [App\Http\Controllers\UserManagementController::class, 'medicineupdate'])->name('medicineupdate');
+Route::get('delete_medicine/{id}', [App\Http\Controllers\UserManagementController::class, 'medicinedelete'])->middleware('auth');
 
 Route::get('userManagement2', [App\Http\Controllers\UserManagementController::class, 'index2'])->middleware('auth')->name('userManagement2');
 Route::get('user/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewUser'])->middleware('auth')->name('user/add/new');
