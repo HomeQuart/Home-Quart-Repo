@@ -101,6 +101,17 @@
                     </li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
+                            <i class="bi bi-hexagon-fill"></i>
+                            <span>Brgy Health Worker Management</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="{{ route('bhwList') }}">Health Worker List</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
                             <span>Medicine Management</span>
                         </a>
@@ -129,17 +140,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-hexagon-fill"></i>
-                            <span>Brgy Health Worker Management</span>
-                        </a>
-                        <ul class="submenu">
-                            <li class="submenu-item">
-                                <a href="{{ route('bhwList') }}">Health Worker List</a>
-                            </li>
-                        </ul>
-                    </li>
+                    
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>

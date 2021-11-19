@@ -308,8 +308,9 @@ class UserManagementController extends Controller
     {  
         if(Auth::user()->role_name=='Doctor')
         {
-            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
-            return view('doctormodule.quarantine_information',compact('data'));
+            $assignM = DB::table('medicine')->get();
+            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->where('id',$id)->get();
+            return view('doctormodule.quarantine_information',compact('data','assignM'));
         }
         else
         {

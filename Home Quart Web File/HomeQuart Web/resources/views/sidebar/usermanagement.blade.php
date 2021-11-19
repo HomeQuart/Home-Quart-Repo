@@ -81,17 +81,19 @@
                         </a>
                     </li>
                 @endif
-                
-                {{-- BHW SIDEBAR Dashboard --}}
-                @if (Auth::user()->role_name=='BHW')
+                {{-- DOCTOR SIDEBAR Dashboard --}}
+                @if (Auth::user()->role_name=='Doctor')
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-hexagon-fill"></i>
-                            <span>Patient Pending Accounts </span>
+                            <span>Patient Management</span>
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item">
-                                <a href="{{ route('pendingaccounts') }}">Manage Pending Accounts</a>
+                                <a href="{{ route('patientList') }}">Patient List</a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="{{ route('reportList') }}">Report Summary</a>
                             </li>
                         </ul>
                     </li>
@@ -103,6 +105,28 @@
                         <ul class="submenu">
                             <li class="submenu-item">
                                 <a href="{{ route('bhwList') }}">Health Worker List</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{{ route('medicineManagement') }}" class='sidebar-link'>
+                            <i class="bi bi-shield-lock"></i>
+                            <span>Medicine Management</span>
+                        </a>
+                    </li>
+                @endif
+
+                
+                {{-- BHW SIDEBAR Dashboard --}}
+                @if (Auth::user()->role_name=='BHW')
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-hexagon-fill"></i>
+                            <span>Patient Pending Accounts </span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="{{ route('pendingaccounts') }}">Manage Pending Accounts</a>
                             </li>
                         </ul>
                     </li>

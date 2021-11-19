@@ -19,7 +19,7 @@ class RegisterController extends Controller
         $assignP = DB::table('purok')->get();
         return view('auth.register',compact('assignP'));
     }
-
+    
     public function adminregister()
     {
         return view('auth.adminregister');

@@ -26,6 +26,7 @@
                 </div>
             </div>
             <br><br><br><br><br><br>
+            <form class="form form-horizontal" action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
             <div class="row-col-md-12">
                     <input type="text" class="form-control" placeholder="Full Name" id="first-name-icon" name="full_name" value="{{ $data[0]->full_name }}"readonly> <br>
                     <div class="card" data-bs-toggle="modal" data-bs-target="#consult">
@@ -381,20 +382,17 @@
                                             <div class="col-md-6"></div>
                                             <div class="col-md-6">
                                                 <table>
-                                                    <tr>
-                                                        <td>
-                                                            <select name="medicine" id="medicine" class="form-control">
-                                                                <option value="paracetamol" >Flanax</option>
-                                                                <option value="biogesic">Biogesic</option>
-                                                                <option value="flanax">Paracetamol</option>
+                                                <div class="form-group position-relative has-icon-left mb-4">
+                                                    <fieldset class="form-group">
+                                                            <select class="form-select" name=" " id=" ">  
+                                                                    <option hidden selected ><--Select Medicine--></option>
+                                                                    @foreach ($assignM as $key => $value)
+                                                                        <option value="{{ $value->medicine_name }}"> {{ $value->medicine_name }}</option>
+                                                                    @endforeach  
                                                             </select>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="text" name="dosage" id="dosage" placeholder="dosage" class="form-control">
-                                                        </td>
-                                                    </tr>
+                
+                                                    </fieldset>
+                                                </div>
                                                     
                                                 </table>
                                             </div>
@@ -439,7 +437,7 @@
                 
             {{-- message --}}
             {!! Toastr::message() !!}
-        
+            </form>
             <br><br><br><br><br><br><br><br><br><br><br><br><hr>
             <footer>
             <div class="footer clearfix mb-0 text-muted">
