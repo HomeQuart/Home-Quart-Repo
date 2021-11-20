@@ -316,20 +316,6 @@
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label>Contact Person</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group has-icon-left">
-                                                        <div class="position-relative">
-                                                            <input type="number" class="form-control" value="{{ Auth::user()->contact_per }}" readonly>
-                                                            <div class="form-control-icon">
-                                                                <i class="bi bi-phone"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
                                                     <label>Assign Purok</label>
                                                 </div>
                                                 <div class="col-md-8">
@@ -454,10 +440,6 @@
                 <div class="float-start">
                     <p>2021 &copy; Home Quart</p>
                 </div>
-                {{-- <div class="float-end">
-                    <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                    href="http://soengsouy.com">Soeng Souy</a></p>
-                </div> --}}
             </div>
         </footer>
     </div>
@@ -784,48 +766,6 @@
                                                     <div class="form-group has-icon-left">
                                                         <div class="position-relative">
                                                             <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}" readonly>
-                                                            <div class="form-control-icon">
-                                                                <i class="bi bi-person"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label>Contact Person</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group has-icon-left">
-                                                        <div class="position-relative">
-                                                            <input type="number" class="form-control" value="{{ Auth::user()->contact_per }}" readonly>
-                                                            <div class="form-control-icon">
-                                                                <i class="bi bi-phone"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label>Assign Purok</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group has-icon-left">
-                                                        <div class="position-relative">
-                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->assign_purok }}" readonly>
-                                                            <div class="form-control-icon">
-                                                                <i class="bi bi-person"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label>Place of Isolation</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group has-icon-left">
-                                                        <div class="position-relative">
-                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->place_isolation }}" readonly>
                                                             <div class="form-control-icon">
                                                                 <i class="bi bi-person"></i>
                                                             </div>
@@ -1259,48 +1199,6 @@
                                                     <div class="form-group has-icon-left">
                                                         <div class="position-relative">
                                                             <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}" readonly>
-                                                            <div class="form-control-icon">
-                                                                <i class="bi bi-person"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label>Contact Person</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group has-icon-left">
-                                                        <div class="position-relative">
-                                                            <input type="number" class="form-control" value="{{ Auth::user()->contact_per }}" readonly>
-                                                            <div class="form-control-icon">
-                                                                <i class="bi bi-phone"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label>Assign Purok</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group has-icon-left">
-                                                        <div class="position-relative">
-                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->assign_purok }}" readonly>
-                                                            <div class="form-control-icon">
-                                                                <i class="bi bi-person"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label>Place of Isolation</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group has-icon-left">
-                                                        <div class="position-relative">
-                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->place_isolation }}" readonly>
                                                             <div class="form-control-icon">
                                                                 <i class="bi bi-person"></i>
                                                             </div>

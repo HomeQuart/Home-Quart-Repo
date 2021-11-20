@@ -641,18 +641,6 @@ class UserManagementController extends Controller
             'comp_address'         => $comp_address,
         ];
 
-        $activityLog = [
-
-            'user_name'    => $full_name,
-            'email'        => $email,
-            'phone_number' => $contactno,
-            'status'       => $status,
-            'role_name'    => $role_name,
-            'modify_user'  => 'Purok Update',
-            'date_time'    => $todayDate,
-        ];
-
-        DB::table('user_activity_logs')->insert($activityLog);
         purok::where('id',$request->id)->update($update);
         Toastr::success('Purok updated successfully :)','Success');
         return redirect()->route('purokManagement');
@@ -682,18 +670,6 @@ class UserManagementController extends Controller
             'symptoms_type'         => $symptoms_type,
         ];
 
-        $activityLog = [
-
-            'user_name'    => $full_name,
-            'email'        => $email,
-            'phone_number' => $contactno,
-            'status'       => $status,
-            'role_name'    => $role_name,
-            'modify_user'  => 'Medicine Update',
-            'date_time'    => $todayDate,
-        ];
-
-        DB::table('user_activity_logs')->insert($activityLog);
         medicine::where('id',$request->id)->update($update);
         Toastr::success('Medicine updated successfully :)','Success');
         return redirect()->route('medicineManagement');
