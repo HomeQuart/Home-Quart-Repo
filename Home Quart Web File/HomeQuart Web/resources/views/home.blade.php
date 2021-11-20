@@ -230,6 +230,21 @@
                                     <div class="modal-body">
                                         <div class="form-body">
                                             <div class="row">
+
+                                            <div class="col-md-4">
+                                                    <label>Role Name</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" value="{{ Auth::user()->role_name }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-exclude"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-4">
                                                     <label>Full Name</label>
                                                 </div>
@@ -243,19 +258,35 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-md-4">
-                                                    <label>Email Address</label>
+                                                    <label>Age</label>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="form-group has-icon-left">
                                                         <div class="position-relative">
-                                                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" readonly>
+                                                            <input type="number" class="form-control" value="{{ Auth::user()->age }}" readonly>
                                                             <div class="form-control-icon">
-                                                                <i class="bi bi-envelope"></i>
+                                                                <i class="bi bi-phone"></i>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Gender</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="gender" value="{{ Auth::user()->gender }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-4">
                                                     <label>Mobile Number</label>
                                                 </div>
@@ -269,7 +300,63 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                    
+
+                                                <div class="col-md-4">
+                                                    <label>Address</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Contact Person</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="number" class="form-control" value="{{ Auth::user()->contact_per }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-phone"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Assign Purok</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->assign_purok }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Place of Isolation</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->place_isolation }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-4">
                                                     <label>Status</label>
                                                 </div>
@@ -285,18 +372,19 @@
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label>Role Name</label>
+                                                    <label>Email Address</label>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="form-group has-icon-left">
                                                         <div class="position-relative">
-                                                            <input type="text" class="form-control" value="{{ Auth::user()->role_name }}" readonly>
+                                                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" readonly>
                                                             <div class="form-control-icon">
-                                                                <i class="bi bi-exclude"></i>
+                                                                <i class="bi bi-envelope"></i>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -618,6 +706,21 @@
                                     <div class="modal-body">
                                         <div class="form-body">
                                             <div class="row">
+
+                                            <div class="col-md-4">
+                                                    <label>Role Name</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" value="{{ Auth::user()->role_name }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-exclude"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-4">
                                                     <label>Full Name</label>
                                                 </div>
@@ -631,19 +734,35 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-md-4">
-                                                    <label>Email Address</label>
+                                                    <label>Age</label>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="form-group has-icon-left">
                                                         <div class="position-relative">
-                                                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" readonly>
+                                                            <input type="number" class="form-control" value="{{ Auth::user()->age }}" readonly>
                                                             <div class="form-control-icon">
-                                                                <i class="bi bi-envelope"></i>
+                                                                <i class="bi bi-phone"></i>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Gender</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="gender" value="{{ Auth::user()->gender }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-4">
                                                     <label>Mobile Number</label>
                                                 </div>
@@ -657,7 +776,63 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                    
+
+                                                <div class="col-md-4">
+                                                    <label>Address</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Contact Person</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="number" class="form-control" value="{{ Auth::user()->contact_per }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-phone"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Assign Purok</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->assign_purok }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Place of Isolation</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->place_isolation }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-4">
                                                     <label>Status</label>
                                                 </div>
@@ -673,18 +848,19 @@
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label>Role Name</label>
+                                                    <label>Email Address</label>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="form-group has-icon-left">
                                                         <div class="position-relative">
-                                                            <input type="text" class="form-control" value="{{ Auth::user()->role_name }}" readonly>
+                                                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" readonly>
                                                             <div class="form-control-icon">
-                                                                <i class="bi bi-exclude"></i>
+                                                                <i class="bi bi-envelope"></i>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -1005,15 +1181,142 @@
                                     <div class="modal-body">
                                         <div class="form-body">
                                             <div class="row">
+
+                                            <div class="col-md-4">
+                                                    <label>Role Name</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" value="{{ Auth::user()->role_name }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-exclude"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-4">
                                                     <label>Full Name</label>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="form-group has-icon-left">
                                                         <div class="position-relative">
-                                                            <input type="text" class="form-control" name="full_name" value="{{ Auth::user()->full_name }}"readonly>
+                                                            <input type="text" class="form-control" name="full_name" value="{{ Auth::user()->full_name }}" readonly>
                                                             <div class="form-control-icon">
                                                                 <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Age</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="number" class="form-control" value="{{ Auth::user()->age }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-phone"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Gender</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="gender" value="{{ Auth::user()->gender }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Mobile Number</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="number" class="form-control" value="{{ Auth::user()->contactno }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-phone"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Address</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Contact Person</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="number" class="form-control" value="{{ Auth::user()->contact_per }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-phone"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Assign Purok</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->assign_purok }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Place of Isolation</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->place_isolation }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Status</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" value="{{ Auth::user()->status }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-bag-check"></i>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1025,54 +1328,14 @@
                                                 <div class="col-md-8">
                                                     <div class="form-group has-icon-left">
                                                         <div class="position-relative">
-                                                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}"readonly>
+                                                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" readonly>
                                                             <div class="form-control-icon">
                                                                 <i class="bi bi-envelope"></i>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <label>Mobile Number</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group has-icon-left">
-                                                        <div class="position-relative">
-                                                            <input type="number" class="form-control" value="{{ Auth::user()->contactno }}"readonly>
-                                                            <div class="form-control-icon">
-                                                                <i class="bi bi-phone"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                    
-                                                <div class="col-md-4">
-                                                    <label>Status</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group has-icon-left">
-                                                        <div class="position-relative">
-                                                            <input type="text" class="form-control" value="{{ Auth::user()->status }}"readonly>
-                                                            <div class="form-control-icon">
-                                                                <i class="bi bi-bag-check"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
-                                                <div class="col-md-4">
-                                                    <label>Role Name</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group has-icon-left">
-                                                        <div class="position-relative">
-                                                            <input type="text" class="form-control" value="{{ Auth::user()->role_name }}"readonly>
-                                                            <div class="form-control-icon">
-                                                                <i class="bi bi-exclude"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1367,6 +1630,21 @@
                                     <div class="modal-body">
                                         <div class="form-body">
                                             <div class="row">
+
+                                            <div class="col-md-4">
+                                                    <label>Role Name</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" value="{{ Auth::user()->role_name }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-exclude"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-4">
                                                     <label>Full Name</label>
                                                 </div>
@@ -1380,19 +1658,35 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-md-4">
-                                                    <label>Email Address</label>
+                                                    <label>Age</label>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="form-group has-icon-left">
                                                         <div class="position-relative">
-                                                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" readonly>
+                                                            <input type="number" class="form-control" value="{{ Auth::user()->age }}" readonly>
                                                             <div class="form-control-icon">
-                                                                <i class="bi bi-envelope"></i>
+                                                                <i class="bi bi-phone"></i>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Gender</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="gender" value="{{ Auth::user()->gender }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-4">
                                                     <label>Mobile Number</label>
                                                 </div>
@@ -1406,7 +1700,63 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                    
+
+                                                <div class="col-md-4">
+                                                    <label>Address</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Contact Person</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="number" class="form-control" value="{{ Auth::user()->contact_per }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-phone"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Assign Purok</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->assign_purok }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Place of Isolation</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group has-icon-left">
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->place_isolation }}" readonly>
+                                                            <div class="form-control-icon">
+                                                                <i class="bi bi-person"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-4">
                                                     <label>Status</label>
                                                 </div>
@@ -1422,18 +1772,19 @@
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label>Role Name</label>
+                                                    <label>Email Address</label>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="form-group has-icon-left">
                                                         <div class="position-relative">
-                                                            <input type="text" class="form-control" value="{{ Auth::user()->role_name }}" readonly>
+                                                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" readonly>
                                                             <div class="form-control-icon">
-                                                                <i class="bi bi-exclude"></i>
+                                                                <i class="bi bi-envelope"></i>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
