@@ -124,7 +124,7 @@
                 @if (Auth::user()->role_name=='BHW')
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-hexagon-fill"></i>
+                            <i class="bi bi-cloud-arrow-up-fill"></i>
                             <span>Patient Pending Accounts </span>
                         </a>
                         <ul class="submenu">
@@ -135,7 +135,7 @@
                     </li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <i class="bi bi-person-lines-fill"></i>
                             <span>Patient Management</span>
                         </a>
                         <ul class="submenu">
