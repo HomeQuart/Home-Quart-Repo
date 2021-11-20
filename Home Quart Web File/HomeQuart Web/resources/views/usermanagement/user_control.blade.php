@@ -76,7 +76,7 @@
                                     <td class="age">{{ $item->age }}</td>
                                     <td class="gender">{{ $item->gender }}</td>
                                     <td class="contactno">{{ $item->contactno }}</td>
-                                    <td class="full_name">
+                                    <td class="p_picture">
                                         <div class="avatar avatar-xl">
                                             <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
                                         </div>

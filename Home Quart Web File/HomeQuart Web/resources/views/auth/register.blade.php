@@ -122,7 +122,7 @@
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                     <select class="form-select" name="assign_purok" id="assign_purok">  
-                                            <option hidden selected >Purok</option>
+                                            <option disabled hidden selected >Purok</option>
                                             @foreach ($assignP as $key => $value)
                                                 <option value="{{ $value->purok_name }}"> {{ $value->purok_name }}</option>
                                             @endforeach  
