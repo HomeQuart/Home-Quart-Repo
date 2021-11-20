@@ -73,9 +73,32 @@ class UserManagementController extends Controller
     public function sendReport()
     {
 
-        return view('patientmodule.sendreport');
+        if (Auth::user()->role_name=='Patient')
+       {
+           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
+           $med = DB::table('medicine')->get();
+           return view('patientmodule.sendreport',compact('data', 'med'));
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
     }
 
+    //patient send swabtest result
+   public function sendSwabTest(){
+        if(Auth::user()->role_name=='Patient')
+        {
+            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
+            $roleName = DB::table('role_type_users')->get();
+            $userStatus = DB::table('user_types')->get();
+            return view('patientmodule.swabtest_view_detail',compact('data','roleName','userStatus'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }
     //patient see contact hotlines
     public function contactHotlines()
     {
@@ -225,7 +248,8 @@ class UserManagementController extends Controller
         if (Auth::user()->role_name=='BHW')
        {
            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
-           return view('bhwmodule.sendReport',compact('data'));
+           $med = DB::table('medicine')->get();
+           return view('bhwmodule.sendReport',compact('data', 'med'));
        }
        else
        {
@@ -261,6 +285,35 @@ class UserManagementController extends Controller
            return redirect()->route('home');
        }
    }
+
+   //bhw send swabtest result
+   public function swabtest(){
+        if (Auth::user()->role_name=='BHW')
+        {
+            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','active')->get();
+            return view('bhwmodule.swabtest_control',compact('data'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }
+
+    //bhw view details to report swabtest
+    public function viewSwabtestDetail($id)
+    {  
+        if(Auth::user()->role_name=='BHW')
+        {
+            $data = DB::table('users')->where('id',$id)->get();
+            $roleName = DB::table('role_type_users')->get();
+            $userStatus = DB::table('user_types')->get();
+            return view('bhwmodule.swabtest_view_detail',compact('data','roleName','userStatus'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }
 
 
    //doctor see patient list
@@ -432,6 +485,13 @@ class UserManagementController extends Controller
     public function activityLog()
     {
         $activityLog = DB::table('user_activity_logs')->get();
+        return view('usermanagement.user_activity_log',compact('activityLog'));
+    }
+
+    // use purok log
+    public function purokLog()
+    {
+        $purokLog = DB::table('purok')->get();
         return view('usermanagement.user_activity_log',compact('activityLog'));
     }
     // activity log

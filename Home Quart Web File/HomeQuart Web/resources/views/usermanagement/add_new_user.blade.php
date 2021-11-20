@@ -36,7 +36,7 @@
                         <form method="POST" action="{{ route('user/add/save') }}" class="md-float-material" enctype="multipart/form-data">
                             @csrf
     
-                            <div class="form-group position-relative has-icon-left mb-4">
+                            <div class="form-group position-relative  mb-4">
                                 <fieldset class="form-group">
                                     <select class="form-select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
                                         <option hidden selected disabled>Select Role Name</option>
@@ -53,7 +53,7 @@
                                 @enderror
                             </div>
     
-                            <div class="form-group position-relative has-icon-left mb-4">
+                            <div class="form-group position-relative  mb-4">
                                 <input type="text" class="form-control form-control-lg @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}" placeholder="Enter Your Full Name">
                                 
                                 @error('full_name')
@@ -63,7 +63,7 @@
                                 @enderror
                             </div>
     
-                            <div class="form-group position-relative has-icon-left mb-4">
+                            <div class="form-group position-relative  mb-4">
                                 <input type="tel" class="form-control form-control-lg @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" placeholder="Enter Your Age">
                                 
                                 @error('age')
@@ -73,7 +73,7 @@
                                 @enderror
                             </div>
     
-                            <div class="form-group position-relative has-icon-left mb-4">
+                            <div class="form-group position-relative  mb-4">
                                 <fieldset class="form-group">
                                     <select class="form-select @error('gender') is-invalid @enderror" name="gender" id="gender">
                                         <option hidden selected disabled>Choose a Gender</option>
@@ -89,7 +89,7 @@
                                 @enderror
                             </div>
     
-                            <div class="form-group position-relative has-icon-left mb-4">
+                            <div class="form-group position-relative  mb-4">
                                 <input type="tel" class="form-control form-control-lg @error('contactno') is-invalid @enderror" name="contactno" value="{{ old('contactno') }}" placeholder="Enter Your Contact Number">
                                 
                                 @error('contactno')
@@ -99,16 +99,14 @@
                                 @enderror
                             </div>
     
-                            <div class="form-group position-relative has-icon-left mb-4">
+                            <div class="form-group position-relative  mb-4">
                                 <input class="form-control @error('p_picture') is-invalid @enderror" name="p_picture" type="file" id="p_picture" multiple="">
                                 
                             </div>
     
-                            <div class="form-group position-relative has-icon-left mb-4">
+                            <div class="form-group position-relative  mb-4">
                                 <input type="text" class="form-control form-control-lg @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder="Enter Your Complete Address">
-                                <div class="form-control-icon">
-                                    <i class="bi bi-person"></i>
-                                </div>
+                                
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -116,7 +114,7 @@
                                 @enderror
                             </div>
     
-                            <div class="form-group position-relative has-icon-left mb-4">
+                            <div class="form-group position-relative  mb-4">
                                 <fieldset class="form-group">
                                     <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
                                         <option hidden selected value="Active">Active</option>
@@ -129,7 +127,7 @@
                                 @enderror
                             </div>
     
-                            <div class="form-group position-relative has-icon-left mb-4">
+                            <div class="form-group position-relative  mb-4">
                                 <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Your Email">
                                 
                                 @error('email')
@@ -139,7 +137,7 @@
                                 @enderror
                             </div>
     
-                            <div class="form-group position-relative has-icon-left mb-4">
+                            <div class="form-group position-relative  mb-4">
                                 <input type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="Choose Password">
                                 
                                 @error('password')
@@ -149,7 +147,7 @@
                                 @enderror
                             </div>
     
-                            <div class="form-group position-relative has-icon-left mb-4">
+                            <div class="form-group position-relative  mb-4">
                                 <input type="password" class="form-control form-control-lg" name="password_confirmation" placeholder="Choose Confirm Password">
                                 
                             </div>

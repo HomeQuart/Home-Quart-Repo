@@ -89,7 +89,7 @@
                 @if (Auth::user()->role_name=='Doctor')
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-hexagon-fill"></i>
+                            <i class="bi bi-people-fill"></i>
                             <span>Patient Management</span>
                         </a>
                         <ul class="submenu">
@@ -103,7 +103,7 @@
                     </li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-hexagon-fill"></i>
+                            <i class="bi bi-person-square"></i>
                             <span>Brgy Health Worker Management</span>
                         </a>
                         <ul class="submenu">
@@ -114,7 +114,7 @@
                     </li>
                     <li class="sidebar-item">
                         <a href="{{ route('medicineManagement') }}" class='sidebar-link'>
-                            <i class="bi bi-shield-lock"></i>
+                            <i class="bi bi-bag-check-fill"></i>
                             <span>Medicine Management</span>
                         </a>
                     </li>
@@ -150,24 +150,33 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="sidebar-item">
+                        <a href="{{ route('swabtest') }}" class='sidebar-link'>
+                            <i class="bi bi-record2-fill"></i>
+                            <span>Send Swab Test Result</span>
+                        </a>
+                    </li>
                 @endif
 
                 {{-- PATIENT SIDEBAR Dashboard --}}
                 @if (Auth::user()->role_name=='Patient')
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-hexagon-fill"></i>
+                            <i class="bi bi-flag-fill"></i>
                             <span>Report</span>
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item">
                                 <a href="{{ route('sendReport') }}">Send Report</a>
                             </li>
+                            <li class="submenu-item">
+                                <a href="{{ route('sendSwabTest') }}">Send Swab Test</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <i class="bi bi-bar-chart-fill"></i>
                             <span>Data</span>
                         </a>
                         <ul class="submenu">
