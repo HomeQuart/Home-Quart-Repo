@@ -60,9 +60,6 @@
                                     @if($item->status =='Disable')
                                     <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
                                     @endif
-                                    @if($item->status =='Done')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
-                                    @endif
                                     <td class="text-center">
                                         <a href="{{ url('pending/view/detail/'.$item->id) }}">
                                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>

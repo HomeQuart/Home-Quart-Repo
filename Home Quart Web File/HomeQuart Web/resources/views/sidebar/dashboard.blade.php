@@ -153,7 +153,7 @@
                     <li class="sidebar-item">
                         <a href="{{ route('swabtest') }}" class='sidebar-link'>
                             <i class="bi bi-record2-fill"></i>
-                            <span>Send Swab Test Result</span>
+                            <span>Swab Test Result</span>
                         </a>
                     </li>
                 @endif

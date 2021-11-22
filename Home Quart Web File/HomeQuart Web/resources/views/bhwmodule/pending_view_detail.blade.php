@@ -154,7 +154,6 @@
                                             <div class="position-relative">
                                                 <input type="number" class="form-control"
                                                     placeholder="Contact Person" name="contact_per" value="{{ $data[0]->contact_per }}" readonly>
-                                                
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +166,6 @@
                                             <div class="position-relative">
                                                 <input type="text" class="form-control"
                                                     placeholder="Place of Isolation" id="first-name-icon" name="place_isolation" value="{{ $data[0]->place_isolation }}"readonly>
-                                                
                                             </div>
                                         </div>
                                     </div>
@@ -176,15 +174,11 @@
                                         <label>Status</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="form-group position-relative mb-4">
-                                            <fieldset class="form-group">
-                                                <select class="form-select" name="status" id="status">  
-                                                    @foreach ($userStatus as $key => $value)
-                                                    <option value="{{ $value->type_name }}"> {{ $value->type_name }}</option>
-                                                    @endforeach  
-                                                </select>
-                                                
-                                            </fieldset>
+                                        <div class="form-group">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="status" id="first-name-icon" name="status" value="Active"readonly>
+                                            </div>
                                         </div>
                                     </div>
 

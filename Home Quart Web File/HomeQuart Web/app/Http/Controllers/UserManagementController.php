@@ -140,7 +140,6 @@ class UserManagementController extends Controller
         {
             $data = DB::table('users')->where('id',$id)->get();
             $roleName = DB::table('role_type_users')->get();
-            $userStatus = DB::table('user_types')->get();
             return view('bhwmodule.pending_view_detail',compact('data','roleName','userStatus'));
         }
         else
