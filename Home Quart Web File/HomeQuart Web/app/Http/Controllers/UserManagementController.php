@@ -36,6 +36,11 @@ class UserManagementController extends Controller
             $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Disable')->get();
             return view('usermanagement.pending_user_control',compact('data'));
         }
+        else if (Auth::user()->role_name=='Doctor')
+        {
+            $data = DB::table('users')->where('role_name', '=', 'BHW')->where('status','=','Active')->get();
+            return view('doctormodule.bhw_list',compact('data'));
+        }
         else
         {
             return redirect()->route('home');
