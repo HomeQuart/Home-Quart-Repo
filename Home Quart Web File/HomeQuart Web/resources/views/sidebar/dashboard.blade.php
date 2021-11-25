@@ -167,7 +167,7 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item">
-                                <a href="{{ route('sendReport') }}">Send Report</a>
+                                <a href="{{ route('sendreport') }}">Send Report</a>
                             </li>
                             <li class="submenu-item">
                                 <a href="{{ route('sendSwabTest') }}">Swab Test Status</a>

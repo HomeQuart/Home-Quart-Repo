@@ -79,11 +79,13 @@ Route::get('userManagement', [App\Http\Controllers\UserManagementController::cla
 Route::get('purokManagement', [App\Http\Controllers\UserManagementController::class, 'purokindex'])->middleware('auth')->name('purokManagement');
 
 //--------------------------------quarantine patient--------------------------//
-Route::get('sendReport', [App\Http\Controllers\UserManagementController::class, 'sendReport'])->middleware('auth')->name('sendReport');
+Route::get('sendreport', [App\Http\Controllers\UserManagementController::class, 'sendreport'])->middleware('auth')->name('sendreport');
+Route::get('reports/view/detail/{id}', [App\Http\Controllers\UserManagementController::class, 'viewreportsDetail'])->middleware('auth');
 Route::get('contactHotlines', [App\Http\Controllers\UserManagementController::class, 'contactHotlines'])->middleware('auth')->name('contactHotlines');
 Route::get('temperatureProgress', [App\Http\Controllers\UserManagementController::class, 'temperatureProgress'])->middleware('auth')->name('temperatureProgress');
 Route::get('consultations', [App\Http\Controllers\UserManagementController::class, 'consultations'])->middleware('auth')->name('consultations');
 Route::get('sendSwabTest', [App\Http\Controllers\UserManagementController::class, 'sendSwabTest'])->middleware('auth')->name('sendSwabTest');
+Route::post('reportupdate', [App\Http\Controllers\UserManagementController::class, 'reportupdate'])->name('reportupdate');
 
 
 //-----------------------------brgy healthworker-------------------------------//

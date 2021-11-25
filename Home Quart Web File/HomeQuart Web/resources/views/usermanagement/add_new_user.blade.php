@@ -43,7 +43,6 @@
                                         <option value="Admin">Admin</option>
                                         <option value="Doctor">Doctor</option>
                                         <option value="BHW">Barangay Health Worker</option>
-                                        <option value="Patient">Quarantine Patient</option>
                                     </select>
                                 </fieldset>
                                 @error('role_name')
