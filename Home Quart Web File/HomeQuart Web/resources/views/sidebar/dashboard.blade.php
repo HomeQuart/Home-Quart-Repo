@@ -170,7 +170,7 @@
                                 <a href="{{ route('sendReport') }}">Send Report</a>
                             </li>
                             <li class="submenu-item">
-                                <a href="{{ route('sendSwabTest') }}">Send Swab Test</a>
+                                <a href="{{ route('sendSwabTest') }}">Swab Test Status</a>
                             </li>
                         </ul>
                     </li>

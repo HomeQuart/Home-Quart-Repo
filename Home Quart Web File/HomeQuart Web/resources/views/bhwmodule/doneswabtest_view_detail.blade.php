@@ -106,6 +106,74 @@
         </div>
     </div>
     @endif
+
+    @if (Auth::user()->role_name=='Patient')
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Patient Done SwabTest Details</h4>
+                </div>
+                <div class="card-content">
+                <div class="card-body">
+                    
+                    <!-- <table class="table table-striped" id="table1">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Swab Result</th>
+                                <th>Swab Proof</th>
+                            </tr>    
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $key => $item)
+                            @if($item->swab_result != '')
+                                <tr>
+                                    <td class="id">{{ ++$key }}</td>
+                                    <td class="full_name">{{ $item->full_name }}</td>
+                                    
+                                    <td class="swab_result">{{ $item->swab_result }}</td>
+                                    <td class="swab_proof">
+                                            <img src="{{ URL::to('/swabtestImage/'. $item->swab_proof) }}" alt="{{ $item->swab_proof }}" width="50%">
+                                    </td>
+                                </tr>
+                            @endif
+                            @endforeach
+                        </tbody>
+                    </table> -->
+
+                    <table>
+                    @foreach ($data as $key => $item)
+                            @if($item->swab_result != '')
+                                <tr>
+                                    <td>ID:</td>
+                                    <td class="id">{{ ++$key }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Full Name:
+                                    </td>
+                                    <td class="full_name">{{ $item->full_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Swabtest Result:</td>
+                                    <td class="swab_result">{{ $item->swab_result }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Swab Test Proof</td>
+                                    <td class="swab_proof">
+                                            <img src="{{ URL::to('/swabtestImage/'. $item->swab_proof) }}" alt="{{ $item->swab_proof }}" width="50%">
+                                    </td>
+                                </tr>
+                            @endif
+                            @endforeach
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
     <br><hr>
     <footer>
         <div class="footer clearfix mb-0 text-muted">

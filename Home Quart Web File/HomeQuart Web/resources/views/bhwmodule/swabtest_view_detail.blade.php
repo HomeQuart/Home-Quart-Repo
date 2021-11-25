@@ -115,6 +115,83 @@
         </div>
     </div>
     @endif
+
+    @if (Auth::user()->role_name=='Patient')
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Patient  Details</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                    <form class="form form-horizontal" action="{{ route('swabtestupdate') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $data[0]->id }}">
+                            <input type="text" name="user_id" value="{{ $data[0]->user_id }}" readonly>
+                            <div class="form-body">
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <label>Full Name</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Full Name" id="first-name-icon" name="full_name" value="{{ $data[0]->full_name }}"readonly>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group position-relative has-icon-left mb-4">
+                                        <input type="text"name="swab_report" value="Done Swabtest" hidden>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Swab Test Result</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group position-relative has-icon-left mb-4">
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="swab_result" id="swab_result">  
+                                                    @foreach ($result_s as $key => $value)
+                                                    <option value="{{ $value->result_swab }}"> {{ $value->result_swab }}</option>
+                                                    @endforeach  
+                                                </select>
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-bag-check"></i>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>SwabTest Proof</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-groups">
+                                            <div class="position-relative">
+                                            <input name="swab_proof" type="file" id="swab_proof" multiple="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit"
+                                            class="btn btn-primary me-1 mb-1">UPDATE REPORT</button>
+                                        <a  href="{{ route('swabtest') }}"
+                                            class="btn btn-light-secondary me-1 mb-1">CANCEL</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
     <br><hr>
     <footer>
         <div class="footer clearfix mb-0 text-muted">

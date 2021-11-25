@@ -89,10 +89,11 @@ class UserManagementController extends Controller
    public function sendSwabTest(){
         if(Auth::user()->role_name=='Patient')
         {
-            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
-            $roleName = DB::table('role_type_users')->get();
-            $userStatus = DB::table('user_types')->get();
-            return view('patientmodule.swabtest_view_detail',compact('data','roleName','userStatus'));
+            $data = DB::table('users')
+                    ->join('swabtest_report', 'users.user_id', '=', 'swabtest_report.user_id')
+                    ->select('users.*', 'swabtest_report.*')
+                    ->get();
+            return view('patientmodule.swabtest_view_detail',compact('data'));
         }
         else
         {
@@ -324,6 +325,14 @@ class UserManagementController extends Controller
             $userStatus = DB::table('user_types')->get();
             $result_s = DB::table('swabtest_dropdown')->get();
             return view('bhwmodule.swabtest_view_detail',compact('data','roleName','userStatus','result_s'));
+        } 
+        else if(Auth::user()->role_name=='Patient')
+        {
+            $data = DB::table('users')->where('id',$id)->get();
+            $roleName = DB::table('role_type_users')->get();
+            $userStatus = DB::table('user_types')->get();
+            $result_s = DB::table('swabtest_dropdown')->get();
+            return view('bhwmodule.swabtest_view_detail',compact('data','roleName','userStatus','result_s'));
         }
         else
         {
@@ -335,6 +344,15 @@ class UserManagementController extends Controller
     public function viewDoneSwabtestDetail($user_id)
     {  
         if(Auth::user()->role_name=='BHW')
+        {
+            $data = DB::table('users')
+                    ->join('swabtest_report', 'users.user_id', '=', 'swabtest_report.user_id')
+                    ->select('users.*', 'swabtest_report.*')
+                    ->where('users.user_id','=',$user_id)
+                    ->get();
+            return view('bhwmodule.doneswabtest_view_detail',compact('data'));
+        }
+        else if(Auth::user()->role_name=='Patient')
         {
             $data = DB::table('users')
                     ->join('swabtest_report', 'users.user_id', '=', 'swabtest_report.user_id')
