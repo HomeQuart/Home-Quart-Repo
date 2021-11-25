@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\purok;
 use App\Models\Medicine;
 use App\Models\Form;
+use App\Models\send_reports;
 use App\Rules\MatchOldPassword;
 use Carbon\Carbon;
 use Session;
@@ -70,19 +71,73 @@ class UserManagementController extends Controller
     }
 
     //patient sends report
-    public function sendReport()
+    public function sendreport()
     {
 
         if (Auth::user()->role_name=='Patient')
        {
            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
-           $med = DB::table('medicine')->get();
-           return view('patientmodule.sendreport',compact('data', 'med'));
+        //    $med = DB::table('medicine')->get();
+           return view('patientmodule.sendreport',compact('data'));
        }
        else
        {
            return redirect()->route('home');
        }
+    }
+    
+
+    // update daily report
+    public function reportupdate(Request $request)
+    {
+
+        $temp_proof = time().'.'.$request->temp_proof->extension();  
+        $request->temp_proof->move(public_path('reportImage'), $temp_proof);
+
+        $id                 = $request->id;
+        $user_id            = $request->user_id;
+        $full_name          = $request->full_name;
+        $daily_report        = $request->daily_report;
+        $temp_input         = $request->temp_input;
+        $patient_symptoms   = $request->patient_symptoms;
+        $patient_medicine   = $request->patient_medicine;
+
+        
+        $update = [
+
+            'id'                => $id,
+            'full_name'         => $full_name,
+            'user_id'           => $user_id,
+            'daily_report'       => $daily_report,
+        ];
+
+        $report = [
+
+            'user_id'    => $user_id,
+            'temp_input'=> $temp_input,
+            'patient_symptoms' => $patient_symptoms,
+            'patient_medicine' => $patient_medicine,
+        ];
+
+        DB::table('send_reports')->insert($report);
+        User::where('id',$request->id)->update($update);
+        Toastr::success('User updated successfully :)','Success');
+        return redirect()->route('sendreport');
+    }
+
+    //patient view details to reports
+    public function viewreportsDetail($id)
+    {  
+        if(Auth::user()->role_name=='Patient')
+        {
+            $data = DB::table('users')->where('id',$id)->get();
+            $med = DB::table('medicine')->get();
+            return view('patientmodule.reports_view_detail',compact('data','med'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
     }
 
     //patient send swabtest result
@@ -228,6 +283,11 @@ class UserManagementController extends Controller
             'user_id'    => $user_id,
         ];
 
+        $report = [
+            'user_id'    => $user_id,
+        ];
+
+        DB::table('send_reports')->insert($report);
         DB::table('swabtest_report')->insert($swabtest);
         DB::table('user_activity_logs')->insert($activityLog);
         User::where('id',$request->id)->update($update);
@@ -257,7 +317,7 @@ class UserManagementController extends Controller
         if (Auth::user()->role_name=='BHW')
        {
            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
-           $med = DB::table('medicine')->get();
+        //    $med = DB::table('medicine')->get();
            return view('bhwmodule.sendReport',compact('data', 'med'));
        }
        else
@@ -449,7 +509,8 @@ class UserManagementController extends Controller
         {
             $assignM = DB::table('medicine')->get();
             $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->where('id',$id)->get();
-            return view('doctormodule.quarantine_information',compact('data','assignM'));
+            $report = DB::table('send_reports')->get();
+            return view('doctormodule.quarantine_information',compact('data','assignM','report'));
         }
         else
         {

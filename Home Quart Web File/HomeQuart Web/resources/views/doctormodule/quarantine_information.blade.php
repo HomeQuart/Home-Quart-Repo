@@ -58,7 +58,11 @@
                                                                                 <center>
                                                                                     <table>
                                                                                         <tr>    
-                                                                                            <h5>37.4</h5>
+                                                                                        @foreach ($report as $key => $reports)
+                                                                                        @if ($loop->last)
+                                                                                        <td class="temp_input">{{ $reports->temp_input }}</td>
+                                                                                        @endif
+                                                                                        @endforeach
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <p>Last Temperature</p>

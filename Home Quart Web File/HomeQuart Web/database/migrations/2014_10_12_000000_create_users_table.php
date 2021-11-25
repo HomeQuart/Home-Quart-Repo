@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('place_isolation')->nullable();
             $table->string('status')->nullable();
             $table->string('swab_report')->nullable();
+            $table->string('daily_report')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
