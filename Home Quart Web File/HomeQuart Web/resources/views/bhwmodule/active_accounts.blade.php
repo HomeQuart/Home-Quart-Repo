@@ -47,6 +47,7 @@
                         <tbody>
                             @foreach ($data as $key => $item)
                                 <tr>
+                                    
                                     <td class="id">{{ ++$key }}</td>
                                     <td class="full_name">{{ $item->full_name }}</td>
                                     <td class="full_name">

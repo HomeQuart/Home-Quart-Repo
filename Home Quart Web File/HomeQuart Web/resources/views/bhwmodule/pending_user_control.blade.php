@@ -39,6 +39,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Full Name</th>
+                                <th>Assign Purok</th>
                                 <th>Profile</th>
                                 <th>Status</th>
                                 <th class="text-center">Modify</th>
@@ -46,9 +47,11 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $key => $item)
-                                <tr>
+                                <tr> 
+                                    @if($item->assign_purok == Auth::user()->assign_purok)
                                     <td class="id">{{ ++$key }}</td>
                                     <td class="full_name">{{ $item->full_name }}</td>
+                                    <td class="full_name">{{ $item->assign_purok }}</td>
                                     <td class="full_name">
                                         <div class="avatar avatar-xl">
                                             <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
@@ -69,6 +72,7 @@
                                         </a>  
                                         <a href="{{ url('delete_user/'.$item->id) }}" onclick="return confirm('Are you sure to want to delete it?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
