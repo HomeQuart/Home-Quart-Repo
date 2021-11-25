@@ -41,7 +41,7 @@
                                 <th>Full Name</th>
                                 <th>Profile</th>
                                 <th>Swab Report</th>
-                                <th class="text-center">Modify</th>
+                                <th class="text-center">ACTION</th>
                             </tr>    
                         </thead>
                         <tbody>
@@ -54,18 +54,19 @@
                                             <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
                                         </div>
                                     </td>
+                                    
                                     <td class="swab_report">{{ $item->swab_report }}</td>
                                     @if ($item->swab_report != 'Done Swabtest')
                                     <td class="text-center">
                                         <a href="{{ url('swabtest/view/detail/'.$item->id) }}">
-                                            <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
+                                            <span class="badge bg-success"><i class="bi bi-pencil-square" title="Update Swab Test Result"></i></span>
                                         </a>  
                                     </td>
                                     @endif
                                     @if ($item->swab_report == 'Done Swabtest')
                                     <td class="text-center">
                                         <a href="{{ url('doneswabtest/view/detail/'.$item->user_id) }}">
-                                            <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
+                                            <span class="badge bg-primary"><i class="bi bi-eye-fill" title="View Swab Test Result"></i></span>
                                         </a>  
                                     </td>
                                         

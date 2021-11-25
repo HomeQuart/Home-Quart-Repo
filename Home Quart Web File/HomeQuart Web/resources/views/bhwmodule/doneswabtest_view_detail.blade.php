@@ -47,59 +47,64 @@
                 </div>
                 <div class="card-content">
                 <div class="card-body">
-                    
-                    <!-- <table class="table table-striped" id="table1">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Full Name</th>
-                                <th>Swab Result</th>
-                                <th>Swab Proof</th>
-                            </tr>    
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $key => $item)
-                            @if($item->swab_result != '')
-                                <tr>
-                                    <td class="id">{{ ++$key }}</td>
-                                    <td class="full_name">{{ $item->full_name }}</td>
-                                    
-                                    <td class="swab_result">{{ $item->swab_result }}</td>
-                                    <td class="swab_proof">
-                                            <img src="{{ URL::to('/swabtestImage/'. $item->swab_proof) }}" alt="{{ $item->swab_proof }}" width="50%">
-                                    </td>
-                                </tr>
-                            @endif
-                            @endforeach
-                        </tbody>
-                    </table> -->
-
-                    <table>
-                    @foreach ($data as $key => $item)
-                            @if($item->swab_result != '')
-                                <tr>
-                                    <td>ID:</td>
-                                    <td class="id">{{ ++$key }}</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Full Name:
-                                    </td>
-                                    <td class="full_name">{{ $item->full_name }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Swabtest Result:</td>
-                                    <td class="swab_result">{{ $item->swab_result }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Swab Test Proof</td>
-                                    <td class="swab_proof">
-                                            <img src="{{ URL::to('/swabtestImage/'. $item->swab_proof) }}" alt="{{ $item->swab_proof }}" width="50%">
-                                    </td>
-                                </tr>
-                            @endif
-                            @endforeach
-                    </table>
+                    <div class="row">
+                        @foreach ($data as $key => $item)
+                        @if($item->swab_result != '')
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>ID</label>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control"
+                                            placeholder="ID" id="first-name-icon" name="id" value=" {{+$key}}" readonly>
+                                        
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Full Name</label>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control"
+                                            placeholder="Full Name" id="first-name-icon" name="full_name" value="{{ $item->full_name }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Swab Test Result:</label>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control"
+                                            placeholder="Swab Test Result" id="first-name-icon" name="swabtest_result" value="{{ $item->swab_result }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Swab Test Proof:</label>
+                            </div>
+                            <div class="col-md-8">
+                                <img src="{{ URL::to('/swabtestImage/'. $item->swab_proof) }}" alt="{{ $item->swab_proof }}" width="100%">
+                            </div>
+                        </div>
+                        <br>
+                        @endif
+                        @endforeach
+                    </div>
                 </div>
                 </div>
             </div>

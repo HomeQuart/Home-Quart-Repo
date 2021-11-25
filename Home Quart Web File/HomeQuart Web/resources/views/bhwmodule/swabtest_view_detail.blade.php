@@ -95,11 +95,11 @@
                                     <div class="col-md-8">
                                         <div class="form-groups">
                                             <div class="position-relative">
-                                            <input name="swab_proof" type="file" id="swab_proof" multiple="">
+                                            <input name="swab_proof" type="file" id="swab_proof" multiple="" class="form-control">
                                             </div>
                                         </div>
                                     </div>
-
+                                        
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit"
                                             class="btn btn-primary me-1 mb-1">UPDATE REPORT</button>

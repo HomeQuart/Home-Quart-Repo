@@ -192,18 +192,6 @@
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label>Place of Isolation</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-                                                        <div class="position-relative">
-                                                            <input type="text" class="form-control" name="address" value="{{ Auth::user()->place_isolation }}" readonly>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
                                                     <label>Status</label>
                                                 </div>
                                                 <div class="col-md-8">
