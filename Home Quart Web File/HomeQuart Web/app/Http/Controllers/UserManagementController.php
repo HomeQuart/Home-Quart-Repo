@@ -140,6 +140,7 @@ class UserManagementController extends Controller
         {
             $data = DB::table('users')->where('id',$id)->get();
             $roleName = DB::table('role_type_users')->get();
+            $userStatus = DB::table('user_types')->get();
             return view('bhwmodule.pending_view_detail',compact('data','roleName','userStatus'));
         }
         else
@@ -152,6 +153,7 @@ class UserManagementController extends Controller
     public function activate(Request $request)
     {
         $id                 = $request->id;
+        $user_id            = $request->user_id;
         $role_name          = $request->role_name;
         $full_name          = $request->full_name;
         $age                = $request->age;
@@ -194,6 +196,7 @@ class UserManagementController extends Controller
         $update = [
 
             'id'                => $id,
+            'user_id'           => $user_id,
             'role_name'         => $role_name,
             'full_name'         => $full_name,
             'age'               => $age,
@@ -219,6 +222,12 @@ class UserManagementController extends Controller
             'date_time'    => $todayDate,
         ];
 
+        $swabtest = [
+
+            'user_id'    => $user_id,
+        ];
+
+        DB::table('swabtest_report')->insert($swabtest);
         DB::table('user_activity_logs')->insert($activityLog);
         User::where('id',$request->id)->update($update);
         Toastr::success('Patient updated successfully :)','Success');
@@ -286,10 +295,17 @@ class UserManagementController extends Controller
    }
 
    //bhw send swabtest result
-   public function swabtest(){
+   public function swabtest()
+   {
         if (Auth::user()->role_name=='BHW')
         {
-            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','active')->get();
+            // $data = DB::table('users')
+            //         ->leftjoin('swabtest_report', 'users.user_id', '=', 'swabtest_report.user_id')
+            //         ->select('users.*', 'swabtest_report.*')
+            //         ->where('role_name','=','Patient')
+            //         ->where('status','=','Active')
+            //         ->get();
+            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
             return view('bhwmodule.swabtest_control',compact('data'));
         }
         else
@@ -306,12 +322,65 @@ class UserManagementController extends Controller
             $data = DB::table('users')->where('id',$id)->get();
             $roleName = DB::table('role_type_users')->get();
             $userStatus = DB::table('user_types')->get();
-            return view('bhwmodule.swabtest_view_detail',compact('data','roleName','userStatus'));
+            $result_s = DB::table('swabtest_dropdown')->get();
+            return view('bhwmodule.swabtest_view_detail',compact('data','roleName','userStatus','result_s'));
         }
         else
         {
             return redirect()->route('home');
         }
+    }
+
+    //bhw view details to patient done swabtest
+    public function viewDoneSwabtestDetail($user_id)
+    {  
+        if(Auth::user()->role_name=='BHW')
+        {
+            $data = DB::table('users')
+                    ->join('swabtest_report', 'users.user_id', '=', 'swabtest_report.user_id')
+                    ->select('users.*', 'swabtest_report.*')
+                    ->where('users.user_id','=',$user_id)
+                    ->get();
+            return view('bhwmodule.doneswabtest_view_detail',compact('data'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }
+
+    // update swabtest report
+    public function swabtestupdate(Request $request)
+    {
+
+        $swab_proof = time().'.'.$request->swab_proof->extension();  
+        $request->swab_proof->move(public_path('swabtestImage'), $swab_proof);
+
+        $id                 = $request->id;
+        $user_id            = $request->user_id;
+        $full_name          = $request->full_name;
+        $swab_report        = $request->swab_report;
+        $swab_result        = $request->swab_result;
+        
+        $update = [
+
+            'id'                => $id,
+            'full_name'         => $full_name,
+            'user_id'           => $user_id,
+            'swab_report'       => $swab_report,
+        ];
+
+        $swabtest = [
+
+            'user_id'    => $user_id,
+            'swab_result'=> $swab_result,
+            'swab_proof' => $swab_proof,
+        ];
+
+        DB::table('swabtest_report')->insert($swabtest);
+        User::where('id',$request->id)->update($update);
+        Toastr::success('User updated successfully :)','Success');
+        return redirect()->route('swabtest');
     }
 
 

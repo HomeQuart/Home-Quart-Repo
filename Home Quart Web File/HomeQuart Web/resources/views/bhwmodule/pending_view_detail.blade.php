@@ -47,9 +47,10 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                    <form class="form form-horizontal" action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
+                    <form class="form form-horizontal" action="{{ route('activate') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" value="{{ $data[0]->id }}">
+                            <input type="hidden" name="id" value="{{ $data[0]->id }}">  
+                            <input type="hidden" name="user_id" value="{{ $data[0]->user_id }}">      
                             <div class="form-body">
                                 <div class="row">
 

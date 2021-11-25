@@ -96,7 +96,8 @@ Route::get('doneQuarantine', [App\Http\Controllers\UserManagementController::cla
 Route::post('activate', [App\Http\Controllers\UserManagementController::class, 'activate'])->name('activate');
 Route::get('swabtest', [App\Http\Controllers\UserManagementController::class, 'swabtest'])->middleware('auth')->name('swabtest');
 Route::get('swabtest/view/detail/{id}', [App\Http\Controllers\UserManagementController::class, 'viewSwabtestDetail'])->middleware('auth');
-
+Route::post('swabtestupdate', [App\Http\Controllers\UserManagementController::class, 'swabtestupdate'])->name('swabtestupdate');
+Route::get('doneswabtest/view/detail/{user_id}', [App\Http\Controllers\UserManagementController::class, 'viewDoneSwabtestDetail'])->middleware('auth');
 
 //------------------------------doctor -------------------------------------//
 Route::get('patientList', [App\Http\Controllers\UserManagementController::class, 'patientList'])->middleware('auth')->name('patientList');

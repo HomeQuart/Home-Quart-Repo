@@ -168,6 +168,15 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text"name="swab_report" value="Pending Swabtest" hidden>
+                            <div class="form-control-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Your Email">
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>

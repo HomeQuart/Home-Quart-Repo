@@ -87,9 +87,10 @@ class RegisterController extends Controller
         $user->assign_purok = $request->assign_purok;
         $user->place_isolation  = $request->place_isolation;
         $user->status       = $request->status;
+        $user->swab_report  = $request->swab_report;
         $user->email        = $request->email;
         $user->password     = Hash::make($request->password);
- 
+
         $user->save();
 
         Toastr::success('Create new account successfully :)','Success');

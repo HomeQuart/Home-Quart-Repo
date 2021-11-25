@@ -40,7 +40,7 @@
                                 <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Profile</th>
-                                <th>Status</th>
+                                <th>Swab Report</th>
                                 <th class="text-center">Modify</th>
                             </tr>    
                         </thead>
@@ -54,21 +54,23 @@
                                             <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
                                         </div>
                                     </td>
-                                    @if($item->status =='Active')
-                                    <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>
-                                    @endif
-                                    @if($item->status =='Disable')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
-                                    @endif
-                                    @if($item->status =='Done')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
-                                    @endif
+                                    <td class="swab_report">{{ $item->swab_report }}</td>
+                                    @if ($item->swab_report != 'Done Swabtest')
                                     <td class="text-center">
                                         <a href="{{ url('swabtest/view/detail/'.$item->id) }}">
                                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                         </a>  
-                                        <a href="{{ url('delete_user/'.$item->id) }}" onclick="return confirm('Are you sure to want to delete it?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
                                     </td>
+                                    @endif
+                                    @if ($item->swab_report == 'Done Swabtest')
+                                    <td class="text-center">
+                                        <a href="{{ url('doneswabtest/view/detail/'.$item->user_id) }}">
+                                            <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
+                                        </a>  
+                                    </td>
+                                        
+                                    @endif
+
                                 </tr>
                             @endforeach
                         </tbody>
