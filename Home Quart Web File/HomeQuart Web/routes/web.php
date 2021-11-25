@@ -83,6 +83,7 @@ Route::get('sendReport', [App\Http\Controllers\UserManagementController::class, 
 Route::get('contactHotlines', [App\Http\Controllers\UserManagementController::class, 'contactHotlines'])->middleware('auth')->name('contactHotlines');
 Route::get('temperatureProgress', [App\Http\Controllers\UserManagementController::class, 'temperatureProgress'])->middleware('auth')->name('temperatureProgress');
 Route::get('consultations', [App\Http\Controllers\UserManagementController::class, 'consultations'])->middleware('auth')->name('consultations');
+Route::get('sendSwabTest', [App\Http\Controllers\UserManagementController::class, 'sendSwabTest'])->middleware('auth')->name('sendSwabTest');
 
 
 //-----------------------------brgy healthworker-------------------------------//
@@ -93,7 +94,10 @@ Route::get('sendReport/Account/{id}', [App\Http\Controllers\UserManagementContro
 Route::get('underQuarantine', [App\Http\Controllers\UserManagementController::class, 'underQuarantine'])->middleware('auth')->name('underQuarantine');
 Route::get('doneQuarantine', [App\Http\Controllers\UserManagementController::class, 'doneQuarantine'])->middleware('auth')->name('doneQuarantine');
 Route::post('activate', [App\Http\Controllers\UserManagementController::class, 'activate'])->name('activate');
-
+Route::get('swabtest', [App\Http\Controllers\UserManagementController::class, 'swabtest'])->middleware('auth')->name('swabtest');
+Route::get('swabtest/view/detail/{id}', [App\Http\Controllers\UserManagementController::class, 'viewSwabtestDetail'])->middleware('auth');
+Route::post('swabtestupdate', [App\Http\Controllers\UserManagementController::class, 'swabtestupdate'])->name('swabtestupdate');
+Route::get('doneswabtest/view/detail/{user_id}', [App\Http\Controllers\UserManagementController::class, 'viewDoneSwabtestDetail'])->middleware('auth');
 
 //------------------------------doctor -------------------------------------//
 Route::get('patientList', [App\Http\Controllers\UserManagementController::class, 'patientList'])->middleware('auth')->name('patientList');

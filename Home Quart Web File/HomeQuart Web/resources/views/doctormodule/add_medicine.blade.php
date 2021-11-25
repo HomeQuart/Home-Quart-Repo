@@ -37,11 +37,9 @@
                                 @csrf
 
 
-                                <div class="form-group position-relative has-icon-left mb-4">
+                                <div class="form-group position-relative mb-4">
                                     <input type="text" class="form-control form-control-lg @error('medicine_name') is-invalid @enderror" name="medicine_name" value="{{ old('medicine_name') }}" placeholder="Enter Medicine Name">
-                                    <div class="form-control-icon">
-                                        <i class="bi bi-person"></i>
-                                    </div>
+                                    
                                     @error('medicine_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -50,7 +48,7 @@
                                 </div>
 
 
-                                <div class="form-group position-relative has-icon-left mb-4">
+                                <div class="form-group position-relative  mb-4">
                                     <select name="symptoms_type" id="symptoms_type" class="form-control">
                                         <option value="" disabled selected hidden ><--select symptoms--></option>
                                         <option value="cough">COUGH</option>
@@ -58,9 +56,6 @@
                                         <option value="runny nose">RUNNY NOSE</option>
                                         <option value="shortness of breath">SHORTNESS OF BREATH</option>
                                     </select>
-                                <div class="form-control-icon">
-                                        <i class="bi bi-person"></i>
-                                    </div>
                                     @error('symptoms_type')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

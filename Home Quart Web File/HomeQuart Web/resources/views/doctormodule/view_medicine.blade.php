@@ -53,37 +53,35 @@
                             <div class="form-body">
                                 <div class="row">
 
-                                    <div class="col-md-4">
-                                        <label>Medicine Name</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group has-icon-left">
-                                            <div class="position-relative">
-                                                <input type="text" class="form-control"
-                                                    placeholder="Medicine Name" id="first-name-icon" name="medicine_name" value="{{ $data[0]->medicine_name }}">
-                                                <div class="form-control-icon">
-                                                    <i class="bi bi-person"></i>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Medicine Name</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Medicine Name" id="first-name-icon" name="medicine_name" value="{{ $data[0]->medicine_name }}">
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-4">
-                                        <label>Symptoms Types</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group has-icon-left">
-                                            <div class="position-relative">
-                                                <input type="text" class="form-control"
-                                                    placeholder="select symptoms" name="symptoms_type" value="{{ $data[0]->symptoms_type }}" readonly>
-                                                <div class="form-control-icon">
-                                                    <i class="bi bi-phone"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Symptoms Types</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="select symptoms" name="symptoms_type" value="{{ $data[0]->symptoms_type }}" readonly>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit"
                                             class="btn btn-primary me-1 mb-1">Update</button>

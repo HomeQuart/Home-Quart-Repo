@@ -122,7 +122,7 @@
                         <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                     <select class="form-select" name="assign_purok" id="assign_purok">  
-                                            <option hidden selected >Purok</option>
+                                            <option disabled hidden selected >Purok</option>
                                             @foreach ($assignP as $key => $value)
                                                 <option value="{{ $value->purok_name }}"> {{ $value->purok_name }}</option>
                                             @endforeach  
@@ -166,6 +166,15 @@
                                 </span>
                             @enderror
                         </div>
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text"name="swab_report" value="Pending Swabtest" hidden>
+                            <div class="form-control-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                        </div>
+
+                        
 
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Your Email">

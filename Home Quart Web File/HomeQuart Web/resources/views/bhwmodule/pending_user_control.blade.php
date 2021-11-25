@@ -63,9 +63,6 @@
                                     @if($item->status =='Disable')
                                     <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
                                     @endif
-                                    @if($item->status =='Done')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
-                                    @endif
                                     <td class="text-center">
                                         <a href="{{ url('pending/view/detail/'.$item->id) }}">
                                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
@@ -82,9 +79,13 @@
         </section>
     </div>
     <footer>
-        <div class="footer clearfix mb-0 text-muted ">
+        <div class="footer clearfix mb-0 text-muted">
             <div class="float-start">
                 <p>2021 &copy; Home Quart</p>
+            </div>
+            <div class="float-end">
+                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                >Team Fix-it</a></p>
             </div>
         </div>
     </footer>

@@ -41,6 +41,7 @@
                                 <th>Full Name</th>
                                 <th>Profile</th>
                                 <th>Status</th>
+                                <th>Email</th>
                                 <th>Action</th>
                             </tr>    
                         </thead>
@@ -49,7 +50,7 @@
                                 <tr>
                                     <td class="id">{{ ++$key }}</td>
                                     <td class="full_name">{{ $item->full_name }}</td>
-                                    <td class="full_name">
+                                    <td class="profile">
                                         <div class="avatar avatar-xl">
                                             <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
                                         </div>
@@ -63,10 +64,10 @@
                                     @if($item->status =='Done')
                                     <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
                                     @endif
-                                    <td>
-                                        <a href="#">
-                                            <span class="badge bg-success"><i class="bi bi-send"></i>SEND CERTIFICATE</span>
-                                        </a>|  
+                                    <td class="email">
+                                        <a href="https://mail.google.com/mail/u/0/?fs=1&to={{ $item->email }}&tf=cm">
+                                    {{ $item->email }}</a></td>
+                                    <td>  
                                         <a href="{{ url('delete_user/'.$item->id) }}" onclick="return confirm('Are you sure to want to delete this patient?')"><span class="badge bg-primary"><i class="bi bi-trash"></i>DELETE</span></a>
                                      </td>
                                 </tr>

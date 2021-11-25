@@ -39,6 +39,9 @@
             </div>
         </div> 
 
+         {{-- message --}}
+         {!! Toastr::message() !!}
+
         @if (Auth::user()->role_name=='Doctor')
         <div class="col-12">
             <div class="card">
@@ -252,13 +255,17 @@
         </div>
     </div>
     @endif
-    <br><hr>
+    <br>
     <footer>
-        <div class="footer clearfix mb-0 text-muted ">
-            <div class="float-start">
-                <p>2021 &copy; Home Quart</p>
+        <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start">
+                    <p>2021 &copy; Home Quart</p>
+                </div>
+                <div class="float-end">
+                    <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                    >Team Fix-it</a></p>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 </div>
 @endsection
