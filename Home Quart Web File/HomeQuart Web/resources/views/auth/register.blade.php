@@ -6,6 +6,7 @@
             <div class="col-lg-6 col-12">
                 <div id="auth-left">
                     <div>
+                    <a><img src="assets/images/logo/logo.png" alt="Logo" width="100%" heigh="50%"></a>
                     </div>
                     <br><br>
                     <center>

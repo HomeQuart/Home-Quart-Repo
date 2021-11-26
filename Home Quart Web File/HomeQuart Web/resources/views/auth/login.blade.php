@@ -5,13 +5,12 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div>
+                    <a><img src="assets/images/logo/logo.png" alt="Logo" width="100%" heigh="50%"></a>
                     </div>
                     {{-- message --}}
                     {!! Toastr::message() !!}
                     <br>
-                    <center><h5>A Web Application that Monitors Home Quarantined Patient</h5></center>
-                    <br>
-                    <center><h1>LOG IN</h1></center>
+                    <center><h3>LOG IN</h3></center>
                     <br>
                     @if(session()->has('error'))
                         <div class="text-danger text-center text-bold">
