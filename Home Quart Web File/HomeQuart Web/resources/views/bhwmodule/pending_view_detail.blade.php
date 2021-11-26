@@ -158,7 +158,17 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="col-md-4">
+                                        <label>Assign Purok</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Assign Purok" id="first-name-icon" name="assign_purok" value="{{ $data[0]->assign_purok }}"readonly>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-4">
                                         <label>Place of Isolation</label>
                                     </div>

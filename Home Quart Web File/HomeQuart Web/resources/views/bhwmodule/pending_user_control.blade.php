@@ -47,8 +47,9 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $key => $item)
+                                @if($item->assign_purok == Auth::user()->assign_purok)
                                 <tr> 
-                                    @if($item->assign_purok == Auth::user()->assign_purok)
+                                    
                                     <td class="id">{{ ++$key }}</td>
                                     <td class="full_name">{{ $item->full_name }}</td>
                                     <td class="full_name">{{ $item->assign_purok }}</td>
@@ -69,8 +70,9 @@
                                         </a>  
                                         <a href="{{ url('delete_user/'.$item->id) }}" onclick="return confirm('Are you sure to want to delete it?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
                                     </td>
-                                    @endif
+                                    
                                 </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

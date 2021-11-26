@@ -40,11 +40,16 @@
                                 <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Profile</th>
+                                <th>Purok</th>
+                                <th>Address</th>
+                                <th>Gender</th>
+                                <th>Contact No.</th>
                                 <th>Status</th>
                             </tr>    
                         </thead>
                         <tbody>
                             @foreach ($data as $key => $item)
+                            @if($item->assign_purok == Auth::user()->assign_purok)
                                 <tr>
                                     <td class="id">{{ ++$key }}</td>
                                     <td class="full_name">{{ $item->full_name }}</td>
@@ -53,6 +58,10 @@
                                             <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
                                         </div>
                                     </td>
+                                    <td class="full_name">{{ $item->assign_purok }}</td>
+                                    <td class="full_name">{{ $item->address }}</td>
+                                    <td class="full_name">{{ $item->gender }}</td>
+                                    <td class="full_name">{{ $item->contactno }}</td>
                                     @if($item->status =='Active')
                                     <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>
                                     @endif
@@ -63,6 +72,7 @@
                                     <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
                                     @endif
                                 </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>

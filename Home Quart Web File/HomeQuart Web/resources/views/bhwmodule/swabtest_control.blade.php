@@ -46,6 +46,7 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $key => $item)
+                                @if($item->assign_purok == Auth::user()->assign_purok)
                                 <tr>
                                     <td class="id">{{ ++$key }}</td>
                                     <td class="full_name">{{ $item->full_name }}</td>
@@ -69,10 +70,9 @@
                                             <span class="badge bg-primary"><i class="bi bi-eye-fill" title="View Swab Test Result"></i></span>
                                         </a>  
                                     </td>
-                                        
                                     @endif
-
                                 </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

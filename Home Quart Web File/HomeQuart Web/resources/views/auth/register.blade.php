@@ -169,9 +169,7 @@
 
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text"name="swab_report" value="Pending Swabtest" hidden>
-                            <div class="form-control-icon">
-                                <i class="bi bi-phone"></i>
-                            </div>
+                            
                         </div>
 
                         
