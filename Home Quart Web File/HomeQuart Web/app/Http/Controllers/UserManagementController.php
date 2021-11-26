@@ -96,9 +96,50 @@ class UserManagementController extends Controller
            return redirect()->route('home');
        }
     }
-    
+    // patient update daily report
+    public function patientreportupdate(Request $request)
+    {
 
-    // update daily report
+        $temp_proof = time().'.'.$request->temp_proof->extension();  
+        $request->temp_proof->move(public_path('reportImage'), $temp_proof);
+
+        $id                 = $request->id;
+        $user_id            = $request->user_id;
+        $full_name          = $request->full_name;
+        $daily_report        = $request->daily_report;
+        $temp_input         = $request->temp_input;
+        $patient_symptoms   = $request->patient_symptoms;
+        $patient_medicine   = $request->patient_medicine;
+
+        $dt       = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+
+        
+        $update = [
+
+            'id'                => $id,
+            'full_name'         => $full_name,
+            'user_id'           => $user_id,
+            'daily_report'       => $daily_report,
+        ];
+
+        $report = [
+
+            'user_id'    => $user_id,
+            'temp_proof'    => $temp_proof,
+            'temp_input'=> $temp_input,
+            'patient_symptoms' => $patient_symptoms,
+            'patient_medicine' => $patient_medicine,
+            'date_time'    => $todayDate,
+        ];
+
+        DB::table('send_reports')->insert($report);
+        User::where('id',$request->id)->update($update);
+        Toastr::success('Successfully send a report:)','Success');
+        return redirect()->route('patientReportList');
+    }
+
+    // bhw update daily report
     public function reportupdate(Request $request)
     {
 
@@ -174,10 +215,26 @@ class UserManagementController extends Controller
     //patient see contact hotlines
     public function contactHotlines()
     {
-
         return view('patientmodule.contacthotline');
     }
 
+    //patient view report list
+   public function patientReportList()
+   {
+       if(Auth::user()->role_name=='Patient')
+       {
+        $data = DB::table('send_reports')
+        ->join('users', 'users.user_id', '=', 'send_reports.user_id')
+        ->select('users.*', 'send_reports.*')
+        ->orderBy('send_reports.date_time', 'desc')
+        ->get();
+           return view('patientmodule.report_list', compact('data'));
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
     //patient see temperature progress
     public function temperatureProgress()
     {
@@ -188,8 +245,8 @@ class UserManagementController extends Controller
     //patient see consultations
     public function consultations()
     {
-
-        return view('patientmodule.consultations');
+        $data = DB::table('consult')->get();
+        return view('patientmodule.consultations', compact('data'));
     }
 
     //bhw pending accounts
@@ -544,9 +601,13 @@ class UserManagementController extends Controller
                         ->select('users.*', 'swabtest_report.*')
                         ->where('users.id',$id)
                         ->get();
+            $dataconsult = DB::table('users')
+                        ->join('consult', 'users.user_id', '=', 'consult.user_id')
+                        ->select('users.*', 'consult.*')
+                        ->where('users.id',$id)
+                        ->get();
             $assignM = DB::table('medicine')->get();
-            $med = DB::table('medicine')->get();
-            return view('doctormodule.quarantine_information',compact('data','dataswab','assignM','med'));
+            return view('doctormodule.quarantine_information',compact('data','dataswab','dataconsult','assignM'));
         }
         else
         {
@@ -669,6 +730,15 @@ class UserManagementController extends Controller
    public function viewDetailReport($id)
    {  
        if(Auth::user()->role_name=='Doctor')
+       {
+            $data = DB::table('send_reports')
+                    ->join('users', 'users.user_id', '=', 'send_reports.user_id')
+                    ->select('users.*', 'send_reports.*')
+                    ->where('send_reports.id',$id)
+                    ->get();
+           return view('doctormodule.report_view_details',compact('data'));
+       }
+       else if(Auth::user()->role_name=='Patient')
        {
             $data = DB::table('send_reports')
                     ->join('users', 'users.user_id', '=', 'send_reports.user_id')

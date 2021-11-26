@@ -163,21 +163,6 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <label>Contact Person</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group has-icon-left">
-                                            <div class="position-relative">
-                                                <input type="number" class="form-control"
-                                                    placeholder="Contact Person" name="contact_per" value="{{ $data[0]->contact_per }}" readonly>
-                                                <div class="form-control-icon">
-                                                    <i class="bi bi-phone"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
                                         <label>Purok</label>
                                     </div>
                                     <div class="col-md-8">
@@ -195,20 +180,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <label>Place of Isolation</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group has-icon-left">
-                                            <div class="position-relative">
-                                                <input type="text" class="form-control"
-                                                    placeholder="Place of Isolation" id="first-name-icon" name="place_isolation" value="{{ $data[0]->place_isolation }}"readonly>
-                                                <div class="form-control-icon">
-                                                    <i class="bi bi-person"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="col-md-4">
                                         <label>Status</label>

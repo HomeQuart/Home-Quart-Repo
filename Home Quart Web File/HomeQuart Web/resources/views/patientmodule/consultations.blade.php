@@ -10,189 +10,109 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            <div class="col-12 col-lg-3" style="float: right">  
-                <div class="card" data-bs-toggle="modal" data-bs-target="#default">
-                    <div class="card-body py-4 px-5">
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-xl">
-                                <img src="{{ URL::to('/images/'. Auth::user()->p_picture) }}" alt="{{ Auth::user()->p_picture }}">
-                            </div>
-                            <div class="ms-3 name">
-                                <h5 class="font-bold">{{ Auth::user()->full_name }}</h5>
-                                <h6 class="text-muted mb-0">{{ Auth::user()->email }}</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br><br><br><br><br><br><h1>Consultations</h1><hr>
-
-            {{-- insert here the consultations made by the doctor --}}
-            <section class="row">
-                <div class="col-12">
+            <div class="page-heading">
+                <div class="page-title">
                     <div class="row">
-                        <div class="col-6 col-lg-4 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <table>
-                                                <th>Medicines</th>
-                                                <tr>
-                                                    <td>
-                                                        <h6>Paracetamol 2x  (day and night)</h6>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h6>Biogesic 3x  a day before eating</h6>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Consultations From The Doctor</h3>
+                            <p class="text-subtitle text-muted">Recent Consultations From The Doctor</p>
                         </div>
-                        <div class="col-6 col-lg-4 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <table >
-                                                <th>Reports needed per day</th>
-                                                <tr style="text-align: left">
-                                                    <td>
-                                                        <h6>3x per day (Morning, Afternoon, Evening)</h6>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-4 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <table style="text-align: left">
-                                                <th>Doctor's Remarks:</th>
-                                                <tr>
-                                                    <td>
-                                                        <h6>Stay in the isolation place until the end of your Quarantine Period.</h6>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Consultations</li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                 </div>
-            </section>
-                
-            {{-- user profile modal --}}
-            <div class="card-body">
-                <!--Basic Modal -->
-                <div class="modal fade text-left" id="default" tabindex="-1" aria-labelledby="myModalLabel1" style="display: none;" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="myModalLabel1">User Profile</h5>
-                                <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
-                                    X
-                                </button>
+                {{-- message --}}
+                {!! Toastr::message() !!}
+                <section class="section">
+                    <div class="card">
+                        <div class="card-header">
+                           Consultations Details
+                        </div>
+                        <section class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="card-content">
+                                        <div class="card-body"> 
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Recommended Medicine:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <div class="position-relative">
+                                                        @foreach ($data as $key => $items)
+                                                        @if( $items->user_id == Auth::user()->user_id)
+                                                            @if ($loop->last)
+                                                                <h5>{{ $items->recommend_medicine }}</h5>
+                                                            @endif
+                                                        @endif
+                                                        @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Doctor Remarks:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <div class="position-relative">
+                                                        @foreach ($data as $key => $items)
+                                                        @if( $items->user_id == Auth::user()->user_id)
+                                                            @if ($loop->last)
+                                                                <h5>{{ $items->remarks }}</h5>
+                                                            @endif
+                                                        @endif
+                                                        @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Quarantine Period From:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <div class="position-relative">
+                                                        @foreach ($data as $key => $items)
+                                                        @if( $items->user_id == Auth::user()->user_id)
+                                                            @if ($loop->last)
+                                                                <h5>{{ $items->qperiod_start }}</h5>
+                                                            @endif
+                                                        @endif
+                                                        @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Quarantine Period To:</label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <div class="position-relative">
+                                                        @foreach ($data as $key => $items)
+                                                        @if( $items->user_id == Auth::user()->user_id)
+                                                            @if ($loop->last)
+                                                                <h5>{{ $items->qperiod_end }}</h5>
+                                                            @endif
+                                                        @endif
+                                                        @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>Full Name</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group has-icon-left">
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control" name="full_name" value="{{ Auth::user()->full_name }}" readonly>
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-person"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Email Address</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group has-icon-left">
-                                                <div class="position-relative">
-                                                    <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" readonly>
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-envelope"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Mobile Number</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group has-icon-left">
-                                                <div class="position-relative">
-                                                    <input type="number" class="form-control" value="{{ Auth::user()->contactno }}" readonly>
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-phone"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-            
-                                        <div class="col-md-4">
-                                            <label>Status</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group has-icon-left">
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control" value="{{ Auth::user()->status }}" readonly>
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-bag-check"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                        </section>
+            </div>
 
-                                        <div class="col-md-4">
-                                            <label>Role Name</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group has-icon-left">
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control" value="{{ Auth::user()->role_name }}" readonly>
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-exclude"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                                    <i class="bx bx-check d-block d-sm-none"></i>
-                                    <span class="d-none d-sm-block">Close</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {{-- end user profile modal --}}
-            {{-- message --}}
-            {!! Toastr::message() !!}
-        
-            <br><br><br><br><br><br><br><br><br><br><br><br><hr>
+            
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">

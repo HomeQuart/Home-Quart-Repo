@@ -85,7 +85,8 @@ Route::get('contactHotlines', [App\Http\Controllers\UserManagementController::cl
 Route::get('temperatureProgress', [App\Http\Controllers\UserManagementController::class, 'temperatureProgress'])->middleware('auth')->name('temperatureProgress');
 Route::get('consultations', [App\Http\Controllers\UserManagementController::class, 'consultations'])->middleware('auth')->name('consultations');
 Route::get('sendSwabTest', [App\Http\Controllers\UserManagementController::class, 'sendSwabTest'])->middleware('auth')->name('sendSwabTest');
-Route::post('reportupdate', [App\Http\Controllers\UserManagementController::class, 'reportupdate'])->name('reportupdate');
+Route::post('patientreportupdate', [App\Http\Controllers\UserManagementController::class, 'patientreportupdate'])->name('patientreportupdate');
+Route::get('patientReportList', [App\Http\Controllers\UserManagementController::class, 'patientReportList'])->middleware('auth')->name('patientReportList');
 
 
 //-----------------------------brgy healthworker-------------------------------//
@@ -100,6 +101,7 @@ Route::get('swabtest', [App\Http\Controllers\UserManagementController::class, 's
 Route::get('swabtest/view/detail/{id}', [App\Http\Controllers\UserManagementController::class, 'viewSwabtestDetail'])->middleware('auth');
 Route::post('swabtestupdate', [App\Http\Controllers\UserManagementController::class, 'swabtestupdate'])->name('swabtestupdate');
 Route::get('doneswabtest/view/detail/{user_id}', [App\Http\Controllers\UserManagementController::class, 'viewDoneSwabtestDetail'])->middleware('auth');
+Route::post('reportupdate', [App\Http\Controllers\UserManagementController::class, 'reportupdate'])->name('reportupdate');
 
 //------------------------------doctor -------------------------------------//
 Route::get('patientList', [App\Http\Controllers\UserManagementController::class, 'patientList'])->middleware('auth')->name('patientList');

@@ -39,7 +39,7 @@
                                 <div class="row">
                                         <div class="card-content">
                                             <div class="card-body">
-                                            <form class="form form-horizontal" action="{{ route('reportupdate') }}" method="POST" enctype="multipart/form-data">
+                                            <form class="form form-horizontal" action="{{ route('patientreportupdate') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $data[0]->id }}">
                                                     <input type="text" name="user_id" value="{{ $data[0]->user_id }}" readonly>
@@ -63,22 +63,22 @@
                                                                 <input type="text"name="daily_report" value="Done report" hidden>
                                                             </div>
 
-                                                            <div class="col-md-2">
-                                                                <label> Attach Image</label>
+                                                            <div class="col-md-4">
+                                                                <label> Selfie w/ Temperature in Thermometer</label>
                                                             </div>
-                                                            <div class="col-md-10">
+                                                            <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
-                                                                        <input name="temp_proof" type="file" id="temp_proof" multiple="">
+                                                                        <input name="temp_proof" type="file" id="temp_proof" multiple="" class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-4">
                                                                 <label> Input Temperature</label>
                                                             </div>
-                                                            <div class="col-md-10">
+                                                            <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
                                                                     <input type="text" class="form-control"
@@ -88,10 +88,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-4">
                                                                 <label> Specify Symptoms</label>
                                                             </div>
-                                                            <div class="col-md-10">
+                                                            <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
                                                                     <input type="text" class="form-control"
@@ -101,10 +101,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-4">
                                                                 <label>Medicine Intaked</label>
                                                             </div>
-                                                            <div class="col-md-10">
+                                                            <div class="col-md-8">
                                                                 <div class="form-group position-relative mb-4">
                                                                     <fieldset class="form-group">
                                                                         <select class="form-select" name="patient_medicine" id="patient_medicine">  

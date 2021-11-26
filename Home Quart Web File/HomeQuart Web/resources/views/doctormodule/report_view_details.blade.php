@@ -117,8 +117,89 @@
                 </div>
             </div>
         </div>
-    </div>
-    @endif
+        </div>
+        @endif
+
+        @if (Auth::user()->role_name=='Patient')
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Patient Daily Report Details</h4>
+                </div>
+                <div class="card-content">
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Symptoms</label>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control"
+                                            placeholder="Symptoms" id="first-name-icon" name="patient_symptoms" value="{{ $data[0]->patient_symptoms }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Temperature</label>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control"
+                                            placeholder="Temperature" id="first-name-icon" name="temp_input" value="{{ $data[0]->temp_input }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Medicine Intaked</label>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control"
+                                            placeholder="Medicine intaked" id="first-name-icon" name="patient_medicine" value="{{ $data[0]->patient_medicine }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Date Reported</label>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control"
+                                            placeholder="date" id="first-name-icon" name="date_time" value="{{ $data[0]->date_time }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Selfie w/ Temperature in Thermometer</label>
+                            </div>
+                            <div class="col-md-8">
+                            <img src="{{ URL::to('/reportImage/'. $data[0]->temp_proof) }}" alt="{{ $data[0]->temp_proof }}" width="100%">
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        @endif
 
     <br>
     <footer>

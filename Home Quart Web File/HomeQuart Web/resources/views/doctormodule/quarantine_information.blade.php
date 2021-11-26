@@ -31,23 +31,20 @@
                 {!! Toastr::message() !!}
                 <section class="section">
                     <div class="card">
-                        <div class="card-header">
-                           Patient Quarantine Information Details
-                        </div>
                         <section class="row">
                             <div class="col-12">
                                 <div class="row">
                                         <div class="card-content">
                                             <div class="card-body">
-                                                <div class="row-col-md-12">
-                                                            Patient Name:<input type="text" class="form-control" placeholder="Full Name" id="first-name-icon" name="full_name" value="{{ $data[0]->full_name }}"readonly> <br>
-                                                            
-                                                    </div>
+                                                <center>
+                                                <h5>Patient Quarantine Information Details</h5>
+                                                </center>
                                                     <hr>
+                                                <div class="row-col-md-12">
                                                     <section class="row">
                                                         <div class="col-12">
                                                             <div class="row">
-                                                                <div class="col-6 col-lg-3 col-md-6">
+                                                                <div class="col-6 col-lg-2 col-md-6">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
@@ -92,17 +89,43 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 col-lg-3 col-md-6">
+                                                                <div class="col-6 col-lg-2 col-md-6">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
                                                                                     <center>
                                                                                         <table >
                                                                                             <tr>
-                                                                                                <h5>Positive-Fever</h5>
+                                                                                            @foreach ($dataswab as $key => $items)
+                                                                                            @if ($loop->last)
+                                                                                            <h5>{{ $items->swab_result }}</h5>
+                                                                                            @endif
+                                                                                             @endforeach
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <p>Status and Symptoms</p>
+                                                                                                <p>Status</p>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </center>   
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6 col-lg-2 col-md-6">
+                                                                    <div class="card">
+                                                                        <div class="card-body px-3 py-4-5">
+                                                                            <div class="row">
+                                                                                    <center>
+                                                                                        <table >
+                                                                                            <tr>
+                                                                                            @foreach ($data as $key => $items)
+                                                                                            @if ($loop->last)
+                                                                                            <h5>{{ $items->patient_symptoms }}</h5>
+                                                                                            @endif
+                                                                                             @endforeach
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <p>Symptoms</p>
                                                                                             </tr>
                                                                                         </table>
                                                                                     </center>   
@@ -117,7 +140,11 @@
                                                                                     <center>
                                                                                         <table>
                                                                                             <tr>
-                                                                                                <h5>12d 14h 43m</h5>
+                                                                                            @foreach ($dataconsult as $key => $items)
+                                                                                            @if ($loop->last)
+                                                                                            <h5>Until {{ $items->qperiod_end }}</h5>
+                                                                                            @endif
+                                                                                             @endforeach
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <p>Remaining Time Period</p>
@@ -150,18 +177,18 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td>
-                                                                                                Email:
+                                                                                                Place of Isolation:
                                                                                             </td>
                                                                                             <td>
-                                                                                                <input type="text"  name="email" value="{{ $data[0]->email }}"readonly> <br>
+                                                                                                <input type="text"  name="place_isolation" value="{{ $data[0]->place_isolation }}"readonly> <br>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td>
-                                                                                                Contact:
+                                                                                                Assign Purok:
                                                                                             </td>
                                                                                             <td>
-                                                                                                <input type="text"  name="phone" value="{{ $data[0]->contactno }}"readonly> <br>
+                                                                                                <input type="text"  name="assign_purok" value="{{ $data[0]->assign_purok }}"readonly> <br>
                                                                                             </td>
                                                                                         </tr>
                                                                                     </table>
@@ -169,7 +196,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 col-lg-4 col-md-6">
+                                                                <div class="col-6 col-lg-3 col-md-6">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
@@ -181,7 +208,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 col-lg-4 col-md-6">
+                                                                <div class="col-6 col-lg-5 col-md-6">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
@@ -189,16 +216,32 @@
                                                                                     <table>
                                                                                         <th>Summary</th>
                                                                                         <tr>
-                                                                                            <td>Reports needed per day: 3</td>
+                                                                                        @foreach ($dataconsult as $key => $items)
+                                                                                            @if ($loop->last)
+                                                                                            <td>Medicine Intake: {{ $items->recommend_medicine }}</td>
+                                                                                            @endif
+                                                                                             @endforeach
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <td>Medicine Intake: Paracetamol</td>
+                                                                                        @foreach ($dataswab as $key => $items)
+                                                                                            @if ($loop->last)
+                                                                                            <td>Swab Result: {{ $items->swab_result }}</td>
+                                                                                            @endif
+                                                                                             @endforeach
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <td>Swabtest Result: Postive</td>
+                                                                                        @foreach ($data as $key => $items)
+                                                                                            @if ($loop->last)
+                                                                                            <td>Swab Status: {{ $items->swab_report }}</td>
+                                                                                            @endif
+                                                                                             @endforeach
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <td>Undergone Swabtes: YES</td>
+                                                                                        @foreach ($dataconsult as $key => $items)
+                                                                                            @if ($loop->last)
+                                                                                            <td>Swab Status: {{ $items->remarks }}</td>
+                                                                                            @endif
+                                                                                             @endforeach
                                                                                         </tr>
                                                                                     </table>
                                                                                 </div>
@@ -212,10 +255,12 @@
                                                         <form class="form form-horizontal" action="{{ route('consultupdate') }}" method="POST" enctype="multipart/form-data">
                                                             @csrf
                                                             <input type="hidden" name="id" value="{{ $data[0]->id }}">
-                                                            <input type="text" name="user_id" value="{{ $data[0]->user_id }}" readonly>
+                                                            <input type="hidden" name="user_id" value="{{ $data[0]->user_id }}" readonly>
                                                             <div class="form-body">
                                                                 <div class="row">
-                                                                    <h3>Consult This Patient</h3>
+                                                                    <center>
+                                                                    <h5>Consult This Patient</h5>
+                                                                    </center>
                                                                     <div class="col-md-4">
                                                                         <label>Name:</label>
                                                                     </div>

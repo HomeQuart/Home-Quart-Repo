@@ -177,6 +177,9 @@
                             <span>Data</span>
                         </a>
                         <ul class="submenu">
+                        <li class="submenu-item active">
+                                <a href="{{ route('patientReportList') }}">Report List</a>
+                            </li>
                             <li class="submenu-item active">
                                 <a href="{{ route('consultations') }}">Consultations</a>
                             </li>
