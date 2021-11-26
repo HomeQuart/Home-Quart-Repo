@@ -653,6 +653,20 @@ class UserManagementController extends Controller
         }
     }
 
+   //doctor view detail report
+   public function viewDetailReport($id)
+   {  
+       if(Auth::user()->role_name=='Doctor')
+       {
+           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->where('id',$id)->get();
+           return view('doctormodule.report_view_details',compact('data'));
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
+
     // view detail 
     public function viewDetail($id)
     {  

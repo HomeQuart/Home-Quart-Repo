@@ -114,6 +114,7 @@ Route::get('consultPatient/{id}', [App\Http\Controllers\UserManagementController
 Route::get('medicine/view/detail/{id}', [App\Http\Controllers\UserManagementController::class, 'medicineviewDetail'])->middleware('auth');
 Route::post('medicineupdate', [App\Http\Controllers\UserManagementController::class, 'medicineupdate'])->name('medicineupdate');
 Route::get('delete_medicine/{id}', [App\Http\Controllers\UserManagementController::class, 'medicinedelete'])->middleware('auth');
+Route::get('viewDetailReport/{id}', [App\Http\Controllers\UserManagementController::class, 'viewDetailReport'])->middleware('auth');
 
 Route::get('userManagement2', [App\Http\Controllers\UserManagementController::class, 'index2'])->middleware('auth')->name('userManagement2');
 Route::get('user/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewUser'])->middleware('auth')->name('user/add/new');
