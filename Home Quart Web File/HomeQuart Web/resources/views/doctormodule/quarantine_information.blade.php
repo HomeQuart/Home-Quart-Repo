@@ -39,12 +39,8 @@
                                 <div class="row">
                                         <div class="card-content">
                                             <div class="card-body">
-                                                <form class="form form-horizontal" action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
-                                                    <div class="row-col-md-12">
+                                                <div class="row-col-md-12">
                                                             Patient Name:<input type="text" class="form-control" placeholder="Full Name" id="first-name-icon" name="full_name" value="{{ $data[0]->full_name }}"readonly> <br>
-                                                            <div class="card" data-bs-toggle="modal" data-bs-target="#consult">
-                                                                <button type="button" class="btn btn-primary btn-lg">CONSULT</button>
-                                                            </div>
                                                             
                                                     </div>
                                                     <hr>
@@ -212,134 +208,101 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <hr>
+                                                        <form class="form form-horizontal" action="{{ route('consultupdate') }}" method="POST" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <input type="hidden" name="id" value="{{ $data[0]->id }}">
+                                                            <input type="text" name="user_id" value="{{ $data[0]->user_id }}" readonly>
+                                                            <div class="form-body">
+                                                                <div class="row">
+                                                                    <h3>Consult This Patient</h3>
+                                                                    <div class="col-md-4">
+                                                                        <label>Name:</label>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <div class="form-group has-icon-left">
+                                                                            <div class="position-relative">
+                                                                                <input type="text" class="form-control" name="full_name" value="{{ $data[0]->full_name }}" readonly>
+                                                                                <div class="form-control-icon">
+                                                                                    <i class="bi bi-person"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <label>Quarantine Period for the Patient:</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <table>
+                                                                                <tr>
+                                                                                    <td>From:
+                                                                                        <input type="date" name="qperiod_start" id="qperiod_start" class="form-control">
+                                                                                    </td>
+                                                                                    <td>To:
+                                                                                        <input type="date" name="qperiod_end" id="qperiod_end" class="form-control">
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                            <script>
+                                                                                document.getElementById('qperiod_start').valueAsDate = new Date();
+                                                                            </script>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <label>Medicine needed to be intake:</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <table>
+                                                                            <div class="form-group position-relative has-icon-left mb-4">
+                                                                                <fieldset class="form-group">
+                                                                                        <select class="form-select" name="recommend_medicine" id="recommend_medicine">  
+                                                                                                <option hidden selected disabled><--Select Medicine--></option>
+                                                                                                @foreach ($assignM as $key => $value)
+                                                                                                    <option value="{{ $value->medicine_name }}"> {{ $value->medicine_name }}</option>
+                                                                                                @endforeach  
+                                                                                        </select>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="row">
+                                                                    <div class="col-md-4">
+                                                                            <label>Important Remarks for the Patient:</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <table>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                       <textarea name="remarks" id="remarks" cols="75" rows="3" placeholder="Remarsk here..." class="form-control"></textarea> 
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> <br>
+                                                        <div class="col-12 d-flex justify-content-end">
+                                                            <button type="submit"
+                                                                class="btn btn-primary me-1 mb-1">CONSULT</button>
+                                                            <a  href="{{ route('patientList') }}"
+                                                                class="btn btn-light-secondary me-1 mb-1">CANCEL</a>
+                                                        </div>
                                                     </form>
+                                                </div>
                                             </div>
                                         </div>
-                                </div>
-                            </div>
                         </section>
                     </div>
                 </section>
             
             </section>
             
-                
-             {{-- consult modal --}}
-             <div class="card-body">
-                <!--Basic Modal -->
-                <div class="modal fade text-left" id="consult" tabindex="-1" aria-labelledby="myModalLabel1" style="display: none;" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="myModalLabel1">Consult Patient</h5>
-                                <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
-                                    X
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <label>Name:</label>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="form-group has-icon-left">
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control" name="full_name" value="{{ $data[0]->full_name }}" readonly>
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-person"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <label>Quarantine Period for the Patient:</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <table>
-                                                    <tr>
-                                                        <td>From:
-                                                            <input type="date" name="start" id="start" class="form-control">
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>To:
-                                                            <input type="date" name="end" id="end" class="form-control">
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <label>Medicine needed to be intake:</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6"></div>
-                                            <div class="col-md-6">
-                                                <table>
-                                                <div class="form-group position-relative has-icon-left mb-4">
-                                                    <fieldset class="form-group">
-                                                            <select class="form-select" name="medicine" id="medicine">  
-                                                                    <option hidden selected disabled><--Select Medicine--></option>
-                                                                    @foreach ($assignM as $key => $value)
-                                                                        <option value="{{ $value->medicine_name }}"> {{ $value->medicine_name }}</option>
-                                                                    @endforeach  
-                                                            </select>
-                
-                                                    </fieldset>
-                                                </div>
-                                                    
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <label>Important Remarks for the Patient:</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <table>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="text" class="form-control" name="remarks" id="remarks" placeholder="remarks">
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                        <br>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary ml-1">
-                                    <i class="bx bx-check d-block d-sm-none"></i>
-                                    <span class="d-none d-sm-block">DONE</span>
-                                </button>
-                                <button type="button" class="btn btn-danger ml-1" data-bs-dismiss="modal">
-                                    <i class="bx bx-check d-block d-sm-none"></i>
-                                    <span class="d-none d-sm-block">CANCEL</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            {{-- end user profile modal --}}
-                
             {{-- message --}}
             {!! Toastr::message() !!}
             

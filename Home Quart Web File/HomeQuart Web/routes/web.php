@@ -115,7 +115,10 @@ Route::get('medicine/view/detail/{id}', [App\Http\Controllers\UserManagementCont
 Route::post('medicineupdate', [App\Http\Controllers\UserManagementController::class, 'medicineupdate'])->name('medicineupdate');
 Route::get('delete_medicine/{id}', [App\Http\Controllers\UserManagementController::class, 'medicinedelete'])->middleware('auth');
 Route::get('viewDetailReport/{id}', [App\Http\Controllers\UserManagementController::class, 'viewDetailReport'])->middleware('auth');
+Route::post('consultupdate', [App\Http\Controllers\UserManagementController::class, 'consultupdate'])->name('consultupdate');
 
+
+// -----------------------------admin works------------------------------//
 Route::get('userManagement2', [App\Http\Controllers\UserManagementController::class, 'index2'])->middleware('auth')->name('userManagement2');
 Route::get('user/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewUser'])->middleware('auth')->name('user/add/new');
 Route::get('purok/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewPurok'])->middleware('auth')->name('purok/add/new');

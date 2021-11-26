@@ -561,7 +561,7 @@ class UserManagementController extends Controller
            return redirect()->route('home');
        }
    }
-    // update consult report
+    // doctor update consult report
     public function consultupdate(Request $request)
     {
 
@@ -598,7 +598,7 @@ class UserManagementController extends Controller
 
         DB::table('consult')->insert($consult);
         User::where('id',$request->id)->update($update);
-        Toastr::success('Consulted Successfully :)','Success');
+        Toastr::success('Patient Consulted Successfully :)','Success');
         return redirect()->route('patientList');
     }
 
