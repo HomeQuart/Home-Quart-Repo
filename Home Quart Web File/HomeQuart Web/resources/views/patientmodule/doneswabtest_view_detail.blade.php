@@ -25,8 +25,8 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Patient Done Swab Test </h3>
-                    <p class="text-subtitle text-muted">This patient has done swabtest</p>
+                    <h3>Your SwabTest Result </h3>
+                    <p class="text-subtitle text-muted">You have successfully done swabtest</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -39,11 +39,11 @@
             </div>
         </div> 
 
-        @if (Auth::user()->role_name=='BHW')
+        @if (Auth::user()->role_name=='Patient')
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Patient Done SwabTest Details</h4>
+                    <h4 class="card-title">Your SwabTest Details</h4>
                 </div>
                 <div class="card-content">
                 <div class="card-body">
@@ -111,7 +111,6 @@
         </div>
     </div>
     @endif
-
     <br>
     <footer>
         <div class="footer clearfix mb-0 text-muted">

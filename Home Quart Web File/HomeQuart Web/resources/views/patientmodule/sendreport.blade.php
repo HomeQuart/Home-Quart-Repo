@@ -25,7 +25,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Update Your Profile To Daily Reports</h3>
+                    <h3>Send Your Daily Reports</h3>
                     <p class="text-subtitle text-muted">Update Daily Reports</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -43,7 +43,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Patient  Details</h4>
+                    <h4 class="card-title">Click the button below</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">

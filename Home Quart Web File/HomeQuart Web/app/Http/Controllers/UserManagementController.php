@@ -424,7 +424,7 @@ class UserManagementController extends Controller
                     ->select('users.*', 'swabtest_report.*')
                     ->where('users.user_id','=',$user_id)
                     ->get();
-            return view('bhwmodule.doneswabtest_view_detail',compact('data'));
+            return view('patientmodule.doneswabtest_view_detail',compact('data'));
         }
         else
         {

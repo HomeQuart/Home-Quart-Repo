@@ -25,7 +25,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Update Your Profile To Report Swab Test Result</h3>
+                    <h3>Report Swab Test Result</h3>
                     <p class="text-subtitle text-muted">Update swabtest result</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -43,18 +43,18 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Patient  Details</h4>
+                    <h4 class="card-title">Click the button below</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
                     @if (Auth::user()->swab_report != 'Done Swabtest')
                         <a href="{{ url('swabtest/view/detail/'.Auth::user()->id) }}">
-                        <button type="button" class="btn btn-primary btn-lg">SMILE BEFORE YOU OPEN</button>
+                        <button type="button" class="btn btn-primary btn-lg">REPORT SWABTEST</button>
                         </a>  
                     @endif
                     @if (Auth::user()->swab_report  == 'Done Swabtest')
                         <a href="{{ url('doneswabtest/view/detail/'.Auth::user()->user_id) }}">
-                        <button type="button" class="btn btn-primary btn-lg">SAD :( IT'S ALREADY OPEN</button>
+                        <button type="button" class="btn btn-primary btn-lg">SEE SWABTEST REPORT</button>
                         </a>  
                     @endif
                     </div>
