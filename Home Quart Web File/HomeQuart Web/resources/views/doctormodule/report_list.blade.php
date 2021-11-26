@@ -37,25 +37,25 @@
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Last Report Date</th>
                                 <th>Action</th>
                             </tr>    
                         </thead>
                         <tbody>
-                            @foreach ($data as $key => $item)
+                            @foreach ($data as $item)
                                 <tr>
-                                    <td class="id">{{ ++$key }}</td>
+                                    @if($item->temp_input != '')
                                     <td class="full_name">{{ $item->full_name }}</td>
-                                    <td class="full_name">{{ $item->full_name }}</td>
+                                    <td class="date_time">{{ $item->date_time }}</td>
                                     <td>
                                         <a href="{{ url('viewDetailReport/'.$item->id) }}">
                                             <span class="badge bg-primary"><i class="bi bi-view-list" title="View More of This Report"></i></span>
                                         </a>  
                                      </td>
+                                     @endif
+                                    @endforeach
                                 </tr>
-                            @endforeach
                         </tbody>
                     </table>
                 </div>

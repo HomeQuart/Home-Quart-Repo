@@ -128,6 +128,7 @@ class UserManagementController extends Controller
         $report = [
 
             'user_id'    => $user_id,
+            'temp_proof'    => $temp_proof,
             'temp_input'=> $temp_input,
             'patient_symptoms' => $patient_symptoms,
             'patient_medicine' => $patient_medicine,
@@ -514,7 +515,12 @@ class UserManagementController extends Controller
    {
        if(Auth::user()->role_name=='Doctor')
        {
-           $data = DB::table('users')->where('id',$id)->get();
+            $data = DB::table('send_reports')
+                    ->join('users', 'users.user_id', '=', 'send_reports.user_id')
+                    ->select('users.*', 'send_reports.*')
+                    ->where('users.id',$id)
+                    ->orderBy('send_reports.date_time', 'desc')
+                    ->get();
            return view('doctormodule.report_list', compact('data'));
        }
        else
@@ -664,7 +670,11 @@ class UserManagementController extends Controller
    {  
        if(Auth::user()->role_name=='Doctor')
        {
-           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->where('id',$id)->get();
+            $data = DB::table('send_reports')
+                    ->join('users', 'users.user_id', '=', 'send_reports.user_id')
+                    ->select('users.*', 'send_reports.*')
+                    ->where('send_reports.id',$id)
+                    ->get();
            return view('doctormodule.report_view_details',compact('data'));
        }
        else

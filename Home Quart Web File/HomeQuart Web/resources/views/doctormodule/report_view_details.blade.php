@@ -48,7 +48,7 @@
                 <div class="card-content">
                 <div class="card-body">
                     <div class="row">
-                        @foreach ($data as $key => $item)
+
                         <div class="row">
                             <div class="col-md-4">
                                 <label>Symptoms</label>
@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <div class="position-relative">
                                         <input type="text" class="form-control"
-                                            placeholder="Symptoms" id="first-name-icon" name="sympmtoms" value="" readonly>
+                                            placeholder="Symptoms" id="first-name-icon" name="patient_symptoms" value="{{ $data[0]->patient_symptoms }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                                 <div class="form-group">
                                     <div class="position-relative">
                                         <input type="text" class="form-control"
-                                            placeholder="Temperature" id="first-name-icon" name="temperature" value="" readonly>
+                                            placeholder="Temperature" id="first-name-icon" name="temp_input" value="{{ $data[0]->temp_input }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                                 <div class="form-group">
                                     <div class="position-relative">
                                         <input type="text" class="form-control"
-                                            placeholder="Medicine intaked" id="first-name-icon" name="medicine" value="" readonly>
+                                            placeholder="Medicine intaked" id="first-name-icon" name="patient_medicine" value="{{ $data[0]->patient_medicine }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -96,8 +96,8 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <div class="position-relative">
-                                        <input type="date" class="form-control"
-                                            placeholder="date" id="first-name-icon" name="date" value="" readonly>
+                                        <input type="text" class="form-control"
+                                            placeholder="date" id="first-name-icon" name="date_time" value="{{ $data[0]->date_time }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -108,11 +108,10 @@
                                 <label>Proof of Quarantine</label>
                             </div>
                             <div class="col-md-8">
-                                <img src="" width="100%">
+                            <img src="{{ URL::to('/reportImage/'. $data[0]->temp_proof) }}" alt="{{ $data[0]->temp_proof }}" width="100%">
                             </div>
                         </div>
                         <br>
-                        @endforeach
                     </div>
                 </div>
                 </div>
