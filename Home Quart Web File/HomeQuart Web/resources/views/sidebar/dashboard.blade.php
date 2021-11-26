@@ -96,9 +96,6 @@
                             <li class="submenu-item">
                                 <a href="{{ route('patientList') }}">Patient List</a>
                             </li>
-                            <li class="submenu-item">
-                                <a href="{{ route('reportList') }}">Report Summary</a>
-                            </li>
                         </ul>
                     </li>
                     <li class="sidebar-item  has-sub">

@@ -107,6 +107,9 @@ class UserManagementController extends Controller
         $patient_symptoms   = $request->patient_symptoms;
         $patient_medicine   = $request->patient_medicine;
 
+        $dt       = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+
         
         $update = [
 
@@ -122,6 +125,7 @@ class UserManagementController extends Controller
             'temp_input'=> $temp_input,
             'patient_symptoms' => $patient_symptoms,
             'patient_medicine' => $patient_medicine,
+            'date_time'    => $todayDate,
         ];
 
         DB::table('send_reports')->insert($report);
@@ -495,11 +499,12 @@ class UserManagementController extends Controller
    }
 
    //doctor view report list
-   public function reportList()
+   public function reportList($id)
    {
        if(Auth::user()->role_name=='Doctor')
        {
-           return view('doctormodule.report_list');
+           $data = DB::table('users')->where('id',$id)->get();
+           return view('doctormodule.report_list', compact('data'));
        }
        else
        {
@@ -512,10 +517,13 @@ class UserManagementController extends Controller
     {  
         if(Auth::user()->role_name=='Doctor')
         {
+            $data = DB::table('users')
+                    ->join('send_reports', 'users.user_id', '=', 'send_reports.user_id')
+                    ->select('users.*', 'send_reports.*')
+                    ->where('users.id',$id)
+                    ->get();
             $assignM = DB::table('medicine')->get();
-            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->where('id',$id)->get();
-            $report = DB::table('send_reports')->get();
-            return view('doctormodule.quarantine_information',compact('data','assignM','report'));
+            return view('doctormodule.quarantine_information',compact('data','assignM'));
         }
         else
         {
@@ -725,6 +733,7 @@ class UserManagementController extends Controller
         $puroks = new purok;
         $puroks->purok_name    = $request->purok_name ;
         $puroks->comp_address  = $request->comp_address;
+        
  
         $puroks->save();
 

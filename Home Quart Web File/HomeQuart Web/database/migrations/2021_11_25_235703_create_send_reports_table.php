@@ -20,6 +20,7 @@ class CreateSendReportsTable extends Migration
             $table->string('temp_input')->nullable();
             $table->string('patient_symptoms')->nullable();
             $table->string('patient_medicine')->nullable();
+            $table->string('date_time')->nullable();
             $table->timestamps();
         });
     }
