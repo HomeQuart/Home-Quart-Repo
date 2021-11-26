@@ -103,7 +103,7 @@ Route::get('doneswabtest/view/detail/{user_id}', [App\Http\Controllers\UserManag
 
 //------------------------------doctor -------------------------------------//
 Route::get('patientList', [App\Http\Controllers\UserManagementController::class, 'patientList'])->middleware('auth')->name('patientList');
-Route::get('reportList', [App\Http\Controllers\UserManagementController::class, 'reportList'])->middleware('auth')->name('reportList');
+Route::get('reportList/{id}', [App\Http\Controllers\UserManagementController::class, 'reportList'])->middleware('auth');
 Route::get('quarantineInformation/{id}', [App\Http\Controllers\UserManagementController::class, 'quarantineInformation'])->middleware('auth');
 Route::get('bhwList', [App\Http\Controllers\UserManagementController::class, 'bhwList'])->middleware('auth')->name('bhwList');
 Route::get('assignPurok/{id}', [App\Http\Controllers\UserManagementController::class, 'assignPurok'])->middleware('auth');

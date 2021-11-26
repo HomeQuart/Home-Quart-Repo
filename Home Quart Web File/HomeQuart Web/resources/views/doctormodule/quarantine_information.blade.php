@@ -58,9 +58,9 @@
                                                                                 <center>
                                                                                     <table>
                                                                                         <tr>    
-                                                                                        @foreach ($report as $key => $reports)
+                                                                                        @foreach ($data as $key => $items)
                                                                                         @if ($loop->last)
-                                                                                        <td class="temp_input">{{ $reports->temp_input }}</td>
+                                                                                        <h5>{{ $items->temp_input }}</h5>
                                                                                         @endif
                                                                                         @endforeach
                                                                                         </tr>
@@ -81,7 +81,11 @@
                                                                                     <center>
                                                                                         <table>
                                                                                             <tr>
-                                                                                                <h5>05/09/21</h5>
+                                                                                            @foreach ($data as $key => $items)
+                                                                                            @if ($loop->last)
+                                                                                            <h5>{{ $items->date_time }}</h5>
+                                                                                            @endif
+                                                                                             @endforeach
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <p>Last Report/Measure</p>

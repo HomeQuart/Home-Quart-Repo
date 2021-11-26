@@ -67,6 +67,9 @@
                                         <a href="{{ url('quarantineInformation/'.$item->id) }}">
                                             <span class="badge bg-primary">VIEW QUARANTINE INFORMATION</span>
                                         </a>  
+                                        <a href="{{ url('reportList/'.$item->id) }}">
+                                            <span class="badge bg-success">REPORT SUMMARY</span>
+                                        </a>  
                                      </td>
                                 </tr>
                             @endforeach
