@@ -85,6 +85,12 @@ class UserManagementController extends Controller
         //    $med = DB::table('medicine')->get();
            return view('patientmodule.sendreport',compact('data'));
        }
+       if (Auth::user()->role_name=='BHW')
+       {
+           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
+           $med = DB::table('medicine')->get();
+           return view('bhwmodule.sendReport',compact('data','med'));
+       }
        else
        {
            return redirect()->route('home');
@@ -130,8 +136,8 @@ class UserManagementController extends Controller
 
         DB::table('send_reports')->insert($report);
         User::where('id',$request->id)->update($update);
-        Toastr::success('User updated successfully :)','Success');
-        return redirect()->route('sendreport');
+        Toastr::success('Successfully send a report:)','Success');
+        return redirect()->route('activeaccounts');
     }
 
     //patient view details to reports
@@ -306,7 +312,7 @@ class UserManagementController extends Controller
         DB::table('user_activity_logs')->insert($activityLog);
         User::where('id',$request->id)->update($update);
         Toastr::success('Patient updated successfully :)','Success');
-        return redirect()->route('userManagement');
+        return redirect()->route('pendingaccounts');
     }
 
 
@@ -326,12 +332,12 @@ class UserManagementController extends Controller
 
 
     //bhw can send report as a patient
-    public function sendReportAccount()
+    public function sendReportAccount($id)
     {
         if (Auth::user()->role_name=='BHW')
        {
-           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
-        //    $med = DB::table('medicine')->get();
+           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->where('id',$id)->get();
+           $med = DB::table('medicine')->get();
            return view('bhwmodule.sendReport',compact('data', 'med'));
        }
        else
@@ -471,7 +477,7 @@ class UserManagementController extends Controller
 
         DB::table('swabtest_report')->insert($swabtest);
         User::where('id',$request->id)->update($update);
-        Toastr::success('User updated successfully :)','Success');
+        Toastr::success('Swab Test reported successfully :)','Success');
         return redirect()->route('swabtest');
     }
 
