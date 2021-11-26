@@ -296,6 +296,11 @@ class UserManagementController extends Controller
             'user_id'    => $user_id,
         ];
 
+        $consult = [
+            'user_id'    => $user_id,
+        ];
+
+        DB::table('consult')->insert($consult);
         DB::table('send_reports')->insert($report);
         DB::table('swabtest_report')->insert($swabtest);
         DB::table('user_activity_logs')->insert($activityLog);
@@ -522,13 +527,73 @@ class UserManagementController extends Controller
                     ->select('users.*', 'send_reports.*')
                     ->where('users.id',$id)
                     ->get();
+            $dataswab = DB::table('users')
+                        ->join('swabtest_report', 'users.user_id', '=', 'swabtest_report.user_id')
+                        ->select('users.*', 'swabtest_report.*')
+                        ->where('users.id',$id)
+                        ->get();
             $assignM = DB::table('medicine')->get();
-            return view('doctormodule.quarantine_information',compact('data','assignM'));
+            $med = DB::table('medicine')->get();
+            return view('doctormodule.quarantine_information',compact('data','dataswab','assignM','med'));
         }
         else
         {
             return redirect()->route('home');
         }
+    }
+
+    //doctor consults a patient
+   public function consultPatient($id)
+   {  
+       if(Auth::user()->role_name=='Doctor')
+       {
+            $data = DB::table('users')->where('id',$id)->get();
+           return view('doctormodule.consult',compact('data'));
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
+    // update consult report
+    public function consultupdate(Request $request)
+    {
+
+        $id                 = $request->id;
+        $user_id            = $request->user_id;
+        $full_name          = $request->full_name;
+        $email              = $request->email;
+        $contactno          = $request->contactno;
+        $qperiod_start      = $request->qperiod_start;
+        $qperiod_end        = $request->qperiod_end;
+        $recommend_medicine = $request->recommend_medicine;
+        $remarks            = $request->remarks;
+
+        $dt       = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+
+        
+        $update = [
+
+            'id'                => $id,
+            'user_id'           => $user_id,
+            'full_name'         => $full_name,
+        ];
+
+        $consult = [
+
+            'user_id'            => $user_id,
+            'qperiod_start'      => $qperiod_start,
+            'qperiod_end'        => $qperiod_end,
+            'recommend_medicine' => $recommend_medicine,
+            'remarks'            => $remarks,
+            'date_time'          => $todayDate,
+        ];
+
+        DB::table('consult')->insert($consult);
+        User::where('id',$request->id)->update($update);
+        Toastr::success('Consulted Successfully :)','Success');
+        return redirect()->route('patientList');
     }
 
     //doctor assign purok
@@ -587,20 +652,6 @@ class UserManagementController extends Controller
             return redirect()->route('home');
         }
     }
-
-    //doctor consult a patient
-   public function consultPatient($id)
-   {  
-       if(Auth::user()->role_name=='Doctor')
-       {
-           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
-           return view('doctormodule.consult',compact('data'));
-       }
-       else
-       {
-           return redirect()->route('home');
-       }
-   }
 
     // view detail 
     public function viewDetail($id)
