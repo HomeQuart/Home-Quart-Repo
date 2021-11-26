@@ -55,17 +55,17 @@
                                         </div>
                                     </td>
                                     @if($item->status =='Active')
-                                    <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>
+                                    <td class="status">{{ $item->status }}</td>
                                     @endif
                                     @if($item->status =='Disable')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
+                                    <td class="status">{{ $item->status }}</td>
                                     @endif
                                     @if($item->status =='Done')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
+                                    <td class="status">{{ $item->status }}</td>
                                     @endif
                                     <td>
                                         <a href="{{ url('quarantineInformation/'.$item->id) }}">
-                                            <span class="badge bg-primary">VIEW QUARANTINE INFORMATION</span>
+                                            <span class="badge bg-primary">VIEW INFORMATION AND CONSULT</span>
                                         </a>  
                                         <a href="{{ url('reportList/'.$item->id) }}">
                                             <span class="badge bg-success">REPORT SUMMARY</span>
