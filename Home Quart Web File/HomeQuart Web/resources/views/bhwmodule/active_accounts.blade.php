@@ -42,10 +42,13 @@
                                 <th>Profile</th>
                                 <th>Age</th>
                                 <th>Purok</th>
+                                <th>Isolation</th>
                                 <th>Address</th>
                                 <th>Gender</th>
                                 <th>Contact No.</th>
+                                <th>Contact Person</th>
                                 <th>Swab Test Status</th>
+                                <th>Quarantine Period</th>
                                 <th>Account Status</th>
                                 <th class="text-center">Action</th>
                             </tr>    
@@ -57,17 +60,20 @@
                                     
                                     <td class="id">{{ ++$key }}</td>
                                     <td class="full_name">{{ $item->full_name }}</td>
-                                    <td class="full_name">
+                                    <td class="photo">
                                         <div class="avatar avatar-xl">
                                             <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
                                         </div>
                                     </td>
-                                    <td class="full_name">{{ $item->age }}</td>
-                                    <td class="full_name">{{ $item->assign_purok }}</td>
-                                    <td class="full_name">{{ $item->address }}</td>
-                                    <td class="full_name">{{ $item->gender }}</td>
-                                    <td class="full_name">{{ $item->contactno }}</td>
-                                    <td class="full_name">{{ $item->swab_report }}</td>
+                                    <td class="age">{{ $item->age }}</td>
+                                    <td class="assign_purok">{{ $item->assign_purok }}</td>
+                                    <td class="assign_purok">{{ $item->place_isolation }}</td>
+                                    <td class="address">{{ $item->address }}</td>
+                                    <td class="gender">{{ $item->gender }}</td>
+                                    <td class="contact_no">{{ $item->contactno }}</td>
+                                    <td class="contact_per">{{ $item->contact_per }}</td>
+                                    <td class="swab_report">{{ $item->swab_report }}</td>
+                                    <td class="qperiod_end">{{ $item->qperiod_start }} until {{ $item->qperiod_end }}</td>
                                     @if($item->status =='Active')
                                     <td class="status">{{ $item->status }}</td>
                                     @endif
@@ -77,11 +83,19 @@
                                     @if($item->status =='Done')
                                     <td class="status">{{ $item->status }}</td>
                                     @endif
+                                    @if ($item->place_isolation == 'Isolation Facility')
                                     <td class="text-center">
                                         <a href="{{ url('sendReport/Account/'.$item->id) }}">
                                             <span class="badge bg-success"><i class="bi bi-send-plus"></i>REPORT</span>
                                         </a>  
                                      </td>
+                                    @endif
+                                    @if ($item->place_isolation != 'Isolation Facility')
+                                    <td class="text-center">
+                                        <p>Can't Report</p>
+                                    </td>
+                                    @endif
+                                    
                                 </tr>
                                 @endif
                             @endforeach

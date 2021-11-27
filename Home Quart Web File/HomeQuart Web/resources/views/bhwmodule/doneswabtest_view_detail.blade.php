@@ -50,6 +50,7 @@
                     <div class="row">
                         @foreach ($data as $key => $item)
                         @if($item->swab_result != '')
+                        @if ($loop->last)
                         <div class="row">
                             <div class="col-md-4">
                                 <label>ID</label>
@@ -102,6 +103,7 @@
                             </div>
                         </div>
                         <br>
+                        @endif
                         @endif
                         @endforeach
                     </div>

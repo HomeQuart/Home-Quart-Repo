@@ -57,12 +57,14 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
-        $('#getting-started').countdown('2021/11/22', function(event) {
+        $enddate = "{{Auth::user()->qperiod_end}}";
+        $('#getting-started').countdown($enddate, function(event) {
             $('#day').html(event.strftime('%D'));
             $('#hour').html(event.strftime('%H'));
             $('#minutes').html(event.strftime('%M'));
             $('#seconds').html(event.strftime('%S'));
         });
+
     </script>
 </body>
 

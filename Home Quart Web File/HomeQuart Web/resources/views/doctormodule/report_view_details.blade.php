@@ -51,7 +51,7 @@
 
                         <div class="row">
                             <div class="col-md-4">
-                                <label>Symptoms</label>
+                                <label><b>Symptoms</b></label>
                             </div>
                             <div class="col-md-8">
                                 <div class="form-group">
@@ -64,7 +64,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <label>Temperature</label>
+                                <label><b>Temperature</b></label>
                             </div>
                             <div class="col-md-8">
                                 <div class="form-group">
@@ -78,7 +78,7 @@
                         <br>
                         <div class="row">
                             <div class="col-md-4">
-                                <label>Medicine Intaked</label>
+                                <label><b>Medicine Intaked</b></label>
                             </div>
                             <div class="col-md-8">
                                 <div class="form-group">
@@ -91,7 +91,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <label>Date Reported</label>
+                                <label><b>Date Reported</b></label>
                             </div>
                             <div class="col-md-8">
                                 <div class="form-group">
@@ -105,7 +105,7 @@
                         <br>
                         <div class="row">
                             <div class="col-md-4">
-                                <label>Proof of Quarantine</label>
+                                <label><b>Selfie with Temperature in Thermometer</b></label>
                             </div>
                             <div class="col-md-8">
                             <img src="{{ URL::to('/reportImage/'. $data[0]->temp_proof) }}" alt="{{ $data[0]->temp_proof }}" width="100%">

@@ -229,7 +229,6 @@ class UserManagementController extends Controller
     //patient see contact hotlines
     public function contactHotlines()
     {
-        $data = DB::table('users')->get();
         return view('patientmodule.contacthotline');
     }
 

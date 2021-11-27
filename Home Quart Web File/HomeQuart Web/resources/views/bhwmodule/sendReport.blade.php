@@ -146,12 +146,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 d-flex justify-content-end">
-                                    <a  href="#"
-                                        class="btn btn-primary btn-lg me-1 mb-1">SEND</a>
-                                    <a  href="{{ route('activeaccounts') }}"
-                                        class="btn btn-light-secondary btn-lg me-1 mb-1">CANCEL</a>
-                                </div>
+                               
                             </div>
                             
                         </section>

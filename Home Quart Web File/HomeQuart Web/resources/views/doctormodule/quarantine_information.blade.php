@@ -53,7 +53,7 @@
                                                                                         <tr>    
                                                                                         @foreach ($data as $key => $items)
                                                                                         @if ($loop->last)
-                                                                                        <h5>{{ $items->temp_input }}</h5>
+                                                                                        <h5>{{ $items->temp_input }} °c</h5>
                                                                                         @endif
                                                                                         @endforeach
                                                                                         </tr>
@@ -103,7 +103,7 @@
                                                                                              @endforeach
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <p>Status</p>
+                                                                                                <p>Swab Test Status</p>
                                                                                             </tr>
                                                                                         </table>
                                                                                     </center>   
@@ -147,7 +147,7 @@
                                                                                              @endforeach
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <p>Remaining Time Period</p>
+                                                                                                <p>Quarantine End Date</p>
                                                                                             </tr>
                                                                                         </table>
                                                                                     </center>
@@ -161,34 +161,34 @@
                                                     <section class="row">
                                                         <div class="col-12">
                                                             <div class="row">
-                                                                <div class="col-6 col-lg-4 col-md-6">
+                                                                <div class="col-lg-3">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
                                                                                     <table >
-                                                                                        <th>Personal Information</th>
+                                                                                            <center><h6>Personal Information</h6></center>
                                                                                         <tr>
                                                                                             <td>
-                                                                                                Name:
+                                                                                                <b>Name:</b>
                                                                                             </td>
                                                                                             <td>
-                                                                                                <input type="text"  id="first-name-icon" name="full_name" value="{{ $data[0]->full_name }}"readonly> <br>
+                                                                                            {{ $data[0]->full_name }}<br>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td>
-                                                                                                Place of Isolation:
+                                                                                            <b>Place of Isolation: </b>
                                                                                             </td>
                                                                                             <td>
-                                                                                                <input type="text"  name="place_isolation" value="{{ $data[0]->place_isolation }}"readonly> <br>
+                                                                                            {{ $data[0]->place_isolation }} <br>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td>
-                                                                                                Assign Purok:
+                                                                                            <b>Assign Purok: </b>
                                                                                             </td>
                                                                                             <td>
-                                                                                                <input type="text"  name="assign_purok" value="{{ $data[0]->assign_purok }}"readonly> <br>
+                                                                                            {{ $data[0]->assign_purok }} <br>
                                                                                             </td>
                                                                                         </tr>
                                                                                     </table>
@@ -196,7 +196,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 col-lg-3 col-md-6">
+                                                                <div class="col-lg-3">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
@@ -208,38 +208,39 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 col-lg-5 col-md-6">
+                                                                <div class="col-lg-6">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
                                                                                 <div class="col-md-8">
                                                                                     <table>
-                                                                                        <th>Summary</th>
+                                                                                    <center><h6>Summary</h6></center>
                                                                                         <tr>
                                                                                         @foreach ($dataconsult as $key => $items)
                                                                                             @if ($loop->last)
-                                                                                            <td>Medicine Intake: {{ $items->recommend_medicine }}</td>
-                                                                                            @endif
-                                                                                             @endforeach
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                        @foreach ($dataswab as $key => $items)
-                                                                                            @if ($loop->last)
-                                                                                            <td>Swab Result: {{ $items->swab_result }}</td>
+                                                                                            <td><b>Medicine Intake: </b>{{ $items->recommend_medicine }}</td>
                                                                                             @endif
                                                                                              @endforeach
                                                                                         </tr>
                                                                                         <tr>
                                                                                         @foreach ($data as $key => $items)
                                                                                             @if ($loop->last)
-                                                                                            <td>Swab Status: {{ $items->swab_report }}</td>
+                                                                                            <td> <b>Swab Status: </b> {{ $items->swab_report }}</td>
                                                                                             @endif
                                                                                              @endforeach
                                                                                         </tr>
                                                                                         <tr>
+                                                                                        @foreach ($dataswab as $key => $items)
+                                                                                            @if ($loop->last)
+                                                                                            <td> <b>Swab Result: </b> {{ $items->swab_result }}</td>
+                                                                                            @endif
+                                                                                             @endforeach
+                                                                                        </tr>
+                                                                                        
+                                                                                        <tr>
                                                                                         @foreach ($dataconsult as $key => $items)
                                                                                             @if ($loop->last)
-                                                                                            <td>Swab Status: {{ $items->remarks }}</td>
+                                                                                            <td> <b>Remarks:  </b>{{ $items->remarks }}</td>
                                                                                             @endif
                                                                                              @endforeach
                                                                                         </tr>
@@ -262,7 +263,7 @@
                                                                     <h5>Consult This Patient</h5>
                                                                     </center>
                                                                     <div class="col-md-4">
-                                                                        <label>Name:</label>
+                                                                        <label> <b>Name:</b></label>
                                                                     </div>
                                                                     <div class="col-md-8">
                                                                         <div class="form-group has-icon-left">
@@ -275,30 +276,9 @@
                                                                         </div>
                                                                     </div>
                                                                     <br>
-                                                                    <!-- <div class="row">
-                                                                        <div class="col-md-4">
-                                                                            <label>Quarantine Period for the Patient:</label>
-                                                                        </div>
-                                                                        <div class="col-md-8">
-                                                                            <table>
-                                                                                <tr>
-                                                                                    <td>From:
-                                                                                        <input type="date" name="qperiod_start" id="qperiod_start" class="form-control">
-                                                                                    </td>
-                                                                                    <td>To:
-                                                                                        <input type="date" name="qperiod_end" id="qperiod_end" class="form-control">
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </table>
-                                                                            <script>
-                                                                                document.getElementById('qperiod_start').valueAsDate = new Date();
-                                                                            </script>
-                                                                        </div>
-                                                                    </div>
-                                                                    <br> -->
                                                                     <div class="row">
                                                                         <div class="col-md-4">
-                                                                            <label>Medicine needed to be intake:</label>
+                                                                            <label><b>Medicine needed to be intake:</b></label>
                                                                         </div>
                                                                         <div class="col-md-8">
                                                                             <table>
@@ -323,13 +303,13 @@
                                                                     <br>
                                                                     <div class="row">
                                                                     <div class="col-md-4">
-                                                                            <label>Important Remarks for the Patient:</label>
+                                                                            <label><b>Important Remarks for the Patient:</b></label>
                                                                         </div>
                                                                         <div class="col-md-8">
                                                                             <table>
                                                                                 <tr>
                                                                                     <td>
-                                                                                       <textarea class="form-control @error('remarks') is-invalid @enderror" name="remarks" id="remarks" cols="75" rows="3" placeholder="Remarsk here..." class="form-control"></textarea> 
+                                                                                       <textarea class="form-control @error('remarks') is-invalid @enderror" name="remarks" id="remarks" cols="120" rows="3" placeholder="Remarks here..."></textarea> 
                                                                                     </td>
                                                                                     @error('remarks')
                                                                                         <span class="invalid-feedback" role="alert">
