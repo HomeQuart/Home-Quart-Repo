@@ -275,7 +275,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <br>
-                                                                    <div class="row">
+                                                                    <!-- <div class="row">
                                                                         <div class="col-md-4">
                                                                             <label>Quarantine Period for the Patient:</label>
                                                                         </div>
@@ -295,7 +295,7 @@
                                                                             </script>
                                                                         </div>
                                                                     </div>
-                                                                    <br>
+                                                                    <br> -->
                                                                     <div class="row">
                                                                         <div class="col-md-4">
                                                                             <label>Medicine needed to be intake:</label>
@@ -304,13 +304,18 @@
                                                                             <table>
                                                                             <div class="form-group position-relative has-icon-left mb-4">
                                                                                 <fieldset class="form-group">
-                                                                                        <select class="form-select" name="recommend_medicine" id="recommend_medicine">  
+                                                                                        <select class="form-control @error('recommend_medicine') is-invalid @enderror" class="form-select" name="recommend_medicine" id="recommend_medicine">  
                                                                                                 <option hidden selected disabled><--Select Medicine--></option>
                                                                                                 @foreach ($assignM as $key => $value)
                                                                                                     <option value="{{ $value->medicine_name }}"> {{ $value->medicine_name }}</option>
                                                                                                 @endforeach  
                                                                                         </select>
                                                                                 </fieldset>
+                                                                                @error('recommend_medicine')
+                                                                                    <span class="invalid-feedback" role="alert">
+                                                                                        <strong>{{ $message }}</strong>
+                                                                                    </span>
+                                                                                @enderror
                                                                             </div>
                                                                             </table>
                                                                         </div>
@@ -324,8 +329,13 @@
                                                                             <table>
                                                                                 <tr>
                                                                                     <td>
-                                                                                       <textarea name="remarks" id="remarks" cols="75" rows="3" placeholder="Remarsk here..." class="form-control"></textarea> 
+                                                                                       <textarea class="form-control @error('remarks') is-invalid @enderror" name="remarks" id="remarks" cols="75" rows="3" placeholder="Remarsk here..." class="form-control"></textarea> 
                                                                                     </td>
+                                                                                    @error('remarks')
+                                                                                        <span class="invalid-feedback" role="alert">
+                                                                                            <strong>{{ $message }}</strong>
+                                                                                        </span>
+                                                                                    @enderror
                                                                                 </tr>
                                                                             </table>
                                                                         </div>

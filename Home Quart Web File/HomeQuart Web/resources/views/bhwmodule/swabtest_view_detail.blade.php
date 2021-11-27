@@ -154,7 +154,7 @@
                                     <div class="col-md-8">
                                         <div class="form-group position-relative has-icon-left mb-4">
                                             <fieldset class="form-group">
-                                                <select class="form-select" name="swab_result" id="swab_result">  
+                                                <select class="form-control @error('swab_proof') is-invalid @enderror" name="swab_result" id="swab_result">  
                                                     @foreach ($result_s as $key => $value)
                                                     <option value="{{ $value->result_swab }}"> {{ $value->result_swab }}</option>
                                                     @endforeach  
@@ -163,6 +163,11 @@
                                                     <i class="bi bi-bag-check"></i>
                                                 </div>
                                             </fieldset>
+                                            @error('swab_result')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -172,9 +177,14 @@
                                     <div class="col-md-8">
                                         <div class="form-groups">
                                             <div class="position-relative">
-                                            <input name="swab_proof" type="file" id="swab_proof" multiple="">
+                                            <input class="form-control @error('swab_proof') is-invalid @enderror" name="swab_proof" type="file" id="swab_proof" multiple="">
                                             </div>
                                         </div>
+                                        @error('swab_proof')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                        @enderror
                                     </div>
 
                                     <div class="col-12 d-flex justify-content-end">

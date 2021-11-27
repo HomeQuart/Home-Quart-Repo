@@ -69,13 +69,13 @@
                                     <td class="full_name">{{ $item->contactno }}</td>
                                     <td class="full_name">{{ $item->swab_report }}</td>
                                     @if($item->status =='Active')
-                                    <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>
+                                    <td class="status">{{ $item->status }}</td>
                                     @endif
                                     @if($item->status =='Disable')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
+                                    <td class="status">{{ $item->status }}</td>
                                     @endif
                                     @if($item->status =='Done')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
+                                    <td class="status">{{ $item->status }}</td>
                                     @endif
                                     <td class="text-center">
                                         <a href="{{ url('sendReport/Account/'.$item->id) }}">

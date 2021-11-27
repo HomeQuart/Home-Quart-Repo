@@ -16,8 +16,8 @@ class CreateConsultTable extends Migration
         Schema::create('consult', function (Blueprint $table) {
             $table->id();
             $table->string('user_id')->nullable();
-            $table->string('qperiod_start')->nullable();
-            $table->string('qperiod_end')->nullable();
+            // $table->string('qperiod_start')->nullable();
+            // $table->string('qperiod_end')->nullable();
             $table->string('recommend_medicine')->nullable();
             $table->string('remarks')->nullable();
             $table->string('date_time')->nullable();

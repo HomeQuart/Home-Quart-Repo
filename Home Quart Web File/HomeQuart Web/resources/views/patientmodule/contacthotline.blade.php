@@ -70,6 +70,18 @@
                                                 <h6 class="font-semibold underlined">+639 226 990 332</h6>
                                             </div>
                                         </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="stats-icon purple">
+                                                    <i class="iconly-boldCall"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">User Contact Person</h6>
+                                                <h6 class="font-semibold underlined">{{Auth::user()->contact_per}}</h6>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>

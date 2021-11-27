@@ -72,38 +72,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <label>Quarantine Period From:</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-                                                        <div class="position-relative">
-                                                        @foreach ($data as $key => $items)
-                                                        @if( $items->user_id == Auth::user()->user_id)
-                                                            @if ($loop->last)
-                                                                <h5>{{ $items->qperiod_start }}</h5>
-                                                            @endif
-                                                        @endif
-                                                        @endforeach
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>Quarantine Period To:</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-                                                        <div class="position-relative">
-                                                        @foreach ($data as $key => $items)
-                                                        @if( $items->user_id == Auth::user()->user_id)
-                                                            @if ($loop->last)
-                                                                <h5>{{ $items->qperiod_end }}</h5>
-                                                            @endif
-                                                        @endif
-                                                        @endforeach
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -193,6 +193,32 @@
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Quarantine Period for the Patient:</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <table>
+                                                <tr>
+                                                    <td>From:
+                                                        <input type="date" name="qperiod_start" id="qperiod_start" class="form-control">
+                                                    </td>
+                                                    <td>To:
+                                                        <input class="form-control @error('qperiod_end') is-invalid @enderror" type="date" name="qperiod_end" id="qperiod_end" class="form-control">
+                                                    </td>
+                                                    @error('qperiod_end')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                    @enderror
+                                                </tr>
+                                            </table>
+                                            <script>
+                                                document.getElementById('qperiod_start').valueAsDate = new Date();
+                                            </script>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-4">
                                         <label>Email Address</label>
                                     </div>

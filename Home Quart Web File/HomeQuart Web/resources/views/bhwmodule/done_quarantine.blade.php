@@ -73,13 +73,13 @@
                                         <a href="https://mail.google.com/mail/u/0/?fs=1&to={{ $item->email }}&tf=cm">
                                     {{ $item->email }}</a></td>
                                     @if($item->status =='Active')
-                                    <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>
+                                    <td class="status">{{ $item->status }}</td>
                                     @endif
                                     @if($item->status =='Disable')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
+                                    <td class="status">{{ $item->status }}</td>
                                     @endif
                                     @if($item->status =='Done')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
+                                    <td class="status">{{ $item->status }}</td>
                                     @endif
                                     <td>  
                                         <a href="{{ url('delete_user/'.$item->id) }}" onclick="return confirm('Are you sure to want to delete this patient?')"><span class="badge bg-primary"><i class="bi bi-trash"></i>DELETE</span></a>

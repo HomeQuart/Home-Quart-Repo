@@ -69,10 +69,15 @@
                                                             <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
-                                                                        <input name="temp_proof" type="file" id="temp_proof" multiple="" class="form-control">
+                                                                        <input class="form-control @error('temp_proof') is-invalid @enderror" name="temp_proof" type="file" id="temp_proof" multiple="" class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            @error('temp_proof')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-4">
@@ -81,11 +86,16 @@
                                                             <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
-                                                                    <input type="text" class="form-control"
+                                                                    <input class="form-control @error('temp_input') is-invalid @enderror" type="text" class="form-control"
                                                                         placeholder="Input your Temperature for today" id="temp_input" name="temp_input">  
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            @error('temp_input')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-4">
@@ -94,11 +104,16 @@
                                                             <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
-                                                                    <input type="text" class="form-control"
+                                                                    <input class="form-control @error('patient_symptoms') is-invalid @enderror" type="text" class="form-control"
                                                                         placeholder="Specify Symptoms" id="patient_symptoms" name="patient_symptoms">  
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            @error('patient_symptoms')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-4">
@@ -112,8 +127,7 @@
                                                                             <option value="" disabled hidden selected> <-- choose medicine --></option>
                                                                             <option value="{{ $value->medicine_name }}"> {{ $value->medicine_name }}</option>
                                                                             @endforeach  
-                                                                        </select>
-                                                                        
+                                                                        </select> 
                                                                     </fieldset>
                                                                 </div>
                                                             </div>

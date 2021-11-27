@@ -177,10 +177,10 @@
                             <span>Data</span>
                         </a>
                         <ul class="submenu">
-                        <li class="submenu-item active">
+                        <li class="submenu-item">
                                 <a href="{{ route('patientReportList') }}">Report List</a>
                             </li>
-                            <li class="submenu-item active">
+                            <li class="submenu-item">
                                 <a href="{{ route('consultations') }}">Consultations</a>
                             </li>
                             <li class="submenu-item">

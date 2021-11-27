@@ -100,6 +100,13 @@ class UserManagementController extends Controller
     public function patientreportupdate(Request $request)
     {
 
+        $request->validate([
+            'temp_input' => 'required|string|max:255',
+            'patient_symptoms'      => 'required|string|max:255',
+            'temp_proof'     => 'required|image',
+
+        ]);
+
         $temp_proof = time().'.'.$request->temp_proof->extension();  
         $request->temp_proof->move(public_path('reportImage'), $temp_proof);
 
@@ -142,6 +149,13 @@ class UserManagementController extends Controller
     // bhw update daily report
     public function reportupdate(Request $request)
     {
+
+        $request->validate([
+            'temp_input' => 'required|string|max:255',
+            'patient_symptoms'      => 'required|string|max:255',
+            'temp_proof'     => 'required|image',
+
+        ]);
 
         $temp_proof = time().'.'.$request->temp_proof->extension();  
         $request->temp_proof->move(public_path('reportImage'), $temp_proof);
@@ -215,6 +229,7 @@ class UserManagementController extends Controller
     //patient see contact hotlines
     public function contactHotlines()
     {
+        $data = DB::table('users')->get();
         return view('patientmodule.contacthotline');
     }
 
@@ -281,6 +296,11 @@ class UserManagementController extends Controller
     // bhw activate accounts
     public function activate(Request $request)
     {
+
+        $request->validate([
+            'qperiod_end' => 'required|string|max:255',
+        ]);
+        
         $id                 = $request->id;
         $user_id            = $request->user_id;
         $role_name          = $request->role_name;
@@ -293,6 +313,8 @@ class UserManagementController extends Controller
         $assign_purok       = $request->assign_purok;
         $place_isolation    = $request->place_isolation;
         $status             = $request->status;
+        $qperiod_start      = $request->qperiod_start;
+        $qperiod_end      = $request->qperiod_end;
         $email              = $request->email;
 
         $dt       = Carbon::now();
@@ -337,6 +359,8 @@ class UserManagementController extends Controller
             'assign_purok'      => $assign_purok,
             'place_isolation'   => $place_isolation,
             'status'            => $status,
+            'qperiod_start'     => $qperiod_start,
+            'qperiod_end'     => $qperiod_end,
             'email'             => $email,
         ];
 
@@ -509,6 +533,11 @@ class UserManagementController extends Controller
     public function swabtestupdate(Request $request)
     {
 
+        $request->validate([
+            'swab_result' => 'required|string|max:255',
+            'swab_proof'     => 'required|image',
+        ]);
+
         $swab_proof = time().'.'.$request->swab_proof->extension();  
         $request->swab_proof->move(public_path('swabtestImage'), $swab_proof);
 
@@ -632,13 +661,16 @@ class UserManagementController extends Controller
     public function consultupdate(Request $request)
     {
 
+        $request->validate([
+            'recommend_medicine' => 'required|string|max:255',
+            'remarks'      => 'required|string|max:255',
+        ]);
+
         $id                 = $request->id;
         $user_id            = $request->user_id;
         $full_name          = $request->full_name;
         $email              = $request->email;
         $contactno          = $request->contactno;
-        $qperiod_start      = $request->qperiod_start;
-        $qperiod_end        = $request->qperiod_end;
         $recommend_medicine = $request->recommend_medicine;
         $remarks            = $request->remarks;
 
@@ -656,8 +688,6 @@ class UserManagementController extends Controller
         $consult = [
 
             'user_id'            => $user_id,
-            'qperiod_start'      => $qperiod_start,
-            'qperiod_end'        => $qperiod_end,
             'recommend_medicine' => $recommend_medicine,
             'remarks'            => $remarks,
             'date_time'          => $todayDate,
@@ -991,6 +1021,7 @@ class UserManagementController extends Controller
     // update address
     public function purokupdate(Request $request)
     {
+        
         $id                 = $request->id;
         $role_name          = $request->role_name;
         $purok_name          = $request->purok_name;
@@ -1022,9 +1053,9 @@ class UserManagementController extends Controller
     {
         $id                 = $request->id;
         $role_name          = $request->role_name;
-        $medicine_name          = $request->medicine_name;
-        $symptoms_type          = $request->symptoms_type;
-        $full_name           = $request->full_name;
+        $medicine_name      = $request->medicine_name;
+        $symptoms_type      = $request->symptoms_type;
+        $full_name          = $request->full_name;
         $email              = $request->email;
         $contactno          = $request->contactno;
         $status             = $request->status;
