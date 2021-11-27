@@ -677,12 +677,12 @@ class UserManagementController extends Controller
         $todayDate = $dt->toDayDateTimeString();
 
         
-        // $update = [
+        $update = [
 
-        //     'id'                => $id,
-        //     'user_id'           => $user_id,
-        //     'full_name'         => $full_name,
-        // ];
+            'id'                => $id,
+            'user_id'           => $user_id,
+            'full_name'         => $full_name,
+        ];
 
         $consult = [
 
