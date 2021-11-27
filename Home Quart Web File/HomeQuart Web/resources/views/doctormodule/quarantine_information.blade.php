@@ -51,7 +51,7 @@
                                                                                 <center>
                                                                                     <table>
                                                                                         <tr>    
-                                                                                        @foreach ($data as $key => $items)
+                                                                                        @foreach ($data as $items)
                                                                                         @if ($loop->last)
                                                                                         <h5>{{ $items->temp_input }} °c</h5>
                                                                                         @endif
@@ -74,7 +74,7 @@
                                                                                     <center>
                                                                                         <table>
                                                                                             <tr>
-                                                                                            @foreach ($data as $key => $items)
+                                                                                            @foreach ($data as $items)
                                                                                             @if ($loop->last)
                                                                                             <h5>{{ $items->date_time }}</h5>
                                                                                             @endif
@@ -96,7 +96,7 @@
                                                                                     <center>
                                                                                         <table >
                                                                                             <tr>
-                                                                                            @foreach ($dataswab as $key => $items)
+                                                                                            @foreach ($dataswab as $items)
                                                                                             @if ($loop->last)
                                                                                             <h5>{{ $items->swab_result }}</h5>
                                                                                             @endif
@@ -118,7 +118,7 @@
                                                                                     <center>
                                                                                         <table >
                                                                                             <tr>
-                                                                                            @foreach ($data as $key => $items)
+                                                                                            @foreach ($data as $items)
                                                                                             @if ($loop->last)
                                                                                             <h5>{{ $items->patient_symptoms }}</h5>
                                                                                             @endif
@@ -140,7 +140,7 @@
                                                                                     <center>
                                                                                         <table>
                                                                                             <tr>
-                                                                                            @foreach ($dataconsult as $key => $items)
+                                                                                            @foreach ($dataconsult as $items)
                                                                                             @if ($loop->last)
                                                                                             <h5>Until {{ $items->qperiod_end }}</h5>
                                                                                             @endif

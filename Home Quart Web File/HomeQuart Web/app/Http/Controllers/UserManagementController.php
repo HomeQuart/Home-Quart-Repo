@@ -677,12 +677,12 @@ class UserManagementController extends Controller
         $todayDate = $dt->toDayDateTimeString();
 
         
-        $update = [
+        // $update = [
 
-            'id'                => $id,
-            'user_id'           => $user_id,
-            'full_name'         => $full_name,
-        ];
+        //     'id'                => $id,
+        //     'user_id'           => $user_id,
+        //     'full_name'         => $full_name,
+        // ];
 
         $consult = [
 
@@ -693,7 +693,7 @@ class UserManagementController extends Controller
         ];
 
         DB::table('consult')->insert($consult);
-        User::where('id',$request->id)->update($update);
+        // User::where('id',$request->id)->update($update);
         Toastr::success('Patient Consulted Successfully :)','Success');
         return redirect()->route('patientList');
     }

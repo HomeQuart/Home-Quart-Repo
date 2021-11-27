@@ -44,9 +44,9 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $item)
-                            @if ($item->user_id == Auth::user()->user_id)
+                            @if($item->user_id == Auth::user()->user_id)
+                            @if($item->temp_input != '')
                                 <tr>
-                                    @if($item->date_time != '')
                                     <td class="full_name">{{ $item->full_name }}</td>
                                     <td class="date_time">{{ $item->date_time }}</td>
                                     <td>
@@ -54,8 +54,8 @@
                                             <span class="badge bg-primary"><i class="bi bi-view-list" title="View More of This Report"></i></span>
                                         </a>  
                                      </td>
-                                     @endif
                                 </tr>
+                            @endif
                             @endif
                             @endforeach
                         </tbody>
