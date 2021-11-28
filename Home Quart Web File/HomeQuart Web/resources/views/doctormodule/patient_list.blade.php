@@ -13,8 +13,8 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Patient Lists of  Health Worker "{{$bhw[0]->full_name}}"</h3>
-                <p class="text-subtitle text-muted">List of quarantine patients</p>
+                    <h3>Brgy Health Worker's Patient Lists of  </h3>
+                <p class="text-subtitle text-muted">List of quarantine patients under bhw:"{{$bhw[0]->full_name}}"</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -31,7 +31,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    Patient Quarantine Lists Datatable
+                    Assigned Patient Quarantine Lists Datatable
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
@@ -51,6 +51,19 @@
                             @foreach ($data as $key => $item)
                             @if($bhw[0]->assign_purok == $item->assign_purok)
                                 <tr>
+                                @if(($current_time <= 1159) && ($item->count_report != 1) || ($current_time >= 1200) && ($current_time <= 1659) && ($item->count_report != 2) || ($current_time >= 1700) && ($current_time <= 2359) && ($item->count_report != 3))
+                                    <td class="id" style="color:red">{{ ++$key }}</td>
+                                    <td class="full_name" style="color:red">{{ $item->full_name }}</td>
+                                    <td class="profile">
+                                        <div class="avatar avatar-xl">
+                                            <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
+                                        </div>
+                                    </td>
+                                    <td class="assign_purok" style="color:red">{{ $item->assign_purok }}</td>
+                                @endif
+
+                                @if(($current_time <= 1159) && ($item->count_report == 1) || ($current_time >= 1200) && ($current_time <= 1659) && ($item->count_report == 2) || ($current_time >= 1700) && ($current_time <= 2359) && ($item->count_report == 3))
+
                                     <td class="id">{{ ++$key }}</td>
                                     <td class="full_name">{{ $item->full_name }}</td>
                                     <td class="profile">
@@ -59,6 +72,7 @@
                                         </div>
                                     </td>
                                     <td class="assign_purok">{{ $item->assign_purok }}</td>
+                                @endif
                                     @if($item->status =='Active')
                                     <td class="status">{{ $item->status }}</td>
                                     @endif

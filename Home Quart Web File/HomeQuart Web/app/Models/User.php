@@ -30,6 +30,7 @@ class User extends Authenticatable
         'assign_purok',
         'place_isolation',
         'status',
+        'count_report',
         'email',
         'password',
     ];

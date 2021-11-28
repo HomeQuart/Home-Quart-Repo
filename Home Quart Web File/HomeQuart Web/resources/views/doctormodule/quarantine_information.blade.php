@@ -181,12 +181,59 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="row">
+                                                                <div class="col-6 col-lg-4 col-md-6"></div>
+                                                                <div class="col-6 col-lg-4 col-md-6">
+                                                                    <div class="card">
+                                                                            <div class="card-body px-3 py-4-5">
+                                                                                <div class="row">
+                                                                                        <center>
+                                                                                            <table>
+                                                                                                <tr>
+                                                                                                @foreach ($data as $items)
+                                                                                                @foreach ($dataswab as $items2)
+                                                                                                @if ($loop->last)
+                                                                                                @if(($items->patient_symptoms == 'none') && ($items2->swab_result == 'Positive') )
+                                                                                                <h5>
+                                                                                                    Assymptomatic
+                                                                                                </h5>
+                                                                                                @endif
+                                                                                                @if(($items->patient_symptoms != '') && ($items2->swab_result == '') )
+                                                                                                <h5>
+                                                                                                    Mild
+                                                                                                </h5>
+                                                                                                @endif
+                                                                                                @if(($items->patient_symptoms != '') && ($items2->swab_result == 'Positive') )
+                                                                                                <h5>
+                                                                                                    Symptomatic
+                                                                                                </h5>
+                                                                                                @endif
+                                                                                                @if(($items->patient_symptoms == 'none') && ($items2->swab_result == 'Negative') )
+                                                                                                <h5>
+                                                                                                    Recovering
+                                                                                                </h5>
+                                                                                                @endif
+                                                                                                @endif
+                                                                                                @endforeach
+                                                                                                @endforeach
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <p>Health Predictions</p>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </center>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="col-6 col-lg-4 col-md-6"></div>
+                                                            </div>
                                                         </div>
                                                     </section>
                                                     <section class="row">
                                                         <div class="col-12">
                                                             <div class="row">
-                                                                <div class="col-lg-3">
+                                                                <div class="col-lg-4">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
@@ -221,7 +268,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-3">
+                                                                <div class="col-lg-4">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
@@ -233,7 +280,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-6">
+                                                                <div class="col-lg-4">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
@@ -285,10 +332,10 @@
                                                             <div class="form-body">
                                                                 <div class="row">
                                                                     <center>
-                                                                    <h5>Consult This Patient</h5>
+                                                                    <h5>Prescription for this Patient</h5> <br>
                                                                     </center>
                                                                     <div class="col-md-4">
-                                                                        <label> <b>Name:</b></label>
+                                                                        <label> <b>Patient Name:</b></label>
                                                                     </div>
                                                                     <div class="col-md-8">
                                                                         <div class="form-group has-icon-left">

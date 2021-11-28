@@ -100,6 +100,7 @@ class UserManagementController extends Controller
     public function patientreportupdate(Request $request)
     {
 
+
         $request->validate([
             'temp_input' => 'required|string|max:255',
             'patient_symptoms'      => 'required|string|max:255',
@@ -110,6 +111,8 @@ class UserManagementController extends Controller
         $temp_proof = time().'.'.$request->temp_proof->extension();  
         $request->temp_proof->move(public_path('reportImage'), $temp_proof);
 
+        $current_time = (int) date('Hi');
+
         $id                 = $request->id;
         $user_id            = $request->user_id;
         $full_name          = $request->full_name;
@@ -117,17 +120,27 @@ class UserManagementController extends Controller
         $temp_input         = $request->temp_input;
         $patient_symptoms   = $request->patient_symptoms;
         $patient_medicine   = $request->patient_medicine;
+        $count_report       = $request->count_report;
+        if(($current_time <= 1159)){
+            $count_report       = 1;
+        }
+        elseif(($current_time >= 1200) && ($current_time <= 1659)){
+            $count_report       = 2;
+        }
+        elseif(($current_time >= 1700) && ($current_time <= 2359)){
+            $count_report       = 3;
+        }
 
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
 
-        
         $update = [
 
             'id'                => $id,
             'full_name'         => $full_name,
             'user_id'           => $user_id,
             'daily_report'       => $daily_report,
+            'count_report'     => $count_report,
         ];
 
         $report = [
@@ -161,6 +174,8 @@ class UserManagementController extends Controller
         $temp_proof = time().'.'.$request->temp_proof->extension();  
         $request->temp_proof->move(public_path('reportImage'), $temp_proof);
 
+        $current_time = (int) date('Hi');
+
         $id                 = $request->id;
         $user_id            = $request->user_id;
         $full_name          = $request->full_name;
@@ -168,6 +183,16 @@ class UserManagementController extends Controller
         $temp_input         = $request->temp_input;
         $patient_symptoms   = $request->patient_symptoms;
         $patient_medicine   = $request->patient_medicine;
+        $count_report       = $request->count_report;
+        if(($current_time <= 1159)){
+            $count_report       = 1;
+        }
+        elseif(($current_time >= 1200) && ($current_time <= 1659)){
+            $count_report       = 2;
+        }
+        elseif(($current_time >= 1700) && ($current_time <= 2359)){
+            $count_report       = 3;
+        }
 
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
@@ -179,6 +204,7 @@ class UserManagementController extends Controller
             'full_name'         => $full_name,
             'user_id'           => $user_id,
             'daily_report'       => $daily_report,
+            'count_report'     => $count_report,
         ];
 
         $report = [
@@ -206,26 +232,18 @@ class UserManagementController extends Controller
             if($current_time <= 1159) {
                 $repDay = "Morning";
             }
-            elseif(($current_time >= 1200) && ($current_time <= 1259)){
+            elseif(($current_time >= 1200) && ($current_time <= 1659)){
                 $repDay = "Afternoon";
             }
-            elseif($current_time >= 1300){
+            elseif(($current_time >= 1700) && ($current_time <= 2359)){
                 $repDay = "Evening";
             }
             $data = DB::table('users')->where('id',$id)->get();
             $med = DB::table('medicine')->get();
             return view('patientmodule.reports_view_detail',compact('data','med','repDay'));
         }
-        if(Auth::user()->role_name=='BHW')
-        {
-            $data = DB::table('send_reports')
-                    ->join('users', 'users.user_id', '=', 'send_reports.user_id')
-                    ->select('users.*', 'send_reports.*')
-                    ->where('users.id',$id)
-                    ->orderBy('send_reports.date_time', 'desc')
-                    ->get();
-           return view('bhwmodule.report_list', compact('data'));
-        }
+        
+        
         else
         {
             return redirect()->route('home');
@@ -337,6 +355,7 @@ class UserManagementController extends Controller
         $qperiod_start      = $request->qperiod_start;
         $qperiod_end      = $request->qperiod_end;
         $email              = $request->email;
+        $count_report       = 0;
 
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
@@ -382,6 +401,7 @@ class UserManagementController extends Controller
             'status'            => $status,
             'qperiod_start'     => $qperiod_start,
             'qperiod_end'     => $qperiod_end,
+            'count_report'      =>$count_report,
             'email'             => $email,
         ];
 
@@ -403,6 +423,7 @@ class UserManagementController extends Controller
 
         $report = [
             'user_id'    => $user_id,
+            
         ];
 
         $consult = [
@@ -424,8 +445,10 @@ class UserManagementController extends Controller
     {
         if(Auth::user()->role_name=='BHW')
         {
+
+            $current_time = (int) date('Hi');
             $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
-            return view('bhwmodule.active_accounts',compact('data'));
+            return view('bhwmodule.active_accounts',compact('data','current_time'));
         }
         else
         {
@@ -443,10 +466,10 @@ class UserManagementController extends Controller
             if($current_time <= 1159) {
                 $repDay = "Morning";
             }
-            elseif(($current_time >= 1200) && ($current_time <= 1259)){
+            elseif(($current_time >= 1200) && ($current_time <= 1659)){
                 $repDay = "Afternoon";
             }
-            elseif($current_time >= 1300){
+            elseif(($current_time >= 1700) && ($current_time <= 2359)){
                 $repDay = "Evening";
             }
 
@@ -667,6 +690,7 @@ class UserManagementController extends Controller
    {
        if(Auth::user()->role_name=='Doctor')
        {
+           
            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
            return view('doctormodule.patient_list',compact('data'));
        }
@@ -702,6 +726,16 @@ class UserManagementController extends Controller
                     ->get();
            return view('doctormodule.report_list', compact('data'));
        }
+       if(Auth::user()->role_name=='BHW')
+        {
+            $data = DB::table('send_reports')
+                    ->join('users', 'users.user_id', '=', 'send_reports.user_id')
+                    ->select('users.*', 'send_reports.*')
+                    ->where('users.id',$id)
+                    ->orderBy('send_reports.date_time', 'desc')
+                    ->get();
+           return view('bhwmodule.report_list', compact('data'));
+        }
        else
        {
            return redirect()->route('home');
@@ -713,6 +747,7 @@ class UserManagementController extends Controller
     {  
         if(Auth::user()->role_name=='Doctor')
         {
+     
             $data = DB::table('users')
                     ->join('send_reports', 'users.user_id', '=', 'send_reports.user_id')
                     ->select('users.*', 'send_reports.*')
@@ -812,9 +847,10 @@ class UserManagementController extends Controller
    {  
        if(Auth::user()->role_name=='Doctor')
        {
+            $current_time = (int) date('Hi');
            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
            $bhw = DB::table('users')->where('role_name', '=', 'BHW')->where('id', $id)->get();
-           return view('doctormodule.patient_list',compact('data', 'bhw'));
+           return view('doctormodule.patient_list',compact('data', 'bhw', 'current_time'));
        }
        else
        {
@@ -884,6 +920,15 @@ class UserManagementController extends Controller
                     ->where('send_reports.id',$id)
                     ->get();
            return view('doctormodule.report_view_details',compact('data'));
+       }
+       else if(Auth::user()->role_name=='BHW')
+       {
+            $data = DB::table('send_reports')
+                    ->join('users', 'users.user_id', '=', 'send_reports.user_id')
+                    ->select('users.*', 'send_reports.*')
+                    ->where('send_reports.id',$id)
+                    ->get();
+           return view('bhwmodule.reports_view_detail',compact('data'));
        }
        else
        {

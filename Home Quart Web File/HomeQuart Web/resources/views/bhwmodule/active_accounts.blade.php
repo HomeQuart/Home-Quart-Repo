@@ -58,6 +58,26 @@
                                 @if($item->assign_purok == Auth::user()->assign_purok)
                                 <tr>
                                     
+                                @if(($current_time <= 1159) && ($item->count_report != 1) || ($current_time >= 1200) && ($current_time <= 1659) && ($item->count_report != 2) || ($current_time >= 1700) && ($current_time <= 2359) && ($item->count_report != 3))
+                                    <td class="id" style="color:red">{{ ++$key }}</td>
+                                    <td class="full_name" style="color:red">{{ $item->full_name }}</td>
+                                    <td class="photo">
+                                        <div class="avatar avatar-xl">
+                                            <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
+                                        </div>
+                                    </td>
+                                    <td class="age" style="color:red">{{ $item->age }}</td>
+                                    <td class="assign_purok" style="color:red">{{ $item->assign_purok }}</td>
+                                    <td class="assign_purok" style="color:red">{{ $item->place_isolation }}</td>
+                                    <td class="address" style="color:red">{{ $item->address }}</td>
+                                    <td class="gender" style="color:red">{{ $item->gender }}</td>
+                                    <td class="contact_no" style="color:red">{{ $item->contactno }}</td>
+                                    <td class="contact_per" style="color:red">{{ $item->contact_per }}</td>
+                                    <td class="swab_report" style="color:red">{{ $item->swab_report }}</td>
+                                    <td class="qperiod_end" style="color:red">{{ $item->qperiod_start }} until {{ $item->qperiod_end }}</td>
+                                    @endif
+
+                                    @if(($current_time <= 1159) && ($item->count_report == 1) || ($current_time >= 1200) && ($current_time <= 1659) && ($item->count_report == 2) || ($current_time >= 1700) && ($current_time <= 2359) && ($item->count_report == 3))
                                     <td class="id">{{ ++$key }}</td>
                                     <td class="full_name">{{ $item->full_name }}</td>
                                     <td class="photo">
@@ -74,6 +94,7 @@
                                     <td class="contact_per">{{ $item->contact_per }}</td>
                                     <td class="swab_report">{{ $item->swab_report }}</td>
                                     <td class="qperiod_end">{{ $item->qperiod_start }} until {{ $item->qperiod_end }}</td>
+                                    @endif
                                     @if($item->status =='Active')
                                     <td class="status">{{ $item->status }}</td>
                                     @endif

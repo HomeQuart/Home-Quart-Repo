@@ -105,12 +105,13 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <label> Specify Symptoms</label>
+                                                                <label> (Leave it "none" if there's no symptoms) </label>
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
                                                                     <input class="form-control @error('patient_symptoms') is-invalid @enderror" type="text" class="form-control"
-                                                                        placeholder="Specify Symptoms" id="patient_symptoms" name="patient_symptoms">  
+                                                                        placeholder="Leave it 'none' if there's no symptoms" id="patient_symptoms" name="patient_symptoms" value="none">  
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -137,6 +138,7 @@
                                                                 </div>
                                                             </div>
 
+                                                            <!-- <input type="hidden" name="count_report" > -->
                                                             <div class="col-12 d-flex justify-content-end">
                                                             <button type="submit"
                                                                 class="btn btn-primary me-1 mb-1">Send Report</button>

@@ -132,7 +132,7 @@
         </div>
         @endif
 
-        @if (Auth::user()->role_name=='Patient')
+        @if (Auth::user()->role_name=='BHW')
         <div class="col-12">
             <div class="card">
                 <div class="card-header">

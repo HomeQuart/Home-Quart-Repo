@@ -107,12 +107,13 @@
                                                         <div class="row">
                                                             <div class="col-md-2">
                                                                 <label> Specify Symptoms</label>
+                                                                <label> (Leave it "none" if there's no symptoms) </label>
                                                             </div>
                                                             <div class="col-md-10">
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
                                                                     <input class="form-control @error('patient_symptoms') is-invalid @enderror" type="text" class="form-control"
-                                                                        placeholder="Specify Symptoms" id="patient_symptoms" name="patient_symptoms">  
+                                                                    placeholder="Leave it 'none' if there's no symptoms" id="patient_symptoms" name="patient_symptoms" value="none">  
                                                                     </div>
                                                                 </div>
                                                             </div>
