@@ -89,17 +89,6 @@
                 @if (Auth::user()->role_name=='Doctor')
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-people-fill"></i>
-                            <span>Patient Management</span>
-                        </a>
-                        <ul class="submenu">
-                            <li class="submenu-item">
-                                <a href="{{ route('patientList') }}">Patient List</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
                             <i class="bi bi-person-square"></i>
                             <span>Brgy Health Worker Management</span>
                         </a>
