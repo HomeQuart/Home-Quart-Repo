@@ -47,9 +47,6 @@
                                                     <input type="text" name="user_id" value="{{ $data[0]->user_id }}" readonly hidden><br>
                                                     <div class="form-body">
                                                         <div class="row">
-                                                            <div class="form-group position-relative has-icon-left mb-4">
-                                                                <input type="text"name="daily_report" value="Done report" hidden>
-                                                            </div>
                                                             <div class="col-md-2">
                                                                 <label>Full Name</label>
                                                             </div>
@@ -69,7 +66,7 @@
                                                             <div class="col-md-10">
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
-                                                                        <input  name="text" type="text" id="time" class="form-control" value="{{$repDay}} ">
+                                                                        <input  name="daily_report" type="text" id="daily_report" class="form-control" value="{{$repDay}}" readonly>
                                                                     </div>
                                                                 </div>
                                                             </div>

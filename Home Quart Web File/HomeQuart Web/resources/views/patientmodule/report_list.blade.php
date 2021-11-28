@@ -39,23 +39,25 @@
                             <tr>
                                 <th>Full Name</th>
                                 <th>Last Report Date</th>
+                                <th>Report For</th>
                                 <th>Action</th>
                             </tr>    
                         </thead>
                         <tbody>
                             @foreach ($data as $item)
-                            @if($item->user_id == Auth::user()->user_id)
-                            @if($item->temp_input != '')
-                                <tr>
-                                    <td class="full_name">{{ $item->full_name }}</td>
-                                    <td class="date_time">{{ $item->date_time }}</td>
-                                    <td>
-                                        <a href="{{ url('viewDetailReport/'.$item->id) }}">
-                                            <span class="badge bg-primary"><i class="bi bi-view-list" title="View More of This Report"></i></span>
-                                        </a>  
-                                     </td>
-                                </tr>
-                            @endif
+                                @if($item->user_id == Auth::user()->user_id)
+                                @if($item->temp_input != '')
+                                    <tr>
+                                        <td class="full_name">{{ $item->full_name }}</td>
+                                        <td class="date_time">{{ $item->date_time }}</td>
+                                        <td class="date_time">{{ $item->daily_report }}</td>
+                                        <td>
+                                            <a href="{{ url('viewDetailReport/'.$item->id) }}">
+                                                <span class="badge bg-primary"><i class="bi bi-view-list" title="View More of This Report"></i></span>
+                                            </a>  
+                                        </td>
+                                    </tr>
+                                @endif
                             @endif
                             @endforeach
                         </tbody>

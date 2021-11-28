@@ -163,7 +163,7 @@
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-bar-chart-fill"></i>
-                            <span>Data</span>
+                            <span>Patient Details</span>
                         </a>
                         <ul class="submenu">
                         <li class="submenu-item">

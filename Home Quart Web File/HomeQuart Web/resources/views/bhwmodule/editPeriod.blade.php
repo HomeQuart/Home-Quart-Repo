@@ -41,27 +41,12 @@
                                 <div class="row">
                                         <div class="card-content">
                                             <div class="card-body">
-                                            <form class="form form-horizontal" action="" method="POST" enctype="multipart/form-data">
+                                            <form class="form form-horizontal" action="{{ route('qperiodEdit') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $data[0]->id }}" hid>
                                                     <input type="text" name="user_id" value="{{ $data[0]->user_id }}" readonly hidden><br>
                                                     <div class="form-body">
                                                         <div class="row">
-                                                            <div class="form-group position-relative has-icon-left mb-4">
-                                                                <input type="text"name="daily_report" value="Done report" hidden>
-                                                            </div>
-                                                            <div class="form-group position-relative mb-4">
-                                                                Quarantine Days:
-                                                                <fieldset class="form-group">
-                                                                    <select class="form-select" name="suggested_day" id="suggested_day">  
-                                                                        <option value="" disabled hidden selected> <-- select days of Quarantine --></option>
-                                                                        <option value="7" > 7 DAYS QURANTINE</option>
-                                                                        <option value="14" > 14 DAYS QURANTINE</option>
-                                                                        <option value="21" > 21 DAYS QURANTINE</option>
-                                                                        <option value="28" > 28 DAYS QURANTINE</option>
-                                                                    </select>
-                                                                </fieldset>
-                                                            </div>
                                                             <div class="col-md-4">
                                                                 <label>Start of Quarantine Period</label>
                                                             </div>
@@ -81,7 +66,7 @@
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
                                                                         <input type="date" class="form-control"
-                                                                            placeholder="qperiod_end" id="first-name-icon" name="">
+                                                                            placeholder="qperiod_end" id="first-name-icon" name="qperiod_end" value="{{ $data[0]->qperiod_end }}">
                                                                     </div>
                                                                 </div>
                                                             </div>

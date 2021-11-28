@@ -150,6 +150,7 @@ class UserManagementController extends Controller
     public function reportupdate(Request $request)
     {
 
+
         $request->validate([
             'temp_input' => 'required|string|max:255',
             'patient_symptoms'      => 'required|string|max:255',
@@ -163,7 +164,7 @@ class UserManagementController extends Controller
         $id                 = $request->id;
         $user_id            = $request->user_id;
         $full_name          = $request->full_name;
-        $daily_report        = $request->daily_report;
+        $daily_report       = $request->daily_report;
         $temp_input         = $request->temp_input;
         $patient_symptoms   = $request->patient_symptoms;
         $patient_medicine   = $request->patient_medicine;
@@ -202,18 +203,28 @@ class UserManagementController extends Controller
         if(Auth::user()->role_name=='Patient')
         {
             $current_time = (int) date('Hi');
-            if($current_time >= 600) {
+            if($current_time <= 1159) {
                 $repDay = "Morning";
             }
-            elseif($current_time >= 1200){
+            elseif(($current_time >= 1200) && ($current_time <= 1259)){
                 $repDay = "Afternoon";
             }
-            else{
+            elseif($current_time >= 1300){
                 $repDay = "Evening";
             }
             $data = DB::table('users')->where('id',$id)->get();
             $med = DB::table('medicine')->get();
             return view('patientmodule.reports_view_detail',compact('data','med','repDay'));
+        }
+        if(Auth::user()->role_name=='BHW')
+        {
+            $data = DB::table('send_reports')
+                    ->join('users', 'users.user_id', '=', 'send_reports.user_id')
+                    ->select('users.*', 'send_reports.*')
+                    ->where('users.id',$id)
+                    ->orderBy('send_reports.date_time', 'desc')
+                    ->get();
+           return view('bhwmodule.report_list', compact('data'));
         }
         else
         {
@@ -277,6 +288,8 @@ class UserManagementController extends Controller
     public function pendingaccounts(){
          if (Auth::user()->role_name=='BHW')
         {
+            
+
             $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Disable')->get();
             return view('bhwmodule.pending_user_control',compact('data'));
         }
@@ -291,6 +304,9 @@ class UserManagementController extends Controller
     {  
         if(Auth::user()->role_name=='BHW')
         {
+            // $startdate = Carbon::now();
+            // $enddate = Carbon::now()->addDays(14);
+
             $data = DB::table('users')->where('id',$id)->get();
             $roleName = DB::table('role_type_users')->get();
             $userStatus = DB::table('user_types')->get();
@@ -305,10 +321,6 @@ class UserManagementController extends Controller
     // bhw activate accounts
     public function activate(Request $request)
     {
-
-        $request->validate([
-            'qperiod_end' => 'required|string|max:255',
-        ]);
         
         $id                 = $request->id;
         $user_id            = $request->user_id;
@@ -428,13 +440,13 @@ class UserManagementController extends Controller
         if (Auth::user()->role_name=='BHW')
        {
             $current_time = (int) date('Hi');
-            if($current_time >= 600) {
+            if($current_time <= 1159) {
                 $repDay = "Morning";
             }
-            elseif($current_time >= 1200){
+            elseif(($current_time >= 1200) && ($current_time <= 1259)){
                 $repDay = "Afternoon";
             }
-            else{
+            elseif($current_time >= 1300){
                 $repDay = "Evening";
             }
 
@@ -461,6 +473,53 @@ class UserManagementController extends Controller
           return redirect()->route('home');
       }
   }
+
+   // bhw Edit Qperiod Patient 
+   public function qperiodEdit(Request $request)
+   {
+
+       $request->validate([
+           'qperiod_end' => 'required|string|max:255',
+       ]);
+       
+        $id                 = $request->id;
+        $user_id            = $request->user_id;
+        $role_name          = $request->role_name;
+        $full_name          = $request->full_name;
+        $contactno          = $request->contactno;
+        $status             = $request->status;
+        $qperiod_start      = $request->qperiod_start;
+        $qperiod_end      = $request->qperiod_end;
+        $email              = $request->email;
+
+       $dt       = Carbon::now();
+       $todayDate = $dt->toDayDateTimeString();
+       
+       
+       $update = [
+
+           'id'                => $id,
+           'user_id'           => $user_id,
+           'qperiod_start'     => $qperiod_start,
+           'qperiod_end'     => $qperiod_end,
+       ];
+
+       $activityLog = [
+
+           'user_name'    => $full_name,
+           'email'        => $email,
+           'phone_number' => $contactno,
+           'status'       => $status,
+           'role_name'    => $role_name,
+           'modify_user'  => 'Quarantine Period Update',
+           'date_time'    => $todayDate,
+       ];
+
+       DB::table('user_activity_logs')->insert($activityLog);
+       User::where('id',$request->id)->update($update);
+       Toastr::success('Quarantine Period updated successfully :)','Success');
+       return redirect()->route('activeaccounts');
+   }
 
 
    //bhw view list of patient under quarantine

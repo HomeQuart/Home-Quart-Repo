@@ -64,14 +64,10 @@
                                                             <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
-                                                                        <input  name="text" type="text" id="time" class="form-control" value="{{$repDay}} ">
+                                                                        <input  name="daily_report" type="text" id="daily_report" class="form-control" value="{{$repDay}}" readonly>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group position-relative has-icon-left mb-4">
-                                                                <input type="text"name="daily_report" value="Done report" hidden>
-                                                            </div>
-
                                                             <div class="col-md-4">
                                                                 <label> Selfie w/ Temperature in Thermometer</label>
                                                             </div>

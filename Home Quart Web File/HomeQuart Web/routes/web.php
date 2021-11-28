@@ -103,6 +103,7 @@ Route::post('swabtestupdate', [App\Http\Controllers\UserManagementController::cl
 Route::get('doneswabtest/view/detail/{user_id}', [App\Http\Controllers\UserManagementController::class, 'viewDoneSwabtestDetail'])->middleware('auth');
 Route::post('reportupdate', [App\Http\Controllers\UserManagementController::class, 'reportupdate'])->name('reportupdate');
 Route::get('editPeriod/Account/{id}', [App\Http\Controllers\UserManagementController::class, 'editPeriodAccount'])->middleware('auth');
+Route::post('qperiodEdit', [App\Http\Controllers\UserManagementController::class, 'qperiodEdit'])->name('qperiodEdit');
 
 
 //------------------------------doctor -------------------------------------//

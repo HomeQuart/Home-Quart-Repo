@@ -44,7 +44,7 @@
                                                     <section class="row">
                                                         <div class="col-12">
                                                             <div class="row">
-                                                                <div class="col-6 col-lg-2 col-md-6">
+                                                                <div class="col-6 col-lg-4 col-md-6">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
@@ -67,7 +67,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 col-lg-3 col-md-6">
+                                                                <div class="col-6 col-lg-4 col-md-6">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
@@ -89,29 +89,32 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 col-lg-2 col-md-6">
+                                                                <div class="col-6 col-lg-4 col-md-6">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
                                                                                     <center>
-                                                                                        <table >
+                                                                                    <table>
                                                                                             <tr>
-                                                                                            @foreach ($dataswab as $items)
+                                                                                            @foreach ($dataconsult as $items)
                                                                                             @if ($loop->last)
-                                                                                            <h5>{{ $items->swab_result }}</h5>
+                                                                                            <h5> {{ $items->daily_report }}</h5>
                                                                                             @endif
                                                                                              @endforeach
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <p>Swab Test Status</p>
+                                                                                                <p>Recent Update For</p>
                                                                                             </tr>
                                                                                         </table>
+                                                                                        
                                                                                     </center>   
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 col-lg-2 col-md-6">
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-6 col-lg-4 col-md-6">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
@@ -133,7 +136,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 col-lg-3 col-md-6">
+                                                                <div class="col-6 col-lg-4 col-md-6">
                                                                     <div class="card">
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
@@ -148,6 +151,28 @@
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <p>Quarantine End Date</p>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </center>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6 col-lg-4 col-md-6">
+                                                                    <div class="card">
+                                                                        <div class="card-body px-3 py-4-5">
+                                                                            <div class="row">
+                                                                                    <center>
+                                                                                    <table >
+                                                                                            <tr>
+                                                                                            @foreach ($dataswab as $items)
+                                                                                            @if ($loop->last)
+                                                                                            <h5>{{ $items->swab_result }}</h5>
+                                                                                            @endif
+                                                                                             @endforeach
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <p>Swab Test Status</p>
                                                                                             </tr>
                                                                                         </table>
                                                                                     </center>

@@ -201,10 +201,10 @@
                                             <table>
                                                 <tr>
                                                     <td>From:
-                                                        <input type="date" name="qperiod_start" id="qperiod_start" class="form-control">
+                                                        <input readonly type="date" name="qperiod_start" id="qperiod_start" class="form-control">
                                                     </td>
                                                     <td>To:
-                                                        <input class="form-control @error('qperiod_end') is-invalid @enderror" type="date" name="qperiod_end" id="qperiod_end" >
+                                                        <input readonly class="form-control" type="date" name="qperiod_end" id="qperiod_end">
                                                     </td>
                                                     @error('qperiod_end')
                                                                 <span class="invalid-feedback" role="alert">
@@ -214,8 +214,12 @@
                                                 </tr>
                                             </table>
                                             <script>
+
+                                                var end = new Date();
+                                                end.setDate(end.getDate() + 14);
                                                 
                                                 document.getElementById('qperiod_start').valueAsDate = new Date();
+                                                document.getElementById('qperiod_end').valueAsDate = end;
 
                                             </script>
                                         </div>
