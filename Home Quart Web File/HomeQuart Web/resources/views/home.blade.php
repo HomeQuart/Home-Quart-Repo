@@ -34,9 +34,8 @@
         {!! Toastr::message() !!}
         <div class="page-content">
             <section class="row">
-
-                <!-- <div class="col-12 ">
-                    <div class="row">
+                <div class="col-12 ">
+                    {{-- <div class="row">
                         <div class="col-6 col-lg-4 col-md-6">
                             <div class="card">
                                 <div class="card-body px-3 py-4-5">
@@ -88,9 +87,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div> -->
-
+                    </div> --}}
+                </div>
                     {{-- user profile modal --}}
                     <div class="card-body">
                         <!--Basic Modal -->
@@ -273,7 +271,7 @@
         {!! Toastr::message() !!}
         <div class="page-content">
             <section class="row">
-                <!-- <div class="col-12 ">
+                <div class="col-12 ">
                     <div class="row">
                         <div class="col-6 col-lg-3 col-md-6">
                             <div class="card">
@@ -344,8 +342,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
-
+                </div>
                     {{-- user profile modal --}}
                     <div class="card-body">
                         <!--Basic Modal -->
@@ -551,7 +548,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="col-6 col-lg-3 col-md-6">
+                        {{-- <div class="col-6 col-lg-3 col-md-6">
                             <div class="card">
                                 <div class="card-body px-3 py-4-5">
                                     <div class="row">
@@ -567,8 +564,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
-                        <!-- <div class="col-6 col-lg-3 col-md-6">
+                        </div>
+                        <div class="col-6 col-lg-3 col-md-6">
                             <div class="card">
                                 <div class="card-body px-3 py-4-5">
                                     <div class="row">
@@ -584,9 +581,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div> --}}
                     </div>
-                    <!-- {{-- <div class="row">
+                    {{-- <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
@@ -711,7 +708,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}} -->
+                    </div> --}}
                 </div>
                     {{-- user profile modal --}}
                     <div class="card-body">

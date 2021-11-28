@@ -44,7 +44,7 @@
                                             <form class="form form-horizontal" action="{{ route('reportupdate') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $data[0]->id }}">
-                                                    <input type="text" name="user_id" value="{{ $data[0]->user_id }}" readonly><br>
+                                                    <input type="text" name="user_id" value="{{ $data[0]->user_id }}" readonly hidden><br>
                                                     <div class="form-body">
                                                         <div class="row">
                                                             <div class="form-group position-relative has-icon-left mb-4">
@@ -62,9 +62,19 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
+                                                            
                                                             <div class="col-md-2">
-                                                                <label> Attach Image</label>
+                                                                <label>Report for</label>
+                                                            </div>
+                                                            <div class="col-md-10">
+                                                                <div class="form-group">
+                                                                    <div class="position-relative">
+                                                                        <input  name="text" type="text" id="time" class="form-control" value="{{$repDay}} ">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label> Selfie w/ Temperature in Thermometer</label>
                                                             </div>
                                                             <div class="col-md-10">
                                                                 <div class="form-group">

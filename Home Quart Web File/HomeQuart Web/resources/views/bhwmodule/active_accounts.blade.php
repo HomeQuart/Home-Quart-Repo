@@ -34,7 +34,7 @@
                     Active Accounts Datatable
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped" id="table1">
+                    <table class="table table-striped" id="table1" style="font-size:.8rem">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -86,14 +86,24 @@
                                     @if ($item->place_isolation == 'Isolation Facility')
                                     <td class="text-center">
                                         <a href="{{ url('sendReport/Account/'.$item->id) }}">
-                                            <span class="badge bg-success"><i class="bi bi-send-plus"></i>REPORT</span>
+                                            <span class="badge bg-success"><i class="bi bi-flag-fill" title="Send Report For This Patient"></i></span>
+                                        </a>  
+                                     </td>
+                                     <td class="text-center">
+                                        <a href="{{ url('editPeriod/Account/'.$item->id) }}">
+                                            <span class="badge bg-primary"><i class="bi bi-pencil-fill" title="Edit Quarantine Period"></i></span>
                                         </a>  
                                      </td>
                                     @endif
                                     @if ($item->place_isolation != 'Isolation Facility')
                                     <td class="text-center">
-                                        <p>Can't Report</p>
+                                        <span class="badge bg-success"><i class="bi bi-flag-fill" title="Can't Send Report For This Patient" disabled></i></span>
                                     </td>
+                                    <td class="text-center">
+                                        <a href="{{ url('sendReport/Account/'.$item->id) }}">
+                                            <span class="badge bg-primary"><i class="bi bi-pencil-fill" title="Edit Quarantine Period"></i></span>
+                                        </a>  
+                                     </td>
                                     @endif
                                     
                                 </tr>

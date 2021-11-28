@@ -67,7 +67,7 @@
                                     @endif
                                     <td>
                                         <a href="{{ url('assignPurok/'.$item->id) }}">
-                                            <span class="badge bg-primary">ASSIGN PUROK</span>
+                                            <span class="badge bg-primary"><i class="bi bi-bullseye" title="Assign This To a Purok"></i></span>
                                         </a>  
                                      </td>
                                 </tr>

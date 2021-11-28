@@ -81,9 +81,20 @@ class UserManagementController extends Controller
 
         if (Auth::user()->role_name=='Patient')
        {
+                $current_time = (int) date('Hi');
+                if($current_time >= 600) {
+                    $repDay = "Morning";
+                }
+                elseif($current_time >= 1200){
+                    $repDay = "Afternoon";
+                }
+                else{
+                    $repDay = "Evening";
+                }
+
            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
         //    $med = DB::table('medicine')->get();
-           return view('patientmodule.sendreport',compact('data'));
+           return view('patientmodule.sendreport',compact('data', 'repDay'));
        }
        if (Auth::user()->role_name=='BHW')
        {
@@ -417,15 +428,40 @@ class UserManagementController extends Controller
     {
         if (Auth::user()->role_name=='BHW')
        {
+            $current_time = (int) date('Hi');
+            if($current_time >= 600) {
+                $repDay = "Morning";
+            }
+            elseif($current_time >= 1200){
+                $repDay = "Afternoon";
+            }
+            else{
+                $repDay = "Evening";
+            }
+
            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->where('id',$id)->get();
            $med = DB::table('medicine')->get();
-           return view('bhwmodule.sendReport',compact('data', 'med'));
+           return view('bhwmodule.sendReport',compact('data', 'med', 'repDay', 'current_time'));
        }
        else
        {
            return redirect()->route('home');
        }
    }
+
+   //bhw can edit quarantine period of the patient
+   public function editPeriodAccount($id)
+   {
+       if (Auth::user()->role_name=='BHW')
+      {
+          $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->where('id',$id)->get();
+          return view('bhwmodule.editPeriod',compact('data'));
+      }
+      else
+      {
+          return redirect()->route('home');
+      }
+  }
 
 
    //bhw view list of patient under quarantine

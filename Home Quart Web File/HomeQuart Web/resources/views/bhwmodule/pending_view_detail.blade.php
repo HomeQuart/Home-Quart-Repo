@@ -204,7 +204,7 @@
                                                         <input type="date" name="qperiod_start" id="qperiod_start" class="form-control">
                                                     </td>
                                                     <td>To:
-                                                        <input class="form-control @error('qperiod_end') is-invalid @enderror" type="date" name="qperiod_end" id="qperiod_end" class="form-control">
+                                                        <input class="form-control @error('qperiod_end') is-invalid @enderror" type="date" name="qperiod_end" id="qperiod_end" >
                                                     </td>
                                                     @error('qperiod_end')
                                                                 <span class="invalid-feedback" role="alert">
@@ -214,7 +214,9 @@
                                                 </tr>
                                             </table>
                                             <script>
+                                                
                                                 document.getElementById('qperiod_start').valueAsDate = new Date();
+
                                             </script>
                                         </div>
                                     </div>
