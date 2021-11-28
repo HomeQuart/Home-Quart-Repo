@@ -81,20 +81,9 @@ class UserManagementController extends Controller
 
         if (Auth::user()->role_name=='Patient')
        {
-                $current_time = (int) date('Hi');
-                if($current_time >= 600) {
-                    $repDay = "Morning";
-                }
-                elseif($current_time >= 1200){
-                    $repDay = "Afternoon";
-                }
-                else{
-                    $repDay = "Evening";
-                }
-
            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
         //    $med = DB::table('medicine')->get();
-           return view('patientmodule.sendreport',compact('data', 'repDay'));
+           return view('patientmodule.sendreport',compact('data'));
        }
        if (Auth::user()->role_name=='BHW')
        {
@@ -212,9 +201,19 @@ class UserManagementController extends Controller
     {  
         if(Auth::user()->role_name=='Patient')
         {
+            $current_time = (int) date('Hi');
+            if($current_time >= 600) {
+                $repDay = "Morning";
+            }
+            elseif($current_time >= 1200){
+                $repDay = "Afternoon";
+            }
+            else{
+                $repDay = "Evening";
+            }
             $data = DB::table('users')->where('id',$id)->get();
             $med = DB::table('medicine')->get();
-            return view('patientmodule.reports_view_detail',compact('data','med'));
+            return view('patientmodule.reports_view_detail',compact('data','med','repDay'));
         }
         else
         {
@@ -441,7 +440,7 @@ class UserManagementController extends Controller
 
            $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->where('id',$id)->get();
            $med = DB::table('medicine')->get();
-           return view('bhwmodule.sendReport',compact('data', 'med', 'repDay', 'current_time'));
+           return view('bhwmodule.sendReport',compact('data', 'med', 'repDay'));
        }
        else
        {
@@ -742,6 +741,21 @@ class UserManagementController extends Controller
            $data = DB::table('users')->where('role_name', '=', 'BHW')->where('status','=','Active')->where('id',$id)->get();
            $assignP = DB::table('purok')->get();
            return view('doctormodule.assign_purok',compact('data','assignP'));
+       }
+       else
+       {
+           return redirect()->route('home');
+       }
+   }
+
+   //doctor see patient list assign in bhw
+   public function patientListBHW($id)
+   {  
+       if(Auth::user()->role_name=='Doctor')
+       {
+           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->get();
+           $bhw = DB::table('users')->where('role_name', '=', 'BHW')->where('id', $id)->get();
+           return view('doctormodule.patient_list',compact('data', 'bhw'));
        }
        else
        {

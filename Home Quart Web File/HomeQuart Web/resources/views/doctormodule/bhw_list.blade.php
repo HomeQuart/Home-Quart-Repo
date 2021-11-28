@@ -69,6 +69,9 @@
                                         <a href="{{ url('assignPurok/'.$item->id) }}">
                                             <span class="badge bg-primary"><i class="bi bi-bullseye" title="Assign This To a Purok"></i></span>
                                         </a>  
+                                        <a href="{{ url('patientListBHW/'.$item->id) }}">
+                                            <span class="badge bg-primary"><i class="bi bi-list" title="See Assigned Patients"></i></span>
+                                        </a>  
                                      </td>
                                 </tr>
                             @endforeach

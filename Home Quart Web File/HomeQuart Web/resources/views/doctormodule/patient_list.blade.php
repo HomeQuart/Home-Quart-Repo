@@ -13,7 +13,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Patient Lists</h3>
+                    <h3>Patient Lists of  Health Worker "{{$bhw[0]->full_name}}"</h3>
                 <p class="text-subtitle text-muted">List of quarantine patients</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -40,28 +40,33 @@
                                 <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Profile</th>
+                                <th>Assign Purok</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>    
                         </thead>
                         <tbody>
+
+
                             @foreach ($data as $key => $item)
+                            @if($bhw[0]->assign_purok == $item->assign_purok)
                                 <tr>
                                     <td class="id">{{ ++$key }}</td>
                                     <td class="full_name">{{ $item->full_name }}</td>
-                                    <td class="full_name">
+                                    <td class="profile">
                                         <div class="avatar avatar-xl">
                                             <img src="{{ URL::to('/images/'. $item->p_picture) }}" alt="{{ $item->p_picture }}">
                                         </div>
                                     </td>
+                                    <td class="assign_purok">{{ $item->assign_purok }}</td>
                                     @if($item->status =='Active')
                                     <td class="status">{{ $item->status }}</td>
                                     @endif
                                     @if($item->status =='Disable')
-                                    <td class="status">{{ $item->status }}</td>
+                                    <td class="status">{{ $item2->status }}</td>
                                     @endif
                                     @if($item->status =='Done')
-                                    <td class="status">{{ $item->status }}</td>
+                                    <td class="status">{{ $item2->status }}</td>
                                     @endif
                                     <td>
                                         <a href="{{ url('quarantineInformation/'.$item->id) }}">
@@ -72,9 +77,14 @@
                                         </a>  
                                      </td>
                                 </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="col-12 d-flex justify-content-end">
+                        <a  href="{{ route('bhwList') }}"
+                            class="btn btn-primary ">GO BACK</a>
+                    </div>
                 </div>
             </div>
         </section>

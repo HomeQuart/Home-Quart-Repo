@@ -58,10 +58,10 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-4">
                                                                 <label>Report for</label>
                                                             </div>
-                                                            <div class="col-md-10">
+                                                            <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <div class="position-relative">
                                                                         <input  name="text" type="text" id="time" class="form-control" value="{{$repDay}} ">

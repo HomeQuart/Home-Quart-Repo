@@ -46,9 +46,7 @@
                                                                         <div class="card-header">
                                                                             <center><h4>Your Temperature Progress</h4></center>
                                                                         </div>
-                                                                        <div class="card-body">
-                                                                            <div id="chart-profile-visit"></div>
-                                                                        </div>
+                                                                        <canvas id = "barChart"> </canvas >
                                                                     </div>
                                                                 </div>
                                                             </div>

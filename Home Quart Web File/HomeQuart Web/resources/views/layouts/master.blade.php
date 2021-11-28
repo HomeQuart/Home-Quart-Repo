@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js" integrity="sha512-vBmx0N/uQOXznm/Nbkp7h0P1RfLSj0HQrFSzV8m7rOGyj30fYAOKHYvCNez+yM8IrfnW0TCodDEjRqf6fodf/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
 <style>
     .form-group[class*=has-icon-].has-icon-left .form-select {
@@ -44,7 +44,6 @@
         
     <script src="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/bootstrap.bundle.min.js') }}"></script>
-
     <script src="{{ URL::to('assets/vendors/simple-datatables/simple-datatables.js') }}"></script>
     <script>
         // Simple Datatable
@@ -66,6 +65,37 @@
 
             
         });
+
+
+        $temp = "{{Auth::user()->temp_input}}";
+        
+
+        // $(function(){
+            
+        //     $datas = "{{Auth::user()->temp_input}}";
+        //     var barCanvas = $("#barChart");
+        //     var barChart = new Chart(barCanvas,{
+        //         type:'bar',
+        //         data:{
+        //             datasets:[
+        //                 {
+        //                     label:'Temperature Progress',
+        //                     data: datas,
+        //                     backgroundColor:['blue']
+        //                 }
+        //             ]
+        //         },
+        //         option:{
+        //             scales:{
+        //                 yAxes:[{
+        //                     ticks:{
+        //                         beginAtZero: true
+        //                     }
+        //                 }]
+        //             }
+        //         }
+        //     })
+        // })
 
     </script>
 </body>
