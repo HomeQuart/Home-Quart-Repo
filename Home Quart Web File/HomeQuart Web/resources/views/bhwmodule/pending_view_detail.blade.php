@@ -193,26 +193,18 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
                                         <div class="col-md-4">
                                             <label>Quarantine Period for the Patient:</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <table>
-                                                <tr>
-                                                    <td>From:
-                                                        <input readonly type="date" name="qperiod_start" id="qperiod_start" class="form-control">
-                                                    </td>
-                                                    <td>To:
-                                                        <input readonly class="form-control" type="date" name="qperiod_end" id="qperiod_end">
-                                                    </td>
-                                                    @error('qperiod_end')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                    @enderror
-                                                </tr>
-                                            </table>
+                                            <div class="form-group">
+                                                <div class="position-relative">
+                                                    Quarantine Period Start:<input readonly type="date" name="qperiod_start" id="qperiod_start" class="form-control">
+                                                    Quarantine Period End:<input readonly class="form-control" type="date" name="qperiod_end" id="qperiod_end">
+                                                        
+                                                </div>
+                                            </div>
+                                        </div>
                                             <script>
 
                                                 var end = new Date();
@@ -222,9 +214,6 @@
                                                 document.getElementById('qperiod_end').valueAsDate = end;
 
                                             </script>
-                                        </div>
-                                    </div>
-
                                     <div class="col-md-4">
                                         <label>Email Address</label>
                                     </div>

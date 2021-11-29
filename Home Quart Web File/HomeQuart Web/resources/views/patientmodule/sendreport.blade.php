@@ -40,6 +40,8 @@
         </div> 
 
         @if (Auth::user()->role_name=='Patient')
+        {{-- message --}}
+        {!! Toastr::message() !!}
         <div class="col-12">
             <div class="card">
                 <div class="card-header">

@@ -397,8 +397,6 @@
                                                         <div class="col-12 d-flex justify-content-end">
                                                             <button type="submit"
                                                                 class="btn btn-primary me-1 mb-1">CONSULT</button>
-                                                            <a  href="{{ route('patientList') }}"
-                                                                class="btn btn-light-secondary me-1 mb-1">CANCEL</a>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -410,8 +408,8 @@
             
             </section>
             
-            {{-- message --}}
-            {!! Toastr::message() !!}
+            <!-- {{-- message --}}
+            {!! Toastr::message() !!} -->
             
             <footer>
             <div class="footer clearfix mb-0 text-muted">

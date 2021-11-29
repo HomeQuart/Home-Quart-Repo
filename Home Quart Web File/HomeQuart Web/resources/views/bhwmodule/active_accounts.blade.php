@@ -120,19 +120,29 @@
                                             <span class="badge bg-primary"><i class="bi bi-list" title="See Report Lists"></i></span>
                                         </a>  
                                      </td>
+                                     <td class="text-center">
+                                        <a href="{{ url('patientconsulation/Account/'.$item->id) }}">
+                                            <span class="badge bg-primary"><i class="bi bi-three-dots" title="See Consultations"></i></span>
+                                        </a>  
+                                     </td>
                                     @endif
                                     @if ($item->place_isolation != 'Isolation Facility')
                                     <td class="text-center">
                                         <p>can't report</p>
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ url('sendReport/Account/'.$item->id) }}">
+                                        <a href="{{ url('editPeriod/Account/'.$item->id) }}">
                                             <span class="badge bg-primary"><i class="bi bi-pencil-fill" title="Edit Quarantine Period" ></i></span>
                                         </a>  
                                      </td>
                                      <td class="text-center">
                                         <a href="{{ url('reportList/'.$item->id) }}">
                                             <span class="badge bg-primary"><i class="bi bi-list" title="See Report Lists"></i></span>
+                                        </a>  
+                                     </td>
+                                     <td class="text-center">
+                                        <a href="{{ url('patientconsulation/Account/'.$item->id) }}">
+                                            <span class="badge bg-primary"><i class="bi bi-three-dots"  title="See Consultations"></i></span>
                                         </a>  
                                      </td>
                                     @endif

@@ -4,6 +4,8 @@
 @endsection
 @section('content')
     @if (Auth::user()->role_name=='Patient')
+    {{-- message --}}
+    {!! Toastr::message() !!}
         <div id="main">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
@@ -27,8 +29,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- message --}}
-                {!! Toastr::message() !!}
+                
                 <section class="section">
                     <div class="card">
                         <div class="card-header">
@@ -42,7 +43,7 @@
                                             <form class="form form-horizontal" action="{{ route('patientreportupdate') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $data[0]->id }}">
-                                                    <input type="text" name="user_id" value="{{ $data[0]->user_id }}" readonly>
+                                                    <input type="text" name="user_id" value="{{ $data[0]->user_id }}" hidden readonly>
                                                     <div class="form-body">
                                                         <div class="row">
 

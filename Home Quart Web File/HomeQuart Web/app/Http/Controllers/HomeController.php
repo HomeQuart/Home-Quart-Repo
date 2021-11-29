@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use DB;
 use Auth;
+use Carbon\Carbon;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -28,17 +30,29 @@ class HomeController extends Controller
     {
         if(Auth::user()->role_name == 'Patient')
         {
+        $date = Carbon::now();
         $current_time = (int) date('Hi');
-            if(($current_time <= 1159) && ( Auth::user()->count_report != '1')){
+            if(($current_time <= 1159) && ( Auth::user()->count_report != '1') && (Auth::user()->status == 'Active')){
                 Toastr::warning('You need to send a Report for Morning','Warning');
             }
-            elseif(($current_time >= 1200) && ($current_time <= 1659) && ( Auth::user()->count_report != '2')){
+            elseif(($current_time >= 1200) && ($current_time <= 1659) && ( Auth::user()->count_report != '2') && (Auth::user()->status == 'Active')){
                 Toastr::warning('You need to send a Report for Afternoon','Warning');
             }
-            elseif(($current_time >= 1700) && ($current_time <= 2359) && ( Auth::user()->count_report != '3')){
+            elseif(($current_time >= 1700) && ($current_time <= 2359) && ( Auth::user()->count_report != '3') && (Auth::user()->status == 'Active')){
                 Toastr::warning('You need to send a Report for Evening','Warning');
             }
+
+            if($date->format('Y-m-d') == Auth::user()->qperiod_end)
+            {
+                $update = [
+
+                    'status'            => 'Done',
+                ];
+                User::find(auth()->user()->id)->update(($update));
+            }
         }
+
+
         $staff = DB::table('staff')->count();
         $users = DB::table('users')->count();
         $user_activity_logs = DB::table('user_activity_logs')->count();

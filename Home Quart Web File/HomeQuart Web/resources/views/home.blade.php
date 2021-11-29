@@ -934,14 +934,13 @@
                             <div class="card">
                                 <div class="card-body px-3 py-4-5">
                                     <div class="row">
-                                        <center> <h5>Quarantine Period</h5></center><hr>
+                                        <center> <h5>Remaining Quarantine Period</h5></center><hr>
                                         {{-- insert the countdown timer here --}}
                                         <center>
                                         <div id="getting-started"></div>
                                         <div class="container">
                                             <div class="row">
                                                     <div class="card ">
-                                                      
                                                         <table class="table table-striped">
                                                             <tr>
                                                                 <td class ="text-center">Days</td>
@@ -957,12 +956,17 @@
                                                             </tr>
                                                         </table>
                                                     </div>
-
                                             </div>
                                         </div>
-                                        </center>
-                                       
+                                    </center>
                                     </div>
+                                    <!-- <script>
+                                    if(document.getElementById('#day').value == 0 && document.getElementById('#hour').value == 0 && document.getElementById('#minutes').value == 0 document.getElementById('#seconds').value == 0)
+                                    {
+                                        
+                                    }
+                                </script> -->
+                                    
                                 </div>
                             </div>
                         </div>

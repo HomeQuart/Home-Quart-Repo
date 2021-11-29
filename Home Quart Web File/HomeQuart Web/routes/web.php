@@ -87,6 +87,7 @@ Route::get('consultations', [App\Http\Controllers\UserManagementController::clas
 Route::get('sendSwabTest', [App\Http\Controllers\UserManagementController::class, 'sendSwabTest'])->middleware('auth')->name('sendSwabTest');
 Route::post('patientreportupdate', [App\Http\Controllers\UserManagementController::class, 'patientreportupdate'])->name('patientreportupdate');
 Route::get('patientReportList', [App\Http\Controllers\UserManagementController::class, 'patientReportList'])->middleware('auth')->name('patientReportList');
+Route::post('statusupdate', [App\Http\Controllers\UserManagementController::class, 'statusupdate'])->name('statusupdate');
 
 
 //-----------------------------brgy healthworker-------------------------------//
@@ -103,11 +104,11 @@ Route::post('swabtestupdate', [App\Http\Controllers\UserManagementController::cl
 Route::get('doneswabtest/view/detail/{user_id}', [App\Http\Controllers\UserManagementController::class, 'viewDoneSwabtestDetail'])->middleware('auth');
 Route::post('reportupdate', [App\Http\Controllers\UserManagementController::class, 'reportupdate'])->name('reportupdate');
 Route::get('editPeriod/Account/{id}', [App\Http\Controllers\UserManagementController::class, 'editPeriodAccount'])->middleware('auth');
+Route::get('patientconsulation/Account/{id}', [App\Http\Controllers\UserManagementController::class, 'patientconsulation'])->middleware('auth');
 Route::post('qperiodEdit', [App\Http\Controllers\UserManagementController::class, 'qperiodEdit'])->name('qperiodEdit');
 
 
 //------------------------------doctor -------------------------------------//
-Route::get('patientList', [App\Http\Controllers\UserManagementController::class, 'patientList'])->middleware('auth')->name('patientList');
 Route::get('reportList/{id}', [App\Http\Controllers\UserManagementController::class, 'reportList'])->middleware('auth');
 Route::get('quarantineInformation/{id}', [App\Http\Controllers\UserManagementController::class, 'quarantineInformation'])->middleware('auth');
 Route::get('bhwList', [App\Http\Controllers\UserManagementController::class, 'bhwList'])->middleware('auth')->name('bhwList');

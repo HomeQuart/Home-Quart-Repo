@@ -9,25 +9,21 @@
                 <a href="#" class="burger-btn d-block d-xl-none">
                     <i class="bi bi-justify fs-3"></i>
                 </a>
-            </header>
-            <div class="col-12 col-lg-3" style="float: right">  
-                <div class="card" data-bs-toggle="modal" data-bs-target="#default">
-                    <div class="card-body py-4 px-5">
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-xl">
-                                <img src="{{ URL::to('/images/'. Auth::user()->p_picture) }}" alt="{{ Auth::user()->p_picture }}">
-                            </div>
-                            <div class="ms-3 name">
-                                <h5 class="font-bold">{{ Auth::user()->full_name }}</h5>
-                                <h6 class="text-muted mb-0">{{ Auth::user()->email }}</h6>
-                            </div>
+                <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Temperature Progress</h3>
+                            <p class="text-subtitle text-muted">Temperature Progress Bar</p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Temperature Progress</li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
-                </div>
-            </div>
-            <br><br><br><br><br><br>
-            <h1>Temperature Progress</h1><hr>
-            {{-- mo comment si she frank bubu --}}
+            </header>
             
             <section class="row">
                 <div class="col-12">

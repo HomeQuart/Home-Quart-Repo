@@ -63,6 +63,8 @@
             $('#minutes').html(event.strftime('%M'));
             $('#seconds').html(event.strftime('%S'));
 
+
+           
             
         });
 

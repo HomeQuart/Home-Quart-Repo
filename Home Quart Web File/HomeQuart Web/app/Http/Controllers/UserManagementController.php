@@ -302,6 +302,16 @@ class UserManagementController extends Controller
         return view('patientmodule.consultations', compact('data'));
     }
 
+    //bhw see patients consultations
+    public function patientconsulation($id)
+    {
+        $data = DB::table('consult')
+                    ->join('users', 'users.user_id', '=', 'consult.user_id')
+                    ->select('users.*', 'consult.*')
+                    ->where('users.id',$id)
+                    ->get();
+           return view('bhwmodule.consultations', compact('data'));
+    }
     //bhw pending accounts
     public function pendingaccounts(){
          if (Auth::user()->role_name=='BHW')
@@ -412,7 +422,7 @@ class UserManagementController extends Controller
             'phone_number' => $contactno,
             'status'       => $status,
             'role_name'    => $role_name,
-            'modify_user'  => 'Update',
+            'modify_user'  => 'Patient Activated',
             'date_time'    => $todayDate,
         ];
 
@@ -527,22 +537,61 @@ class UserManagementController extends Controller
            'qperiod_end'     => $qperiod_end,
        ];
 
-       $activityLog = [
+    //    $activityLog = [
 
-           'user_name'    => $full_name,
-           'email'        => $email,
-           'phone_number' => $contactno,
-           'status'       => $status,
-           'role_name'    => $role_name,
-           'modify_user'  => 'Quarantine Period Update',
-           'date_time'    => $todayDate,
-       ];
+    //        'user_name'    => $full_name,
+    //        'email'        => $email,
+    //        'phone_number' => $contactno,
+    //        'status'       => $status,
+    //        'role_name'    => $role_name,
+    //        'modify_user'  => 'Quarantine Period Update',
+    //        'date_time'    => $todayDate,
+    //    ];
 
-       DB::table('user_activity_logs')->insert($activityLog);
+    //    DB::table('user_activity_logs')->insert($activityLog);
        User::where('id',$request->id)->update($update);
        Toastr::success('Quarantine Period updated successfully :)','Success');
        return redirect()->route('activeaccounts');
    }
+
+   public function statusupdate()
+   {
+
+       
+    //     $id                 = $request->id;
+    //     $user_id            = $request->user_id;
+    //     $role_name          = $request->role_name;
+    //     $full_name          = $request->full_name;
+    //     $contactno          = $request->contactno;
+    //     $status             = $request->status;
+    //     $email              = $request->email;
+
+    //    $dt       = Carbon::now();
+    //    $todayDate = $dt->toDayDateTimeString();
+       
+       
+       $update = [
+
+           'status'            => 'Done',
+       ];
+
+    //    $activityLog = [
+
+    //        'user_name'    => $full_name,
+    //        'email'        => $email,
+    //        'phone_number' => $contactno,
+    //        'status'       => $status,
+    //        'role_name'    => $role_name,
+    //        'modify_user'  => 'Patient Status Done',
+    //        'date_time'    => $todayDate,
+    //    ];
+
+    //    DB::table('user_activity_logs')->insert($activityLog);
+       User::find(auth()->user()->id)->update(($update));
+    //    Toastr::success('Quarantine Period updated successfully :)','Success');
+    //    return redirect()->route('activeaccounts');
+   }
+
 
 
    //bhw view list of patient under quarantine
@@ -777,6 +826,7 @@ class UserManagementController extends Controller
    {  
        if(Auth::user()->role_name=='Doctor')
        {
+           
             $data = DB::table('users')->where('id',$id)->get();
            return view('doctormodule.consult',compact('data'));
        }
@@ -806,12 +856,12 @@ class UserManagementController extends Controller
         $todayDate = $dt->toDayDateTimeString();
 
         
-        $update = [
+        // $update = [
 
-            'id'                => $id,
-            'user_id'           => $user_id,
-            'full_name'         => $full_name,
-        ];
+        //     'id'                => $id,
+        //     'user_id'           => $user_id,
+        //     'full_name'         => $full_name,
+        // ];
 
         $consult = [
 
@@ -823,8 +873,8 @@ class UserManagementController extends Controller
 
         DB::table('consult')->insert($consult);
         // User::where('id',$request->id)->update($update);
-        Toastr::success('Patient Consulted Successfully :)','Success');
-        return redirect()->route('patientList');
+        Toastr::success( ' Patient Consulted Successfully :)','Success');
+        return redirect()->back();
     }
 
     //doctor assign purok
@@ -1293,18 +1343,18 @@ class UserManagementController extends Controller
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
 
-        $activityLog = [
+        // $activityLog = [
 
-            'user_name'    => $full_name,
-            'email'        => $email,
-            'phone_number' => $contactno,
-            'status'       => $status,
-            'role_name'    => $role_name,
-            'modify_user'  => 'Purok Delete',
-            'date_time'    => $todayDate,
-        ];
+        //     'user_name'    => $full_name,
+        //     'email'        => $email,
+        //     'phone_number' => $contactno,
+        //     'status'       => $status,
+        //     'role_name'    => $role_name,
+        //     'modify_user'  => 'Purok Delete',
+        //     'date_time'    => $todayDate,
+        // ];
 
-        DB::table('user_activity_logs')->insert($activityLog);
+        // DB::table('user_activity_logs')->insert($activityLog);
 
         $delete = purok::find($id);
         $delete->delete();
@@ -1333,18 +1383,18 @@ class UserManagementController extends Controller
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
 
-        $activityLog = [
+        // $activityLog = [
 
-            'user_name'    => $full_name,
-            'email'        => $email,
-            'phone_number' => $contactno,
-            'status'       => $status,
-            'role_name'    => $role_name,
-            'modify_user'  => 'Medicine Delete',
-            'date_time'    => $todayDate,
-        ];
+        //     'user_name'    => $full_name,
+        //     'email'        => $email,
+        //     'phone_number' => $contactno,
+        //     'status'       => $status,
+        //     'role_name'    => $role_name,
+        //     'modify_user'  => 'Medicine Delete',
+        //     'date_time'    => $todayDate,
+        // ];
 
-        DB::table('user_activity_logs')->insert($activityLog);
+        // DB::table('user_activity_logs')->insert($activityLog);
 
         $delete = Medicine::find($id);
         $delete->delete();
