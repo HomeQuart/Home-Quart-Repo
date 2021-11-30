@@ -268,7 +268,8 @@ class UserManagementController extends Controller
     //patient see contact hotlines
     public function contactHotlines()
     {
-        return view('patientmodule.contacthotline');
+        $data = DB::table('users')->get();
+        return view('patientmodule.contacthotline',compact('data'));
     }
 
     //patient view report list
@@ -288,12 +289,12 @@ class UserManagementController extends Controller
            return redirect()->route('home');
        }
    }
-    //patient see temperature progress
-    public function temperatureProgress()
-    {
+    // //patient see temperature progress
+    // public function temperatureProgress()
+    // {
 
-        return view('patientmodule.temperatureProgress');
-    }
+    //     return view('patientmodule.temperatureProgress');
+    // }
 
     //patient see consultations
     public function consultations()
@@ -301,17 +302,16 @@ class UserManagementController extends Controller
         $data = DB::table('consult')->get();
         return view('patientmodule.consultations', compact('data'));
     }
-
-    //bhw see patients consultations
-    public function patientconsulation($id)
-    {
-        $data = DB::table('consult')
-                    ->join('users', 'users.user_id', '=', 'consult.user_id')
-                    ->select('users.*', 'consult.*')
-                    ->where('users.id',$id)
-                    ->get();
-           return view('bhwmodule.consultations', compact('data'));
-    }
+  //bhw see patients consultations
+  public function patientconsulation($id)
+  {
+      $data = DB::table('consult')
+                  ->join('users', 'users.user_id', '=', 'consult.user_id')
+                  ->select('users.*', 'consult.*')
+                  ->where('users.id',$id)
+                  ->get();
+         return view('bhwmodule.consultations', compact('data'));
+  }
     //bhw pending accounts
     public function pendingaccounts(){
          if (Auth::user()->role_name=='BHW')
@@ -537,7 +537,7 @@ class UserManagementController extends Controller
            'qperiod_end'     => $qperiod_end,
        ];
 
-    //    $activityLog = [
+ //    $activityLog = [
 
     //        'user_name'    => $full_name,
     //        'email'        => $email,
@@ -549,9 +549,9 @@ class UserManagementController extends Controller
     //    ];
 
     //    DB::table('user_activity_logs')->insert($activityLog);
-       User::where('id',$request->id)->update($update);
-       Toastr::success('Quarantine Period updated successfully :)','Success');
-       return redirect()->route('activeaccounts');
+    User::where('id',$request->id)->update($update);
+    Toastr::success('Quarantine Period updated successfully :)','Success');
+    return redirect()->route('activeaccounts');
    }
 
    public function statusupdate()
@@ -591,7 +591,6 @@ class UserManagementController extends Controller
     //    Toastr::success('Quarantine Period updated successfully :)','Success');
     //    return redirect()->route('activeaccounts');
    }
-
 
 
    //bhw view list of patient under quarantine
@@ -826,7 +825,6 @@ class UserManagementController extends Controller
    {  
        if(Auth::user()->role_name=='Doctor')
        {
-           
             $data = DB::table('users')->where('id',$id)->get();
            return view('doctormodule.consult',compact('data'));
        }
@@ -1343,7 +1341,7 @@ class UserManagementController extends Controller
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
 
-        // $activityLog = [
+     // $activityLog = [
 
         //     'user_name'    => $full_name,
         //     'email'        => $email,
@@ -1382,8 +1380,7 @@ class UserManagementController extends Controller
 
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
-
-        // $activityLog = [
+   // $activityLog = [
 
         //     'user_name'    => $full_name,
         //     'email'        => $email,
@@ -1404,7 +1401,8 @@ class UserManagementController extends Controller
     // view change password
     public function changePasswordView()
     {
-        return view('usermanagement.change_password');
+        $data = DB::table('users')->get();
+        return view('usermanagement.change_password',compact('data'));
     }
     
     // change password in db
@@ -1420,13 +1418,42 @@ class UserManagementController extends Controller
         Toastr::success('User change successfully :)','Success');
         return redirect()->route('home');
     }
+
+    public function temperatureProgress()
+    {
+
+        if (Auth::user()->role_name=='Patient')
+        {
+            $users = User::all();
+            $reports = send_reports::all();
+
+        $dataPoints = [];
+
+        foreach ($reports as $key => $report) 
+        {
+        if(Auth::user()->user_id == $report->user_id)
+        {
+            if($report->temp_input != "")
+            {
+
+            $dataPoints[] = array(
+                "name" => $report->date_time,
+                "data" => [
+                    floatval($report['temp_input']),
+                    
+                ],
+            );
+            }
+        }
+        }
+            return view("patientmodule.temperatureProgress", [
+                "data" => json_encode($dataPoints),
+                "terms" => json_encode(array(
+                    "Temperature inputs of the Patient"
+                )),
+            ]);
+            }
+
+    }
+    
 }
-
-
-
-
-
-
-
-
-

@@ -146,6 +146,7 @@
 
                 {{-- PATIENT SIDEBAR Dashboard --}}
                 @if (Auth::user()->role_name=='Patient')
+                @if (Auth::user()->status !='Done')
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-flag-fill"></i>
@@ -160,6 +161,7 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-bar-chart-fill"></i>
@@ -181,6 +183,28 @@
                         </ul>
                     </li>
                 @endif
+                <!-- @if (Auth::user()->status=='Done' && Auth::user()->role_name=='Patient')
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-bar-chart-fill"></i>
+                            <span>Patient Details</span>
+                        </a>
+                        <ul class="submenu">
+                        <li class="submenu-item">
+                                <a href="{{ route('patientReportList') }}">Report List</a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="{{ route('consultations') }}">Consultations</a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="{{ route('temperatureProgress') }}">Temperature Progress</a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="{{ route('contactHotlines') }}">Contact Hotlines</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif -->
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>

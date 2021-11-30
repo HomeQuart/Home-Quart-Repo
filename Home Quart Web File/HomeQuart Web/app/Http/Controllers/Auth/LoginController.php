@@ -84,6 +84,12 @@ class LoginController extends Controller
             Toastr::success('Login successfully :)','Success');
             return redirect()->intended('home');
         }
+        elseif(Auth::attempt(['email'=>$email,'password'=>$password,'status'=>'Done'])){
+            DB::table('activity_logs')->insert($activityLog);
+            Toastr::success('Login successfully :)','Success');
+            Toastr::success('Successfully done quarantine, check your email for your certification. Your Account will be deleted soon :)','Success');
+            return redirect()->intended('home');
+        }
         else{
             Toastr::error('You did not sign in correctly or waiting for approval to the brg health worker','Error');
             return redirect('login');

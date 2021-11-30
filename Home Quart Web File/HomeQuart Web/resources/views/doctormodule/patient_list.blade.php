@@ -31,8 +31,12 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    Assigned Patient Quarantine Lists Datatable
+                    Assigned Patient Quarantine Lists Datatable <br>
+
+                    <div style="color:red"> <b>Red text indicates patient has not reported yet. </b> </div>
                 </div>
+               
+                
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
                         <thead>

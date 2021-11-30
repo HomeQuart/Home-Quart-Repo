@@ -124,7 +124,6 @@ Route::get('delete_medicine/{id}', [App\Http\Controllers\UserManagementControlle
 Route::get('viewDetailReport/{id}', [App\Http\Controllers\UserManagementController::class, 'viewDetailReport'])->middleware('auth');
 Route::post('consultupdate', [App\Http\Controllers\UserManagementController::class, 'consultupdate'])->name('consultupdate');
 
-
 // -----------------------------admin works------------------------------//
 Route::get('userManagement2', [App\Http\Controllers\UserManagementController::class, 'index2'])->middleware('auth')->name('userManagement2');
 Route::get('user/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewUser'])->middleware('auth')->name('user/add/new');

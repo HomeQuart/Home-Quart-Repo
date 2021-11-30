@@ -47,10 +47,10 @@
                                                     <div class="form-group">
                                                         <div class="position-relative">
                                                         @foreach ($data as $items)
-                                                        @if( $items->user_id == Auth::user()->user_id)
-                                                            @if ($loop->last)
+                                                        @if(Auth::user()->user_id == $items->user_id)
+                                                        @if($loop->last)
                                                                 <h5>{{ $items->recommend_medicine }}</h5>
-                                                            @endif
+                                                        @endif
                                                         @endif
                                                         @endforeach
                                                         </div>

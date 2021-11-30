@@ -191,14 +191,14 @@
                                                                                             <table>
                                                                                                 <tr>
                                                                                                 @foreach ($data as $items)
-                                                                                                @foreach ($dataswab as $items2)
                                                                                                 @if ($loop->last)
+                                                                                                @foreach ($dataswab as $items2)
                                                                                                 @if(($items->patient_symptoms == 'none') && ($items2->swab_result == 'Positive') )
                                                                                                 <h5>
                                                                                                     Assymptomatic
                                                                                                 </h5>
                                                                                                 @endif
-                                                                                                @if(($items->patient_symptoms != '') && ($items2->swab_result == '') )
+                                                                                                @if(($items->patient_symptoms != '') && ($items2->swab_result == '') && ($items->patient_symptoms != 'none'))
                                                                                                 <h5>
                                                                                                     Mild
                                                                                                 </h5>
@@ -213,8 +213,8 @@
                                                                                                     Recovering
                                                                                                 </h5>
                                                                                                 @endif
-                                                                                                @endif
                                                                                                 @endforeach
+                                                                                                @endif
                                                                                                 @endforeach
                                                                                                 </tr>
                                                                                                 <tr>
@@ -273,8 +273,18 @@
                                                                         <div class="card-body px-3 py-4-5">
                                                                             <div class="row">
                                                                                     <center>
+                                                                                        
                                                                                         <h6>Temperature Progress</h6>
-                                                                                        <div id="chart-indonesia"></div>
+                                                                                      
+                                                                                        <div class="divScroll"> @foreach ($data as $key => $items)
+                                                                                            @if ($items->temp_input != '')
+                                                                                            <td><b>{{$key++}}: </b>{{ $items->temp_input }}°c <br> {{$items->date_time}}</td>
+                                                                                            <br>
+                                                                                            <br>
+                                                                                            @endif
+                                                                                             @endforeach
+                                                                                            </div>
+                                                                                        
                                                                                     </center>
                                                                             </div>
                                                                         </div>
@@ -295,7 +305,7 @@
                                                                                              @endforeach
                                                                                         </tr>
                                                                                         <tr>
-                                                                                        @foreach ($data as $key => $items)
+                                                                                        @foreach ($dataswab as $key => $items)
                                                                                             @if ($loop->last)
                                                                                             <td> <b>Swab Status: </b> {{ $items->swab_report }}</td>
                                                                                             @endif

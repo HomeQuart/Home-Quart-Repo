@@ -50,7 +50,7 @@
                     <form class="form form-horizontal" action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id" value="{{ $data[0]->id }}">
-                            <div class="form-body">
+                            <div class="form-body" style="font-size:.6rem">
                                 <div class="row">
 
                                 <div class="col-md-4">

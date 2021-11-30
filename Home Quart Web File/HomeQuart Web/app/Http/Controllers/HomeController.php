@@ -30,6 +30,7 @@ class HomeController extends Controller
     {
         if(Auth::user()->role_name == 'Patient')
         {
+        $data = DB::table('send_reports')->get();
         $date = Carbon::now();
         $current_time = (int) date('Hi');
             if(($current_time <= 1159) && ( Auth::user()->count_report != '1') && (Auth::user()->status == 'Active')){
@@ -52,11 +53,12 @@ class HomeController extends Controller
             }
         }
 
-
-        $staff = DB::table('staff')->count();
+        $data = DB::table('users')->get();
         $users = DB::table('users')->count();
         $user_activity_logs = DB::table('user_activity_logs')->count();
         $activity_logs = DB::table('activity_logs')->count();
-        return view('home',compact('staff','users','user_activity_logs','activity_logs'));
+        return view('home',compact('data','users','user_activity_logs','activity_logs'));
+
+
     }
 }

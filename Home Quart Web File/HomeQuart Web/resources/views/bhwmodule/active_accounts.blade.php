@@ -20,7 +20,9 @@
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Active Account Mangement</li>
+                            <li class="breadcrumb-item active" aria-current="page">Active Account Mangement
+                                
+                            </li>
                         </ol>
                     </nav>
                 </div>
@@ -31,7 +33,8 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    Active Accounts Datatable
+                    Active Accounts Datatable <br>
+                    <div style="color:red"> <b>Red text indicates patient has not reported yet. </b> </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="table1" style="font-size:.8rem">
