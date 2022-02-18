@@ -10,8 +10,8 @@
                     </div>
                     <br><br>
                     <center>
-                    <h1>Sign Up</h1>
-                    <h4>Register your credentials</h4>
+                    <h1>Create New Patient</h1>
+                    <h4>Register patient's credential</h4>
                     </center>
                     <br>
                     
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-lg @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}" placeholder="Enter Your Full Name">
+                            <input type="text" class="form-control form-control-lg @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}" placeholder="Enter Patient Full Name">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
@@ -47,7 +47,7 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="tel" class="form-control form-control-lg @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" placeholder="Enter Your Age">
+                            <input type="tel" class="form-control form-control-lg @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" placeholder="Enter Patient Age">
                             <div class="form-control-icon">
                                 <i class="bi bi-phone"></i>
                             </div>
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="tel" class="form-control form-control-lg @error('contactno') is-invalid @enderror" name="contactno" value="{{ old('contactno') }}" placeholder="Enter Your Contact Number">
+                            <input type="tel" class="form-control form-control-lg @error('contactno') is-invalid @enderror" name="contactno" value="{{ old('contactno') }}" placeholder="Enter Patient Contact Number">
                             <div class="form-control-icon">
                                 <i class="bi bi-phone"></i>
                             </div>
@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-lg @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder="Enter Your Complete Address">
+                            <input type="text" class="form-control form-control-lg @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder="Enter Patient Complete Address">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="tel" class="form-control form-control-lg @error('contact_per') is-invalid @enderror" name="contact_per" value="{{ old('contact_per') }}" placeholder="Enter Your Contact Person's Number">
+                            <input type="tel" class="form-control form-control-lg @error('contact_per') is-invalid @enderror" name="contact_per" value="{{ old('contact_per') }}" placeholder="Patient Person Contact Number">
                             <div class="form-control-icon">
                                 <i class="bi bi-phone"></i>
                             </div>
@@ -207,10 +207,6 @@
                         </div>
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Create</button>
                     </form>
-                    <div class="text-center mt-5 text-lg fs-4">
-                        <p class='text-gray-600'>Already have an account? <a href="{{ route('login') }}"
-                        class="font-bold">Login</a></p>
-                    </div>
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">

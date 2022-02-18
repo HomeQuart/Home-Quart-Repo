@@ -36,6 +36,9 @@
                     Active Accounts Datatable <br>
                     <div style="color:red"> <b>Red text indicates patient has not reported yet. </b> </div>
                 </div>
+                <a href="{{ route('register') }}">
+                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Add Patient</button>
+                </a>
                 <div class="card-body">
                     <table class="table table-striped" id="table1" style="font-size:.8rem">
                         <thead>
@@ -113,11 +116,11 @@
                                             <span class="badge bg-success"><i class="bi bi-flag-fill" title="Send Report For This Patient"></i></span>
                                         </a>  
                                      </td>
-                                     <td class="text-center">
+                                     <!-- <td class="text-center">
                                         <a href="{{ url('editPeriod/Account/'.$item->id) }}">
                                             <span class="badge bg-primary"><i class="bi bi-pencil-fill" title="Edit Quarantine Period"></i></span>
                                         </a>  
-                                     </td>
+                                     </td> -->
                                      <td class="text-center">
                                         <a href="{{ url('reportList/'.$item->id) }}">
                                             <span class="badge bg-primary"><i class="bi bi-list" title="See Report Lists"></i></span>
@@ -133,11 +136,11 @@
                                     <td class="text-center">
                                         <p>can't report</p>
                                     </td>
-                                    <td class="text-center">
+                                    <!-- <td class="text-center">
                                         <a href="{{ url('editPeriod/Account/'.$item->id) }}">
                                             <span class="badge bg-primary"><i class="bi bi-pencil-fill" title="Edit Quarantine Period" ></i></span>
                                         </a>  
-                                     </td>
+                                     </td> -->
                                      <td class="text-center">
                                         <a href="{{ url('reportList/'.$item->id) }}">
                                             <span class="badge bg-primary"><i class="bi bi-list" title="See Report Lists"></i></span>

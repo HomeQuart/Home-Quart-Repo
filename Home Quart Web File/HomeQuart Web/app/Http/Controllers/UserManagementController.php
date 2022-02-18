@@ -446,7 +446,7 @@ class UserManagementController extends Controller
         DB::table('user_activity_logs')->insert($activityLog);
         User::where('id',$request->id)->update($update);
         Toastr::success('Patient updated successfully :)','Success');
-        return redirect()->route('pendingaccounts');
+        return redirect()->route('activeaccounts');
     }
 
 
@@ -496,7 +496,7 @@ class UserManagementController extends Controller
    //bhw can edit quarantine period of the patient
    public function editPeriodAccount($id)
    {
-       if (Auth::user()->role_name=='BHW')
+       if (Auth::user()->role_name=='Doctor')
       {
           $data = DB::table('users')->where('role_name', '=', 'Patient')->where('status','=','Active')->where('id',$id)->get();
           return view('bhwmodule.editPeriod',compact('data'));
@@ -1067,8 +1067,8 @@ class UserManagementController extends Controller
 
         $request->validate([
             'role_name' => 'required|string|max:255',
-            'full_name'      => 'required|string|max:255',
-            'age'     => 'required|min:2|numeric',
+            'full_name'      => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
+            'age'     => 'required|between:18,65|integer',
             'gender'      => 'required|string|max:255',
             'contactno'     => 'required|min:11|numeric',
             'p_picture'     => 'required|image',

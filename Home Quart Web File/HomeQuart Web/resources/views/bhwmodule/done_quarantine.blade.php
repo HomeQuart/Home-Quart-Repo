@@ -40,14 +40,12 @@
                                 <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Profile</th>
-                                
                                 <th>Purok</th>
                                 <th>Address</th>
                                 <th>Gender</th>
                                 <th>Contact No.</th>
                                 <th>Email Certificate</th>
                                 <th>Status</th>
-                                <th>Action</th>
                             </tr>    
                         </thead>
                         <tbody>
@@ -81,9 +79,9 @@
                                     @if($item->status =='Done')
                                     <td class="status">{{ $item->status }}</td>
                                     @endif
-                                    <td>  
+                                    <!-- <td>  
                                         <a href="{{ url('delete_user/'.$item->id) }}" onclick="return confirm('Are you sure to want to delete this patient?')"><span class="badge bg-primary"><i class="bi bi-trash"></i>DELETE</span></a>
-                                     </td>
+                                     </td> -->
                                 </tr>
                                 @endif
                             @endforeach

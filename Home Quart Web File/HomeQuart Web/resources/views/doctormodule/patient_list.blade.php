@@ -84,7 +84,7 @@
                                     <td class="status">{{ $item2->status }}</td>
                                     @endif
                                     @if($item->status =='Done')
-                                    <td class="status">{{ $item2->status }}</td>
+                                    <td class="status">{{ Done }}</td>
                                     @endif
                                     <td>
                                         <a href="{{ url('quarantineInformation/'.$item->id) }}">
@@ -92,6 +92,9 @@
                                         </a>  
                                         <a href="{{ url('reportList/'.$item->id) }}">
                                             <span class="badge bg-success">REPORT SUMMARY</span>
+                                        </a>  
+                                        <a href="{{ url('editPeriod/Account/'.$item->id) }}">
+                                            <span class="badge bg-primary">EDIT PERIOD</span>
                                         </a>  
                                      </td>
                                 </tr>

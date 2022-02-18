@@ -108,7 +108,7 @@
 
                 {{-- BHW SIDEBAR Dashboard --}}
                 @if (Auth::user()->role_name=='BHW')
-                    <li class="sidebar-item  has-sub">
+                    <!-- <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-cloud-arrow-up-fill"></i>
                             <span>Patient Pending Accounts </span>
@@ -118,7 +118,7 @@
                                 <a href="{{ route('pendingaccounts') }}">Manage Pending Accounts</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-person-lines-fill"></i>

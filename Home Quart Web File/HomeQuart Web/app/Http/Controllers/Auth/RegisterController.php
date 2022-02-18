@@ -57,13 +57,13 @@ class RegisterController extends Controller
         // ]);
         $request->validate([
             'role_name' => 'required|string|max:255',
-            'full_name'      => 'required|string|max:255',
+            'full_name'      => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',
             'age'     => 'required|min:2|numeric',
             'gender'      => 'required|string|max:255',
             'contactno'     => 'required|min:11|numeric',
             'p_picture'     => 'required|image',
             'address'      => 'required|string|max:255',
-            'contact_per'     => 'min:2|numeric',
+            'contact_per'     => 'min:11|numeric',
             'assign_purok'    => 'string|max:255',
             'place_isolation' => 'string|max:255',
             'status'    => 'required|string|max:255',
@@ -94,6 +94,6 @@ class RegisterController extends Controller
         $user->save();
 
         Toastr::success('Create new account successfully :)','Success');
-        return redirect('login');
+        return redirect('pendingaccounts');
     }
 }
