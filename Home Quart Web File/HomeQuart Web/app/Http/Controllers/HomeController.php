@@ -47,7 +47,7 @@ class HomeController extends Controller
             {
                 $update = [
 
-                    'status'            => Done,
+                    'status'            => 'Done',
                 ];
                 User::find(auth()->user()->id)->update(($update));
             }
