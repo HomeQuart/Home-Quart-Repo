@@ -224,7 +224,14 @@
                                             <fieldset class="form-group">
                                                 <select class="form-select" name="status" id="status">  
                                                     @foreach ($userStatus as $key => $value)
+                                                    @if($data[0]->role_name == 'Patient')
                                                     <option value="{{ $value->type_name }}"> {{ $value->type_name }}</option>
+                                                    @endif
+                                                    @if($data[0]->role_name != 'Patient')
+                                                    @if($value->type_name != 'Done')
+                                                    <option value="{{ $value->type_name }}"> {{ $value->type_name}}</option>
+                                                    @endif
+                                                    @endif
                                                     @endforeach  
                                                 </select>
                                                 <div class="form-control-icon">

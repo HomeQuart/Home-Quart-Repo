@@ -12,7 +12,7 @@
                 <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
                             <h3>Temperature Progress</h3>
-                            <p class="text-subtitle text-muted">Temperature Progress Bar</p>
+                            
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -25,20 +25,14 @@
                     </div>
             </header>
             
-            <section class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-6 col-lg-12 col-md-6">
-                            <div class="card">
+           
+                
                                 <div class="card-body px-3 py-4-5">
                                     {{-- insert the chart for temperature progress here --}}
                                     <div class="row">
                                             <div class="col-12">
                                                 <div class="row">
-                                                        <div class="card">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <div class="card">
+                                                        
                                                                     <div class="container">
                                                                         <h2 style="text-align:center;">Your Temperature</h2>
                                                                         <div class="panel panel-primary">
@@ -49,21 +43,15 @@
                                                                         </div>
                                                                         </div>
                                                                     </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                                   
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    
+        
                 
             {{-- user profile modal --}}
             <div class="card-body">

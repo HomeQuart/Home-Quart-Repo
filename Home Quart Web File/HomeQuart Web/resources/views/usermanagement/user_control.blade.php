@@ -83,7 +83,17 @@
                                     </td>
                                     <td class="address">{{ $item->address }}</td>
                                     <td class="contact_per">{{ $item->contact_per }}</td>
+                                @foreach ($purok as $puroks)
+                                    @if($puroks->purok_name == $item->assign_purok )
                                     <td class="assign_purok">{{ $item->assign_purok }}</td>
+                                    @endif
+                                @endforeach
+                                @if($item->role_name == 'Admin')
+                                <td> </td>
+                                @endif
+                                @if($item->role_name == 'Doctor')
+                                <td> </td>
+                                @endif
                                     <td class="place_isolation">{{ $item->place_isolation }}</td>
                                     @if($item->status =='Active')
                                     <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>

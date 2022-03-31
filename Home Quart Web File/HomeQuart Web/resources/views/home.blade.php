@@ -272,8 +272,53 @@
         <div class="page-content">
             <section class="row">
                 <div class="col-12 ">
-                    
+
+                <div class="col-6 col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body px-3 py-4-5">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="stats-icon purple">
+                                                <i class="iconly-boldShow"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h6 class="text-muted font-semibold">Total Positive Patient</h6>
+                                            <h6 class="font-extrabold mb-0">{{ $positive_counter }}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                 </div>
+
+              
+                
+                
+                <div class="card-body px-3 py-4-5">
+                                    {{-- insert the chart for temperature progress here --}}
+                                    <div class="row">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                        
+                                                                    <div class="container">
+                                                                        <h2 style="text-align:center;">TOTAL POSITIVE PATIENT BY PUROK</h2>
+                                                                        <div class="panel panel-primary">
+                                                                           
+                                                                            <div class="panel-body">
+                                                                                <div id="bar-chart"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                   
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                </div>
+
+      
                     {{-- user profile modal --}}
                     <div class="card-body">
                         <!--Basic Modal -->
@@ -694,23 +739,16 @@
         
         {{-- message --}}
         {!! Toastr::message() !!}
-        <div class="page-content">
-            <section class="row">
-                <div class="col-12 ">
-                    <div class="row">
-                        <div class="col-6 col-lg-2 col-md-6">
-                        </div>
-                        <div class="col-6 col-lg-8 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-3 py-4-5">
+       
+                               
                                     <div class="row">
                                         <center> <h5>Remaining Quarantine Period</h5></center><hr>
                                         {{-- insert the countdown timer here --}}
                                         <center>
                                         <div id="getting-started"></div>
-                                        <div class="container">
+                                      
                                             <div class="row">
-                                                    <div class="card ">
+                                                    
                                                         <table class="table table-striped">
                                                             <tr>
                                                                 <td class ="text-center">Days</td>
@@ -725,24 +763,18 @@
                                                                 <td id = "seconds" class= "display-4 bg-dark text-white text-center"></td>
                                                             </tr>
                                                         </table>
-                                                    </div>
+                                                   
                                             </div>
-                                        </div>
+                                        
                                     </center>
-                                    </div>
+                                    
                                     <!-- <script>
                                     if(document.getElementById('#day').value == 0 && document.getElementById('#hour').value == 0 && document.getElementById('#minutes').value == 0 document.getElementById('#seconds').value == 0)
                                     {
                                         
                                     }
                                 </script> -->
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-6">
-                        </div>
-                    </div>
+                            
                     
                 </div>
                     {{-- user profile modal --}}

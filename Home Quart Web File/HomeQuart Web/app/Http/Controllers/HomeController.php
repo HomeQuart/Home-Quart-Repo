@@ -28,6 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+
         if(Auth::user()->role_name == 'Patient')
         {
         $data = DB::table('send_reports')->get();
@@ -57,7 +59,14 @@ class HomeController extends Controller
         $users = DB::table('users')->count();
         $user_activity_logs = DB::table('user_activity_logs')->count();
         $activity_logs = DB::table('activity_logs')->count();
-        return view('home',compact('data','users','user_activity_logs','activity_logs'));
+        $positive_counter = DB::table('positive_counter')->count();
+        $counter = DB::table('positive_counter')->get();
+        $purok = DB::table('purok')->get();
+
+        $ILANGILANG = DB::table('positive_counter')->where('purok_positive','ILANG ILANG')->count();
+        $MAHOGANY =DB::table('positive_counter')->where('purok_positive','MAHOGANY')->count();
+
+        return view('home',compact('data','users','user_activity_logs','activity_logs','positive_counter','counter','purok','ILANGILANG','MAHOGANY'));
 
 
     }

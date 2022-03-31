@@ -29,7 +29,8 @@ class UserManagementController extends Controller
         if (Auth::user()->role_name=='Admin')
         {
             $data = DB::table('users')->get();
-            return view('usermanagement.user_control',compact('data'));
+            $purok = DB::table('purok')->get();
+            return view('usermanagement.user_control',compact('data','purok'));
         }
         else if (Auth::user()->role_name=='BHW')
         {
@@ -708,6 +709,7 @@ class UserManagementController extends Controller
         $id                 = $request->id;
         $user_id            = $request->user_id;
         $full_name          = $request->full_name;
+        $assign_purok       = $request->assign_purok;
         $swab_report        = $request->swab_report;
         $swab_result        = $request->swab_result;
         
@@ -726,6 +728,15 @@ class UserManagementController extends Controller
             'swab_proof' => $swab_proof,
         ];
 
+        $positivecount = [
+            'user_id'   => $user_id,
+            'purok_positive'    => $assign_purok,
+        ];
+
+        if($swab_result == 'Positive')
+       {
+            DB::table('positive_counter')->insert($positivecount);
+       }
         DB::table('swabtest_report')->insert($swabtest);
         User::where('id',$request->id)->update($update);
         Toastr::success('Swab Test reported successfully :)','Success');
@@ -1418,7 +1429,7 @@ class UserManagementController extends Controller
         Toastr::success('User change successfully :)','Success');
         return redirect()->route('home');
     }
-
+    /*Original*/
     public function temperatureProgress()
     {
 
@@ -1453,7 +1464,85 @@ class UserManagementController extends Controller
                 )),
             ]);
             }
-
     }
+
+    public function home(){
+        
+        $totals = DB::table('swabtest_report')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when swab_result = 'Positive' then 1 end) as Positive")
+        ->first();
+
+        return view("home");
+    }
+    // public function home()
+    // {
+    //     if (Auth::user()->role_name=='Doctor')
+    //     {
+    //         $users = User::all();
+    //         $swabresults = swabtest_result::all();
+
+    //     $dataPoints = [];
+
+    //     foreach ($swabresults as $key => $swabresult) 
+    //     {
+    //     if(Auth::user()->user_id == $swabresult->user_id)
+    //     {
+    //         if($swabresult->swab_result == "Positive")
+    //         {
+    //         $dataPoints[] = array(
+    //             "name" => $swabresult->user_id, //Pwede ra mag add og column nga asa nga purok nya e puli ari
+    //             "data" => [
+    //                 intval($swabresult['id']),
+                    
+    //             ],
+    //         );
+    //         }
+    //     }
+    //     }
+    //         return view("home", [
+    //             "data" => json_encode($dataPoints),
+    //             "purok" => json_encode(array(
+    //                 "Total Positive Patient by Purok"
+    //             )),
+    //         ]);
+    //         }
+    // }
+
+       // public function temperatureProgress()
+    // {
+
+    //     if (Auth::user()->role_name=='Doctor')
+    //     {
+    //         $users = User::all();
+    //         $swabresults = swabtest_result::all();
+
+    //     $dataPoints = [];
+
+    //     foreach ($swabresults as $key => $swabresult) 
+    //     {
+    //     if(Auth::user()->user_id == $swabresult->user_id)
+    //     {
+    //         if($swabresult->swab_result == "Positive")
+    //         {
+    //         $dataPoints[] = array(
+    //             "name" => $swabresult->user_id,
+    //             "data" => [
+    //                 floatval($swabresult['swab_result']),
+                    
+    //             ],
+    //         );
+    //         }
+    //     }
+    //     }
+    //         return view("layouts.master", [
+    //             "data" => json_encode($dataPoints),
+    //             "terms" => json_encode(array(
+    //                 "Total Positive Patient"
+    //             )),
+    //         ]);
+    //         }
+    // }
+    
     
 }
