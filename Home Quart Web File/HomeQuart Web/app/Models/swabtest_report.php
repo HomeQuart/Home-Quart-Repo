@@ -14,5 +14,6 @@ class swabtest_report extends Model
         'user_id',
         'swab_result',
         'swab_proof',
+        'swab_purok',
        ];
 }

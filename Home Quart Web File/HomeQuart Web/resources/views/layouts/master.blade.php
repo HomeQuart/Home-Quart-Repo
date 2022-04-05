@@ -127,54 +127,6 @@
         
     </script>
     
-    <script>
-
-        @if(Auth::user()->role_name == 'Doctor')
-        $(function(){
-            Highcharts.chart('bar-chart', {
-                chart: {
-                    type: 'column',
-                    zoomType: 'xy'
-                },
-                title: {
-                    text: ''
-                },
-              
-                yAxis: {
-                    min: 0.,
-                    max: 50.,
-                    title: {
-                        text: 'Positive Range'
-                    }
-                },
-
-                xAxis: {
-                    title: {
-                        categories: <?= $purok ?>,
-                        text: 'List of Puroks'
-                    },
-                },
-
-                tooltip: {
-                    headerFormat: '<span style="font-size:10px">"{point.key}"Purok</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">"purok": </td>' +
-                        '<td style="padding:0"><b>"{point.y}"</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
-                    }
-                },
-                series: <?= $data ?>
-            });
-        });
-        @endif
-    </script>
-    
 </body>
 
 </html>

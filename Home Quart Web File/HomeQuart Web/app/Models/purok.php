@@ -9,5 +9,5 @@ class purok extends Model
 {
     protected $table = 'purok';
     protected $primaryKey = 'id';
-    protected $fillable = ['purok_name', 'comp_address'];
+    protected $fillable = ['purok_name', 'comp_address', 'positive_counter'];
 }

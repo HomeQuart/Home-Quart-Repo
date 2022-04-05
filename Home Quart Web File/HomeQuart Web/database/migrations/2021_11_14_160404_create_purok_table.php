@@ -17,6 +17,7 @@ class CreatePurokTable extends Migration
             $table->id();
             $table->string('purok_name');
             $table->string('comp_address');
+            $table->integer('positive_counter')->nullable();
             $table->timestamps();
         });
     }

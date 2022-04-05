@@ -94,6 +94,9 @@
                                 @if($item->role_name == 'Doctor')
                                 <td> </td>
                                 @endif
+                                @if($item->role_name == 'BHW' && $item->assign_purok == "")
+                                <td> </td>
+                                @endif
                                     <td class="place_isolation">{{ $item->place_isolation }}</td>
                                     @if($item->status =='Active')
                                     <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>

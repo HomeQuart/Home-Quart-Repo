@@ -63,10 +63,7 @@ class HomeController extends Controller
         $counter = DB::table('positive_counter')->get();
         $purok = DB::table('purok')->get();
 
-        $ILANGILANG = DB::table('positive_counter')->where('purok_positive','ILANG ILANG')->count();
-        $MAHOGANY =DB::table('positive_counter')->where('purok_positive','MAHOGANY')->count();
-
-        return view('home',compact('data','users','user_activity_logs','activity_logs','positive_counter','counter','purok','ILANGILANG','MAHOGANY'));
+        return view('home',compact('data','users','user_activity_logs','activity_logs','positive_counter','counter','purok'));
 
 
     }

@@ -737,6 +737,13 @@ class UserManagementController extends Controller
        {
             DB::table('positive_counter')->insert($positivecount);
        }
+
+
+
+        if($swab_result == 'Positive')
+       {
+            DB::table('purok')->where('purok_name',$request->assign_purok)->increment('positive_counter', +1);
+       }
         DB::table('swabtest_report')->insert($swabtest);
         User::where('id',$request->id)->update($update);
         Toastr::success('Swab Test reported successfully :)','Success');
@@ -1126,6 +1133,7 @@ class UserManagementController extends Controller
         $puroks = new purok;
         $puroks->purok_name    = $request->purok_name ;
         $puroks->comp_address  = $request->comp_address;
+        $puroks->positive_counter      = 0;
         
  
         $puroks->save();
