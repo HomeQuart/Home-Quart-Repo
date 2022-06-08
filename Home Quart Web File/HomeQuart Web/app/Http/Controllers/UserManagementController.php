@@ -22,10 +22,6 @@ class UserManagementController extends Controller
     public function index()
     {
 
-        //Comment ko balik
-        //Comment Frank
-        //Comment sa pinakagwapa 
-
         if (Auth::user()->role_name=='Admin')
         {
             $data = DB::table('users')->get();
@@ -740,7 +736,7 @@ class UserManagementController extends Controller
 
 
 
-        if($swab_result == 'Positive')
+       if($swab_result == 'Positive')
        {
             DB::table('purok')->where('purok_name',$request->assign_purok)->increment('positive_counter', +1);
        }
@@ -1133,9 +1129,8 @@ class UserManagementController extends Controller
         $puroks = new purok;
         $puroks->purok_name    = $request->purok_name ;
         $puroks->comp_address  = $request->comp_address;
-        $puroks->positive_counter      = 0;
+        $puroks->positive_counter = 0;
         
- 
         $puroks->save();
 
         Toastr::success('Create new Purok successfully :)','Success');
@@ -1483,74 +1478,5 @@ class UserManagementController extends Controller
 
         return view("home");
     }
-    // public function home()
-    // {
-    //     if (Auth::user()->role_name=='Doctor')
-    //     {
-    //         $users = User::all();
-    //         $swabresults = swabtest_result::all();
 
-    //     $dataPoints = [];
-
-    //     foreach ($swabresults as $key => $swabresult) 
-    //     {
-    //     if(Auth::user()->user_id == $swabresult->user_id)
-    //     {
-    //         if($swabresult->swab_result == "Positive")
-    //         {
-    //         $dataPoints[] = array(
-    //             "name" => $swabresult->user_id, //Pwede ra mag add og column nga asa nga purok nya e puli ari
-    //             "data" => [
-    //                 intval($swabresult['id']),
-                    
-    //             ],
-    //         );
-    //         }
-    //     }
-    //     }
-    //         return view("home", [
-    //             "data" => json_encode($dataPoints),
-    //             "purok" => json_encode(array(
-    //                 "Total Positive Patient by Purok"
-    //             )),
-    //         ]);
-    //         }
-    // }
-
-       // public function temperatureProgress()
-    // {
-
-    //     if (Auth::user()->role_name=='Doctor')
-    //     {
-    //         $users = User::all();
-    //         $swabresults = swabtest_result::all();
-
-    //     $dataPoints = [];
-
-    //     foreach ($swabresults as $key => $swabresult) 
-    //     {
-    //     if(Auth::user()->user_id == $swabresult->user_id)
-    //     {
-    //         if($swabresult->swab_result == "Positive")
-    //         {
-    //         $dataPoints[] = array(
-    //             "name" => $swabresult->user_id,
-    //             "data" => [
-    //                 floatval($swabresult['swab_result']),
-                    
-    //             ],
-    //         );
-    //         }
-    //     }
-    //     }
-    //         return view("layouts.master", [
-    //             "data" => json_encode($dataPoints),
-    //             "terms" => json_encode(array(
-    //                 "Total Positive Patient"
-    //             )),
-    //         ]);
-    //         }
-    // }
-    
-    
 }

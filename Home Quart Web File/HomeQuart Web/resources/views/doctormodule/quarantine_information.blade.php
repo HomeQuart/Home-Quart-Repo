@@ -218,7 +218,7 @@
                                                                                                 @endforeach
                                                                                                 </tr>
                                                                                                 <tr>
-                                                                                                    <p>Health Predictions</p>
+                                                                                                    <p>Health Status</p>
                                                                                                 </tr>
                                                                                             </table>
                                                                                         </center>

@@ -26,35 +26,6 @@ class RegisterController extends Controller
     }
     public function storeUser(Request $request)
     {
-        // $request->validate([
-        //     'name'      => 'required|string|max:255',
-        //     'email'     => 'required|string|email|max:255|unique:users',
-        //     'role_name' => 'required|string|max:255',
-        //     'password'  => 'required|string|min:8|confirmed',
-        //     'password_confirmation' => 'required',
-        // ]);
-
-        // // $request->validate([
-        // //     'name' => 'required|string|max:255',
-        // //     'role_name' => 'required|string|max:255',
-        // //     'email' => 'required|string|email|max:255|unique:users',
-        // //     'password' => ['required', 'confirmed', Password::min(8)
-        // //             ->mixedCase()
-        // //             ->letters()
-        // //             ->numbers()
-        // //             ->symbols()
-        // //             ->uncompromised(),
-        // //     'password_confirmation' => 'required',
-        // //     ],
-        // // ]);
-        
-        // User::create([
-        //     'name'      => $request->name,
-        //     'avatar'    => $request->image,
-        //     'email'     => $request->email,
-        //     'role_name' => $request->role_name,
-        //     'password'  => Hash::make($request->password),
-        // ]);
         $request->validate([
             'role_name' => 'required|string|max:255',
             'full_name'      => 'required|regex:/^[\pL\s\-]+$/u|string|max:255',

@@ -17,7 +17,7 @@ class MedicineSeeder extends Seeder
     public function run()
     {
        $faker = Faker::create();
-       foreach (range(1,10) as $value){
+       foreach (range(1,100) as $value){
             DB::table('medicine')->insert([
             'medicine_name' => $faker->text(maxNbChars:30),
             'symptoms_type' => $faker->sentence(1),

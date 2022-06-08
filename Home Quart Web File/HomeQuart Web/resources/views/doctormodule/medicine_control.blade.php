@@ -28,6 +28,8 @@
         </div>
         {{-- message --}}
         {!! Toastr::message() !!}
+        
+        
         <section class="section">
             <div class="card">
                 <div class="card-header">
@@ -66,6 +68,8 @@
             </div>
         </section>
     </div>
+
+    
     <footer>
     <div class="footer clearfix mb-0 text-muted">
             <div class="float-start">

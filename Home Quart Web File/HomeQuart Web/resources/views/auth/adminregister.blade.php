@@ -5,7 +5,7 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div>
-                        <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" width="100%" heigh="50%"></a>
+                        <img src="assets/images/logo/logo.png" alt="Logo" width="100%" heigh="50%">
                     </div>
                     <br><br>
                     <center>
